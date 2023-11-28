@@ -1,3 +1,4 @@
+'use client'
 import Dashboard from "@/components/Dashboard";
 import { CustomTabPanel } from "@/components/Tabs/tabs";
 import { TabsIngredients } from "@/components/Tabs/tabsIngredient";

@@ -1,3 +1,4 @@
+'use client'
 import * as React from "react";
 import { styled, createTheme, ThemeProvider } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
@@ -9,7 +10,7 @@ import Divider from "@mui/material/Divider";
 import IconButton from "@mui/material/IconButton";
 import AppBar from "@/components/Dashboard/AppBar";
 import { ChevronLeft } from "@mui/icons-material";
-import { mainListItems, secondaryListItems } from "./ListItem";
+import { MainListItems, secondaryListItems } from "./ListItem";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { Button, Container, Grid } from "@mui/material";
@@ -139,7 +140,7 @@ export default function Dashboard({ children }) {
           </Toolbar>
           <Divider />
           <List component="nav">
-            {mainListItems()}
+            {MainListItems()}
        
           </List>
         </Drawer>
