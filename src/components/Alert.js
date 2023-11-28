@@ -4,7 +4,6 @@ import { Snackbar } from "@mui/material";
 import MuiAlert from "@mui/material/Alert";
 import { useSelector, useDispatch } from "react-redux";
 import { closeAlert } from "@/app/store/features/alertSlice";
-import { useState } from "react";
 export const Alert = () => {
   const dispatch = useDispatch();
   const propsAlert = useSelector((state) => state.alert);
@@ -24,13 +23,9 @@ export const Alert = () => {
       autoHideDuration={3000}
       onClose={handleClose}
     >
-      <MuiAlert
-        children={propsAlert.children}
-        severity={propsAlert.type}
-        auto
-        elevation={6}
-        variant="filled"
-      />
+      <MuiAlert severity={propsAlert.type} auto elevation={6} variant="filled">
+        {propsAlert.children}
+      </MuiAlert>
     </Snackbar>
   );
 };

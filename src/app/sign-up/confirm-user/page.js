@@ -29,9 +29,8 @@ import { useForm, Controller } from "react-hook-form";
 import Cookies from "js-cookie";
 import ThemeProviders from "@/components/theme/themeProvider";
 
-const defaultTheme = createTheme();
 
-const confirmUser = () => {
+const ConfirmUser = () => {
   const input1 = useRef(null);
   const input2 = useRef(null);
   const input3 = useRef(null);
@@ -244,4 +243,4 @@ const confirmUser = () => {
     </ThemeProviders>
   );
 };
-export default confirmUser;
+export default ConfirmUser;

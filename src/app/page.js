@@ -18,7 +18,7 @@ const Page = () => {
 
   useEffect(() => {
     getUser();
-  }, []);
+  });
   return (
     <div>
       <Dashboard>

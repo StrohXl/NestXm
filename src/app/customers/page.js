@@ -1,10 +1,10 @@
 'use client'
 import Dashboard from "@/components/Dashboard"
-const Inventory=()=>{
+const Customers=()=>{
     return(
         <Dashboard>
             Clientes
         </Dashboard>
     )
 }
-export default Inventory
+export default Customers

@@ -7,7 +7,7 @@ import React, { useState, useEffect } from "react";
 import { ArrowBack } from "@mui/icons-material";
 import { useForm, Controller, set } from "react-hook-form";
 
-const recoveryPassword = () => {
+const RecoveryPassword = () => {
   const {
     handleSubmit,
     formState: { errors },
@@ -75,4 +75,4 @@ const recoveryPassword = () => {
     </ThemeProviders>
   );
 };
-export default recoveryPassword;
+export default RecoveryPassword;

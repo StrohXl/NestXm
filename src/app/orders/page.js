@@ -3,7 +3,7 @@ import Dashboard from "@/components/Dashboard"
 import TableOrders from "@/components/Table/TableOrders"
 import { Typography, Button } from "@mui/material"
 import { useSelector } from "react-redux"
-const Inventory=()=>{
+const Orders=()=>{
     
     return(
         <Dashboard>
@@ -17,4 +17,4 @@ const Inventory=()=>{
         </Dashboard>
     )
 }
-export default Inventory
+export default Orders

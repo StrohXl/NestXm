@@ -117,7 +117,7 @@ export default function Dashboard({ children }) {
   useEffect(() => {
     document.addEventListener("mousemove", ()=>resetInactivityTimer());
     document.addEventListener("keydown", ()=>resetInactivityTimer());
-  }, []);
+  });
 
   return (
     <ThemeProvider theme={defaultTheme}>
@@ -161,15 +161,6 @@ export default function Dashboard({ children }) {
           </Container>
         </Box>
       </Box>
-      <Alert
-        children={alert.text}
-        open={alert.open}
-        type={alert.type}
-        horizontal={alert.horizontal}
-        vertical={alert.vertical}
-        setOpen={(value) => setAlert({ ...alert, open: value })}
-        time={alert.time}
-      />
     </ThemeProvider>
   );
 }

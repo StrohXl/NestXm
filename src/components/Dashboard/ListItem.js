@@ -10,7 +10,7 @@ import AssignmentIcon from "@mui/icons-material/Assignment";
 import { useRouter } from "next/navigation";
 import { Inventory2 } from "@mui/icons-material";
 
-export const mainListItems = () => {
+export const MainListItems = () => {
   const router = useRouter();
   const items = [
     {
