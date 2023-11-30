@@ -13,7 +13,8 @@ export const endPoints = {
   },
   confirmUser:{
     confirm: apiUrl + 'confirm-user',
-    sendEmail: apiUrl + 'confirm-user/send-email'
+    sendEmail: apiUrl + 'confirm-user/send-email',
+    confirmEmail: apiUrl + 'confirm-user/recovery-password'
   },
   ingredients: {
     create: apiUrl + "ingredients",

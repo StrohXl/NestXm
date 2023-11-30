@@ -16,6 +16,7 @@ import { useRouter } from "next/navigation";
 import { Button, Container, Grid } from "@mui/material";
 import Cookies from "js-cookie";
 import { Alert } from "../Alert";
+import ThemeProviders from "../theme/themeProvider";
 
 const drawerWidth = 240;
 
@@ -121,7 +122,7 @@ export default function Dashboard({ children }) {
   });
 
   return (
-    <ThemeProvider theme={defaultTheme}>
+    <ThemeProviders>
       <Box sx={{ display: "flex" }}>
         <CssBaseline />
         <AppBar open={open} toggleDrawer={toggleDrawer} />
@@ -162,6 +163,6 @@ export default function Dashboard({ children }) {
           </Container>
         </Box>
       </Box>
-    </ThemeProvider>
+    </ThemeProviders>
   );
 }

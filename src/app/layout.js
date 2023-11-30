@@ -1,4 +1,5 @@
 import "./globals.scss";
+import "../services/axios";
 import Providers from "./store/provider";
 import { Alert } from "@/components/Alert";
 import { ThemeProvider } from "styled-components";

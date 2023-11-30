@@ -10,6 +10,7 @@ import {
   Button,
   Grid,
   IconButton,
+  Paper,
   ThemeProvider,
   Typography,
   createTheme,
@@ -22,13 +23,16 @@ import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 
 // React Redux
+import { useDispatch, useSelector } from "react-redux";
+import { updateAlert } from "@/app/store/features/alertSlice";
 
 // otros
 import axios from "axios";
 import { useForm, Controller } from "react-hook-form";
 import Cookies from "js-cookie";
 import ThemeProviders from "@/components/theme/themeProvider";
-
+import { ConfirmToken, ResendEmail } from "@/services/confirmuser";
+import { LoadingButton } from "@mui/lab";
 
 const ConfirmUser = () => {
   const input1 = useRef(null);
@@ -39,13 +43,10 @@ const ConfirmUser = () => {
   const buttonRef = useRef(null);
 
   const [disabledButton, setDisabledButton] = useState(false);
+  const [loading, setLoading] = useState(false);
   const router = useRouter();
-  const [errorAlert, setErrorAlert] = useState({
-    active: false,
-    text: "",
-    type: "",
-  });
 
+  const dispatch = useDispatch();
   // Controlar Errores en el formulrio
 
   const {
@@ -72,33 +73,23 @@ const ConfirmUser = () => {
   };
 
   const sendData = async (token) => {
+    setLoading(true);
     const idEmail = Cookies.get("email");
     const data = {
       id: idEmail,
       token,
     };
-    try {
-      const res = await axios.post("http://localhost:8000/confirm-user", data);
-      console.log(res);
-      setDisabledButton(true);
-      setErrorAlert({
-        ...errorAlert,
-        text: res?.data.message,
-        active: true,
-        type: "success",
-      });
-      setTimeout(() => {
-        router.push("/sign-in");
-      }, 2000);
-    } catch (error) {
-      console.log(error);
-      setErrorAlert({
-        ...errorAlert,
-        text: error?.response?.data?.message,
-        active: true,
-        type: "error",
-      });
-    }
+    setTimeout(async () => {
+      const res = await ConfirmToken(data);
+      setLoading(false);
+      dispatch(updateAlert(res));
+      if (res.type == "success") {
+        setDisabledButton(true);
+        setTimeout(() => {
+          router.push("/sign-in");
+        }, 2000);
+      }
+    }, 1000);
   };
 
   useEffect(() => {}, []);
@@ -106,26 +97,9 @@ const ConfirmUser = () => {
   // Reenviar token
 
   async function resendToken(e) {
-    e.preventDefault();
     const idEmail = Cookies.get("email");
-    console.log(idEmail);
-    try {
-      const res = await axios.patch(
-        `http://localhost:8000/confirm-user/${idEmail}`
-      );
-      co
-      
-      
-      
-      nsole.log(res);
-      setErrorAlert({
-        text: "Se ha enviado un token de confirmacion a su correo",
-        active: true,
-        type: "success",
-      });
-    } catch (error) {
-      console.log(error);
-    }
+    const res = await ResendEmail(idEmail);
+    dispatch(updateAlert(res))
   }
 
   return (
@@ -133,112 +107,128 @@ const ConfirmUser = () => {
       <IconButton
         onClick={() => router.push("/sign-up")}
         aria-label="regresar"
-        sx={{ marginTop: 4, marginLeft: 3 }}
+        sx={{ marginTop: 4, marginLeft: 3, position: "absolute" }}
       >
         <ArrowBack />
       </IconButton>
-
       <Box
-        sx={{
-          marginTop: 4,
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          maxWidth: "500px",
-          margin: "auto",
+        sx={{ display: "flex", placeItems: "center", justifyContent: "center" }}
+        style={{
+          height: "100%",
+          background:
+            "linear-gradient(#ffffffe0,#000000e0), url(https://images.unsplash.com/photo-1504270997636-07ddfbd48945?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxfDB8MXxyYW5kb218MHx8dGVjaG5vbG9neXx8fHx8fDE3MDEyNzQ4OTk&ixlib=rb-4.0.3&q=80&utm_campaign=api-credit&utm_medium=referral&utm_source=unsplash_source&w=1080)",
+          backgroundRepeat: "no-repeat",
+          backgroundColor: (t) =>
+            t.palette.mode === "light"
+              ? t.palette.grey[50]
+              : t.palette.grey[900],
+          backgroundSize: "cover",
+          backgroundPosition: "center",
         }}
-        onSubmit={handleSubmit(onSubmit)}
       >
-        <Typography component="h1" variant="h5" sx={{ marginTop: 10 }}>
-          Confirmar codigo
-        </Typography>
-        <Box
-          component="form"
-          noValidate
-          onSubmit={handleSubmit}
-          sx={{ mt: 10, textAlign: "center" }}
-        >
-          <Grid container spacing={3} sx={{ mb: 4 }}>
-            <Grid item xs={12} sx={{ display: "flex", gap: 2 }}>
-              <ConfirmText
-                inputRef={input1}
-                control={control}
-                name={"number1"}
-                rules={{
-                  required: { value: true, message: "" },
-                }}
-                errors={errors?.number1}
-                label="1"
-                onKeyDown={() => {
-                  input2.current.focus();
-                }}
-              />
-              <ConfirmText
-                inputRef={input2}
-                control={control}
-                name={"number2"}
-                rules={{
-                  required: { value: true, message: "" },
-                }}
-                errors={errors?.number2}
-                label="2"
-                onKeyDown={() => input3.current.focus()}
-              />
-              <ConfirmText
-                inputRef={input3}
-                control={control}
-                name={"number3"}
-                rules={{
-                  required: { value: true, message: "" },
-                }}
-                errors={errors?.number3}
-                label="3"
-                onKeyDown={() => input4.current.focus()}
-              />
-              <ConfirmText
-                inputRef={input4}
-                control={control}
-                name={"number4"}
-                rules={{
-                  required: { value: true, message: "" },
-                }}
-                errors={errors?.number4}
-                label="4"
-                onKeyDown={() => input5.current.focus()}
-              />
-              <ConfirmText
-                inputRef={input5}
-                control={control}
-                name={"number5"}
-                rules={{
-                  required: { value: true, message: "" },
-                }}
-                onKeyDown={() => buttonRef.current.focus()}
-                errors={errors?.number5}
-                label="5"
-              />
-            </Grid>
-          </Grid>
-          <Button
-            style={{ fontSize: "14px", textTransform: "none" }}
-            small
-            onClick={(e) => resendToken(e)}
-            variant="text"
-          >
-            Reenviar token
-          </Button>
+        <Paper elevation={10} sx={{ pb: 8, px:'5%',  maxWidth: "500px" }}>
+          <Box
+            sx={{
+              marginTop: 4,
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
 
-          <Button
-            ref={buttonRef}
-            type="submit"
-            fullWidth
-            disabled={disabledButton}
-            variant="contained"
-            sx={{ mt: 4, mb: 2 }}
+              margin: "auto",
+            }}
+            onSubmit={handleSubmit(onSubmit)}
           >
-            Confirmar
-          </Button>
-        </Box>
+            <Typography component="h1" variant="h5" sx={{ marginTop: 10 }}>
+              Confirmar codigo
+            </Typography>
+            <Box
+              component="form"
+              noValidate
+              onSubmit={handleSubmit}
+              sx={{ mt: 10, textAlign: "center" }}
+            >
+              <Grid container spacing={3} sx={{ mb: 4 }}>
+                <Grid item xs={12} sx={{ display: "flex", gap: 2 }}>
+                  <ConfirmText
+                    inputRef={input1}
+                    control={control}
+                    name={"number1"}
+                    rules={{
+                      required: { value: true, message: "" },
+                    }}
+                    errors={errors?.number1}
+                    label="1"
+                    onKeyDown={() => null}
+                  />
+                  <ConfirmText
+                    inputRef={input2}
+                    control={control}
+                    name={"number2"}
+                    rules={{
+                      required: { value: true, message: "" },
+                    }}
+                    errors={errors?.number2}
+                    label="2"
+                    onKeyDown={() => null}
+                  />
+                  <ConfirmText
+                    inputRef={input3}
+                    control={control}
+                    name={"number3"}
+                    rules={{
+                      required: { value: true, message: "" },
+                    }}
+                    errors={errors?.number3}
+                    label="3"
+                    onKeyDown={() => null}
+                  />
+                  <ConfirmText
+                    inputRef={input4}
+                    control={control}
+                    name={"number4"}
+                    rules={{
+                      required: { value: true, message: "" },
+                    }}
+                    errors={errors?.number4}
+                    label="4"
+                    onKeyDown={() => null}
+                  />
+                  <ConfirmText
+                    inputRef={input5}
+                    control={control}
+                    name={"number5"}
+                    rules={{
+                      required: { value: true, message: "" },
+                    }}
+                    onKeyDown={() => null}
+                    errors={errors?.number5}
+                    label="5"
+                  />
+                </Grid>
+              </Grid>
+              <Button
+                style={{ fontSize: "14px", textTransform: "none" }}
+                small
+                onClick={(e) => resendToken(e)}
+                variant="text"
+              >
+                Reenviar token
+              </Button>
+
+              <LoadingButton
+                loading={loading}
+                ref={buttonRef}
+                type="submit"
+                fullWidth
+                disabled={disabledButton}
+                variant="contained"
+                sx={{ mt: 4, mb: 2 }}
+              >
+                Confirmar
+              </LoadingButton>
+            </Box>
+          </Box>
+        </Paper>
       </Box>
     </ThemeProviders>
   );

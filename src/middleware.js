@@ -15,9 +15,15 @@ export function middleware(request) {
       return NextResponse.redirect(new URL("/sign-up", request.url));
     }
   }
+  if (url === "/recovery-password/confirm") {
+    const confirm = request.cookies.get("confirm");
+    if (!confirm) {
+      return NextResponse.redirect(new URL("/recovery-password", request.url));
+    }
+  }
 }
 
 // See "Matching Paths" below to learn more
 export const config = {
-  matcher: ["/", "/sign-up/confirm-user"],
+  matcher: ["/", "/sign-up/confirm-user","/recovery-password/confirm"],
 };

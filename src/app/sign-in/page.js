@@ -3,13 +3,11 @@ import * as React from "react";
 import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import CssBaseline from "@mui/material/CssBaseline";
-import Link from "@mui/material/Link";
 import Paper from "@mui/material/Paper";
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
-import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { TextFieldControl } from "@/components/ControllerForm";
 import { useForm } from "react-hook-form";
 import { updateAlert } from "../store/features/alertSlice";
@@ -17,12 +15,14 @@ import { loginUser } from "../../services/login";
 import { useDispatch } from "react-redux";
 import { useRouter } from "next/navigation";
 import ThemeProviders from "@/components/theme/themeProvider";
+import { LoadingButton } from "@mui/lab";
+import { useState } from "react";
 
 // TODO remove, this demo shouldn't need to reset the theme.
 
-const defaultTheme = createTheme();
-
-export default function SignInSide({ query }) {
+export default function SignInSide() {
+  const [loading, setLoading] = useState(false);
+  const [disabled, setDisabled] = useState(false);
   const {
     handleSubmit,
     formState: { errors },
@@ -36,11 +36,16 @@ export default function SignInSide({ query }) {
       email: data.email,
       password: data.password,
     };
-    const res = await loginUser(user);
-    if (res.type == "success") {
-      setTimeout(() => router.push("/"), 2000);
-    }
-    dispatch(updateAlert(res));
+    setLoading(true);
+    setTimeout(async () => {
+      const res = await loginUser(user);
+      setLoading(false);
+      dispatch(updateAlert(res));
+      if (res.type == "success") {
+        setDisabled(true);
+        setTimeout(() => router.push("/"), 2000);
+      }
+    }, 1000);
   };
   return (
     <ThemeProviders>
@@ -54,7 +59,7 @@ export default function SignInSide({ query }) {
           xl={9}
           sx={{
             backgroundImage:
-              "url(https://source.unsplash.com/random?wallpapers)",
+              "url(https://source.unsplash.com/featured/?technology)",
             backgroundRepeat: "no-repeat",
             backgroundColor: (t) =>
               t.palette.mode === "light"
@@ -125,14 +130,16 @@ export default function SignInSide({ query }) {
                 label="Contraseña"
               />
 
-              <Button
+              <LoadingButton
+                loading={loading}
+                disabled={disabled}
                 sx={{ mt: 8 }}
                 type="submit"
                 fullWidth
                 variant="contained"
               >
                 Iniciar sesión
-              </Button>
+              </LoadingButton>
 
               <Grid container justifyContent={"space-between"} mt={5}>
                 <Grid item xs>
