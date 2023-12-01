@@ -9,6 +9,12 @@ export function middleware(request) {
       return NextResponse.redirect(new URL("/sign-in", request.url));
     }
   }
+  if (url === "/sign-in") {
+    const token = request.cookies.get("token");
+    if (token) {
+      return NextResponse.redirect(new URL("/", request.url));
+    }
+  }
   if (url === "/sign-up/confirm-user") {
     const email = request.cookies.get("email");
     if (!email) {
@@ -25,5 +31,10 @@ export function middleware(request) {
 
 // See "Matching Paths" below to learn more
 export const config = {
-  matcher: ["/", "/sign-up/confirm-user","/recovery-password/confirm"],
+  matcher: [
+    "/",
+    "/sign-up/confirm-user",
+    "/recovery-password/confirm",
+    "/sign-in",
+  ],
 };

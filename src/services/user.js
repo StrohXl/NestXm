@@ -59,7 +59,7 @@ export const Update = async (dispatch, body) => {
       updateAlert({
         type: "success",
         open: true,
-        children: "Se cambio su contrasena exitosamente",
+        children: "Se cambio su contraseña exitosamente",
       })
     );
 

@@ -17,12 +17,14 @@ import { useRouter } from "next/navigation";
 import ThemeProviders from "@/components/theme/themeProvider";
 import { LoadingButton } from "@mui/lab";
 import { useState } from "react";
+import { Checkbox, FormControlLabel } from "@mui/material";
 
 // TODO remove, this demo shouldn't need to reset the theme.
 
 export default function SignInSide() {
   const [loading, setLoading] = useState(false);
   const [disabled, setDisabled] = useState(false);
+  const [checked, setChecked] = useState(true);
   const {
     handleSubmit,
     formState: { errors },
@@ -37,16 +39,19 @@ export default function SignInSide() {
       password: data.password,
     };
     setLoading(true);
-    setTimeout(async () => {
-      const res = await loginUser(user);
-      setLoading(false);
-      dispatch(updateAlert(res));
-      if (res.type == "success") {
-        setDisabled(true);
-        setTimeout(() => router.push("/"), 2000);
-      }
-    }, 1000);
+    const res = await loginUser(user,checked);
+    setLoading(false);
+    dispatch(updateAlert(res));
+    if (res.type == "success") {
+      setDisabled(true);
+      setTimeout(() => router.push("/"), 2000);
+    }
   };
+
+  const handleChange = (event) => {
+    setChecked(event.target.checked);
+  };
+
   return (
     <ThemeProviders>
       <Grid container component="main" sx={{ height: "100vh" }}>
@@ -130,6 +135,11 @@ export default function SignInSide() {
                 label="Contraseña"
               />
 
+              <FormControlLabel
+                sx={{ mt: 3, width: "fit-content" }}
+                control={<Checkbox checked={checked} onChange={handleChange} />}
+                label="Mantener sesión"
+              />
               <LoadingButton
                 loading={loading}
                 disabled={disabled}

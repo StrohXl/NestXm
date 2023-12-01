@@ -70,7 +70,7 @@ const Confirm = () => {
               variant="h6"
               color="initial"
             >
-              Escriba su nueva contrasena
+              Escriba su nueva contraseña
             </Typography>
             <Box
               mt={3}
@@ -90,7 +90,7 @@ const Confirm = () => {
                   },
                 }}
                 errors={errors?.password}
-                label="Contrasena"
+                label="Contraseña"
               />
               <TextFieldControl
                 control={control}
@@ -103,7 +103,7 @@ const Confirm = () => {
                     "Las contraseñas no coinciden",
                 }}
                 errors={errors?.passwordConfirm}
-                label="Confirmar contrasena"
+                label="Confirmar contraseña"
               />
               <Grid display={"flex"} justifyContent={"center"}>
                 <LoadingButton

@@ -35,6 +35,7 @@ export default function TableIngredients() {
           ) : (
             data.map((row) => (
               <TableRow
+              hover
                 key={row.name}
                 sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
               >

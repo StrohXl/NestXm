@@ -1,4 +1,4 @@
-'use client'
+"use client";
 import * as React from "react";
 import { styled, createTheme, ThemeProvider } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
@@ -11,12 +11,9 @@ import IconButton from "@mui/material/IconButton";
 import AppBar from "@/components/Dashboard/AppBar";
 import { ChevronLeft } from "@mui/icons-material";
 import { MainListItems, secondaryListItems } from "./ListItem";
-import { useEffect, useState } from "react";
-import { useRouter } from "next/navigation";
 import { Button, Container, Grid } from "@mui/material";
-import Cookies from "js-cookie";
-import { Alert } from "../Alert";
 import ThemeProviders from "../theme/themeProvider";
+import AlertLogout from "./AlertLogout";
 
 const drawerWidth = 240;
 
@@ -46,81 +43,12 @@ const Drawer = styled(MuiDrawer, {
   },
 }));
 
-// TODO remove, this demo shouldn't need to reset the theme.
-const defaultTheme = createTheme();
-
-const GroupButtonInactivity = ({ logout, login }) => {
-  return (
-    <div>
-      Desea seguir?
-      <Grid container gap={2} marginTop={2}>
-        <Button onClick={() => login()} variant="contained" color="primary">
-          Seguir
-        </Button>
-        <Button onClick={() => logout()} variant="contained" color="primary">
-          Salir
-        </Button>
-      </Grid>
-    </div>
-  );
-};
 
 export default function Dashboard({ children }) {
-  const router = useRouter();
   const [open, setOpen] = React.useState(true);
-  const [alert, setAlert] = React.useState({
-    text: "",
-    open: false,
-    type: "",
-    vertical: "",
-    horizontal: "",
-    time: 0,
-  });
-  const [userLogin, setUserLogin] = useState(true);
   const toggleDrawer = () => {
     setOpen(!open);
   };
-
-  // Detectar inactividad
-  let inactivityTimer;
-  function resetInactivityTimer() {
-    clearTimeout(inactivityTimer);
-    inactivityTimer = setTimeout(runAfterInactivity, 60000); // 60000 ms = 1 minuto
-  }
-  function runAfterInactivity() {
-    setAlert({
-      text: (
-        <GroupButtonInactivity
-          logout={() => Logout()}
-          login={() => {
-            clearTimeout(logoutTime);
-            setAlert({ ...alert, open: false });
-          }}
-        />
-      ),
-      open: true,
-      type: "warning",
-      vertical: "top",
-      horizontal: "center",
-      time: 10000,
-    });
-    const logoutTime = setTimeout(() => {
-      Logout();
-    }, 10000);
-  }
-
-  // Cerrar sesion
-
-  const Logout = () => {
-    Cookies.remove("token");
-    router.push("/sign-in");
-  };
-
-  useEffect(() => {
-    document.addEventListener("mousemove", ()=>resetInactivityTimer());
-    document.addEventListener("keydown", ()=>resetInactivityTimer());
-  });
-
   return (
     <ThemeProviders>
       <Box sx={{ display: "flex" }}>
@@ -140,10 +68,7 @@ export default function Dashboard({ children }) {
             </IconButton>
           </Toolbar>
           <Divider />
-          <List component="nav">
-            {MainListItems()}
-       
-          </List>
+          <List component="nav">{MainListItems()}</List>
         </Drawer>
         <Box
           component="main"

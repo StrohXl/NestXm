@@ -1,21 +1,10 @@
+//Material
 import MenuIcon from "@mui/icons-material/Menu";
-import { useState } from "react";
 import { styled } from "@mui/material/styles";
-const drawerWidth = 240;
-import {
-  Badge,
-  IconButton,
-  Toolbar,
-  Typography,
-  MenuItem,
-  Menu,
-  Avatar,
-  Grid,
-} from "@mui/material";
-import Cookies from "js-cookie";
-import { useRouter } from "next/navigation";
+import { Grid, IconButton, Toolbar } from "@mui/material";
 import MuiAppBar from "@mui/material/AppBar";
-import { useSelector } from "react-redux";
+import MenuAppBar from "./menuAppBar";
+// React
 
 const AppBa = styled(MuiAppBar, {
   shouldForwardProp: (prop) => prop !== "open",
@@ -34,6 +23,7 @@ const AppBa = styled(MuiAppBar, {
     }),
   }),
 }));
+const drawerWidth = 240;
 
 function stringAvatar(name) {
   return {
@@ -45,22 +35,6 @@ function stringAvatar(name) {
 }
 
 const AppBar = ({ open, toggleDrawer }) => {
-  const user = useSelector((state) => state.user.user);
-  console.log(user);
-  const router = useRouter();
-  const [anchorEl, setAnchorEl] = useState(null);
-  const openMenu = Boolean(anchorEl);
-  const handleClick = (event) => {
-    setAnchorEl(event.currentTarget);
-  };
-  const handleClose = () => {
-    setAnchorEl(null);
-  };
-  const Logout = () => {
-    setAnchorEl(null);
-    Cookies.remove("token");
-    router.push("/sign-in");
-  };
   return (
     <AppBa position="absolute" open={open}>
       <Toolbar
@@ -85,32 +59,7 @@ const AppBar = ({ open, toggleDrawer }) => {
           >
             <MenuIcon />
           </IconButton>
-          <IconButton color="inherit" onClick={handleClick} id="basic-button">
-            <Avatar
-              style={{ textTransform: "uppercase" }}
-              {...stringAvatar(
-                !user ? "" : `${user.firstName} ${user.lastName}`
-              )}
-            />
-          </IconButton>
-          <Menu
-            id="basic-menu"
-            anchorEl={anchorEl}
-            open={openMenu}
-            onClose={handleClose}
-            MenuListProps={{
-              "aria-labelledby": "basic-button",
-            }}
-          >
-            <MenuItem
-              onClick={() => {
-                handleClose, router.push("/user");
-              }}
-            >
-              My cuenta
-            </MenuItem>
-            <MenuItem onClick={Logout}>Salir</MenuItem>
-          </Menu>
+          <MenuAppBar />
         </Grid>
       </Toolbar>
     </AppBa>

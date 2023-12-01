@@ -186,11 +186,11 @@ export default function SignUp() {
                     required: { value: true, message: "Campo Requerido" },
                     minLength: {
                       value: 8,
-                      message: "La Contrasen debe de tener minimo 8 caracteres",
+                      message: "La Contraseña debe de tener minimo 8 caracteres",
                     },
                   }}
                   errors={errors?.password}
-                  label="Contrasena"
+                  label="Contraseña"
                 />
                 <TextFieldControl
                   control={control}

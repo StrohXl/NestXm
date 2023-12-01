@@ -9,6 +9,7 @@ export const alertSlice = createSlice({
     vertical: "bottom",
     type: "success",
     time: 3000,
+    openAlertLogout: false,
   },
   reducers: {
     updateAlert(state, { payload }) {
@@ -31,13 +32,16 @@ export const alertSlice = createSlice({
         state.time = payload.time;
       }
     },
-    closeAlert(state,{payload}){
-        state.open = payload
-    }
+    updateAlertLogout(state, { payload }) {
+      state.openAlertLogout = payload;
+    },
+    closeAlert(state, { payload }) {
+      state.open = payload;
+    },
   },
 });
 
 // Action creators are generated for each case reducer function
-export const { updateAlert,closeAlert } = alertSlice.actions;
+export const { updateAlert, closeAlert,updateAlertLogout } = alertSlice.actions;
 
 export default alertSlice.reducer;

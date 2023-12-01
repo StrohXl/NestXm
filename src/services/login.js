@@ -4,7 +4,8 @@ import Cookies from "js-cookie";
 import "dotenv/config";
 const { login } = endPoints;
 
-export const loginUser = async (user) => {
+export const loginUser = async (user, checked) => {
+  console.log(checked);
   try {
     const {
       data,
@@ -12,9 +13,10 @@ export const loginUser = async (user) => {
         response: { token },
       },
     } = await axios.post(login, user);
-    const expires = new Date(new Date().getTime() + 5 * 60 * 1000);
+    var expirationDate = new Date();
+    expirationDate.setFullYear(expirationDate.getFullYear() + 10);
     Cookies.set("token", token, {
-      expires,
+      expires: checked && expirationDate,
     });
     return { children: data.message, type: "success", open: true };
   } catch (error) {
@@ -27,4 +29,9 @@ export const loginUser = async (user) => {
       open: true,
     };
   }
+};
+
+export const Logout = async (router) => {
+  Cookies.remove("token");
+  router.push("/sign-in");
 };
