@@ -1,5 +1,4 @@
 'use client'
-import Dashboard from "@/components/Dashboard";
 import { CustomTabPanel } from "@/components/Tabs/tabs";
 import { TabsIngredients } from "@/components/Tabs/tabsIngredient";
 import { Box, Tab, Tabs, Typography } from "@mui/material";
@@ -16,7 +15,7 @@ const Inventory = () => {
     setValue(newValue);
   };
   return (
-    <Dashboard>
+    <>
       <Typography variant="h5">Inventario</Typography>
       <Box sx={{ borderBottom: 1, borderColor: "divider", mt: 3 }}>
         <Tabs
@@ -31,7 +30,7 @@ const Inventory = () => {
       <CustomTabPanel value={value} index={0}>
         <TabsIngredients />
       </CustomTabPanel>
-    </Dashboard>
+    </>
   );
 };
 export default Inventory;

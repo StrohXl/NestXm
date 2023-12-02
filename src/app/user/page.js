@@ -44,7 +44,7 @@ const User = () => {
     },
   ];
   return (
-    <Dashboard>
+    <>
       <Paper sx={{ p: 2, pt: 5 }}>
         <Grid
           display={"flex"}
@@ -90,7 +90,7 @@ const User = () => {
           </Table>
         </Paper>
       </Paper>
-    </Dashboard>
+    </>
   );
 };
 export default User;

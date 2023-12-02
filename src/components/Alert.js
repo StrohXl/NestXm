@@ -23,7 +23,13 @@ export const Alert = () => {
       autoHideDuration={3000}
       onClose={handleClose}
     >
-      <MuiAlert severity={propsAlert.type} auto elevation={6} variant="filled">
+      <MuiAlert
+        style={{ backgroundColor: propsAlert.type == "success" && "#9c27b0" }}
+        severity={propsAlert.type}
+        auto
+        elevation={6}
+        variant="filled"
+      >
         {propsAlert.children}
       </MuiAlert>
     </Snackbar>

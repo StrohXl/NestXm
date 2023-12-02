@@ -44,7 +44,7 @@ const RecoveryPassword = () => {
   };
 
   return (
-    <ThemeProviders>
+    <>
       <Grid
         height={"100vh"}
         display={"flex"}
@@ -118,7 +118,7 @@ const RecoveryPassword = () => {
           </Paper>
         </Grid>
       </Grid>
-    </ThemeProviders>
+    </>
   );
 };
 export default RecoveryPassword;

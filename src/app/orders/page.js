@@ -6,7 +6,7 @@ import { useSelector } from "react-redux"
 const Orders=()=>{
     
     return(
-        <Dashboard>
+        <>
           <Typography variant="h6" sx={{mt:2}} >
             ORDENES
           </Typography>
@@ -14,7 +14,7 @@ const Orders=()=>{
             Crear Orden de compra
           </Button>
           <TableOrders/>
-        </Dashboard>
+        </>
     )
 }
 export default Orders

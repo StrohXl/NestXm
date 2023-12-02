@@ -82,7 +82,7 @@ export default function SignUp() {
   }, []);
 
   return (
-    <ThemeProviders>
+    <>
       <Grid
         container
         component="main"
@@ -235,6 +235,6 @@ export default function SignUp() {
           </Paper>
         </Grid>
       </Grid>
-    </ThemeProviders>
+    </>
   );
 }

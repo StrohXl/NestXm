@@ -20,9 +20,7 @@ const Page = () => {
     getUser();
   });
   return (
-    <div>
-      <Dashboard>
-        <Toolbar />
+    <>
         <Grid container spacing={3}>
           {/* Chart */}
           <Grid item xs={12} md={8} lg={9}>
@@ -57,8 +55,8 @@ const Page = () => {
             </Paper>
           </Grid>
         </Grid>
-      </Dashboard>
-    </div>
+ 
+    </>
   );
 };
 export default Page;

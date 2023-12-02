@@ -43,7 +43,7 @@ const Confirm = () => {
   });
 
   return (
-    <ThemeProviders>
+    <>
       <Grid
         height={"100vh"}
         container
@@ -121,7 +121,7 @@ const Confirm = () => {
           </Paper>
         </Grid>
       </Grid>
-    </ThemeProviders>
+    </>
   );
 };
 export default Confirm;

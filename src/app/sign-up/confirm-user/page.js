@@ -99,11 +99,11 @@ const ConfirmUser = () => {
   async function resendToken(e) {
     const idEmail = Cookies.get("email");
     const res = await ResendEmail(idEmail);
-    dispatch(updateAlert(res))
+    dispatch(updateAlert(res));
   }
 
   return (
-    <ThemeProviders>
+    <>
       <IconButton
         onClick={() => router.push("/sign-up")}
         aria-label="regresar"
@@ -126,7 +126,7 @@ const ConfirmUser = () => {
           backgroundPosition: "center",
         }}
       >
-        <Paper elevation={10} sx={{ pb: 8, px:'5%',  maxWidth: "500px" }}>
+        <Paper elevation={10} sx={{ pb: 8, px: "5%", maxWidth: "500px" }}>
           <Box
             sx={{
               marginTop: 4,
@@ -145,7 +145,7 @@ const ConfirmUser = () => {
               component="form"
               noValidate
               onSubmit={handleSubmit}
-              sx={{ mt: 10, textAlign: "center" }}
+              sx={{ mt: 5, textAlign: "center" }}
             >
               <Grid container spacing={3} sx={{ mb: 4 }}>
                 <Grid item xs={12} sx={{ display: "flex", gap: 2 }}>
@@ -222,7 +222,7 @@ const ConfirmUser = () => {
                 fullWidth
                 disabled={disabledButton}
                 variant="contained"
-                sx={{ mt: 4, mb: 2 }}
+                sx={{ mt: 3, mb: 2 }}
               >
                 Confirmar
               </LoadingButton>
@@ -230,7 +230,7 @@ const ConfirmUser = () => {
           </Box>
         </Paper>
       </Box>
-    </ThemeProviders>
+    </>
   );
 };
 export default ConfirmUser;

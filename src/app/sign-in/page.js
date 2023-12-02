@@ -14,7 +14,6 @@ import { updateAlert } from "../store/features/alertSlice";
 import { loginUser } from "../../services/login";
 import { useDispatch } from "react-redux";
 import { useRouter } from "next/navigation";
-import ThemeProviders from "@/components/theme/themeProvider";
 import { LoadingButton } from "@mui/lab";
 import { useState } from "react";
 import { Checkbox, FormControlLabel } from "@mui/material";
@@ -53,8 +52,8 @@ export default function SignInSide() {
   };
 
   return (
-    <ThemeProviders>
-      <Grid container component="main" sx={{ height: "100vh" }}>
+    <>
+      <Grid container sx={{ height: "100vh" }}>
         <CssBaseline />
         <Grid
           item
@@ -177,6 +176,6 @@ export default function SignInSide() {
           </Box>
         </Grid>
       </Grid>
-    </ThemeProviders>
+    </>
   );
 }
