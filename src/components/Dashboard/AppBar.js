@@ -1,8 +1,9 @@
 //Material
 import MenuIcon from "@mui/icons-material/Menu";
-import { styled } from "@mui/material/styles";
 import { Grid, IconButton, Toolbar } from "@mui/material";
 import MuiAppBar from "@mui/material/AppBar";
+import { styled } from "@mui/material/styles";
+
 import MenuAppBar from "./menuAppBar";
 // React
 
@@ -24,15 +25,6 @@ const AppBa = styled(MuiAppBar, {
   }),
 }));
 const drawerWidth = 240;
-
-function stringAvatar(name) {
-  return {
-    sx: {
-      bgcolor: "#1976d2",
-    },
-    children: `${name.split(" ")[0][0]}${name.split(" ")[1][0]}`,
-  };
-}
 
 const AppBar = ({ open, toggleDrawer }) => {
   return (

@@ -1,9 +1,5 @@
-'use client'
-const Customers=()=>{
-    return(
-        <>
-            Clientes
-        </>
-    )
-}
-export default Customers
+"use client";
+const Customers = () => {
+  return <>Clientes</>;
+};
+export default Customers;

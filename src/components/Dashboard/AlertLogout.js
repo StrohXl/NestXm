@@ -1,11 +1,14 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+
+import { useRouter } from "next/navigation";
+
+import { updateAlertLogout } from "@/app/store/features/alertSlice";
+import { Logout } from "@/services/login";
 import { Button, Grid, Snackbar } from "@mui/material";
 import MuiAlert from "@mui/material/Alert";
-import { useRouter } from "next/navigation";
-import { Logout } from "@/services/login";
-import { useDispatch, useSelector } from "react-redux";
-import { updateAlertLogout } from "@/app/store/features/alertSlice";
+
 const AlertLogout = () => {
   const open = useSelector((state) => state.alert.openAlertLogout);
   const dispatch = useDispatch();

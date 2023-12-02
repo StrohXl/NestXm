@@ -1,5 +1,6 @@
 "use client";
-import Dashboard from "@/components/Dashboard";
+import { useSelector } from "react-redux";
+
 import { ArrowForwardIos } from "@mui/icons-material";
 import {
   Avatar,
@@ -11,7 +12,6 @@ import {
   TableRow,
   Typography,
 } from "@mui/material";
-import { useDispatch, useSelector } from "react-redux";
 
 function stringAvatar(name) {
   return {
@@ -29,17 +29,17 @@ const User = () => {
   const tableUser = [
     {
       value1: "Nombre",
-      value2: `${user.firstName} ${user.lastName}`  ,
+      value2: `${user.firstName} ${user.lastName}`,
       accion: () => null,
     },
     {
       value1: "Correo electrónico",
-      value2: user.email ,
+      value2: user.email,
       accion: () => null,
     },
     {
       value1: "Contraseña",
-      value2: '**************' ,
+      value2: "**************",
       accion: () => null,
     },
   ];

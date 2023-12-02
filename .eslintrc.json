@@ -1,8 +1,15 @@
 {
-  "extends": ["next", "next/core-web-vitals"],
-  "plugins": ["import-helpers"],
+  "extends": [
+    "next",
+    "next/core-web-vitals",
+    "eslint:recommended",
+    "plugin:prettier/recommended"
+  ],
+  "plugins": ["import-helpers", "prettier"],
   "rules": {
-    "no-unused-vars": "off",
+    "prettier/prettier": "warn",
+    "no-unused-vars": "warn",
+    "import/no-unused-modules": "error",
     "import-helpers/order-imports": [
       "warn",
       {

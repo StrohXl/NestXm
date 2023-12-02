@@ -1,8 +1,7 @@
-import { Checkbox, FormControlLabel, TextField } from "@mui/material";
-import { Controller } from "react-hook-form";
-import {styled} from '@mui/material/styles'
 import { useState } from "react";
+import { Controller } from "react-hook-form";
 
+import { Checkbox, FormControlLabel, TextField } from "@mui/material";
 
 export const TextFieldControl = ({
   control,
@@ -19,7 +18,7 @@ export const TextFieldControl = ({
       rules={rules}
       render={({ field: { onChange, value } }) => (
         <TextField
-          sx={{mt:2}}
+          sx={{ mt: 2 }}
           name={name}
           required
           fullWidth
@@ -61,7 +60,7 @@ export const ConfirmText = ({
       control={control}
       name={name}
       rules={rules}
-      render={({ field: { onChange, value } }) => (
+      render={({ field: { onChange } }) => (
         <TextField
           inputRef={inputRef}
           name={name}

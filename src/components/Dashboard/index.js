@@ -1,19 +1,23 @@
 "use client";
 import * as React from "react";
-import { styled } from "@mui/material/styles";
-import CssBaseline from "@mui/material/CssBaseline";
-import MuiDrawer from "@mui/material/Drawer";
-import Box from "@mui/material/Box";
-import Toolbar from "@mui/material/Toolbar";
-import List from "@mui/material/List";
-import Divider from "@mui/material/Divider";
-import IconButton from "@mui/material/IconButton";
+
+import { usePathname } from "next/navigation";
+
 import AppBar from "@/components/Dashboard/AppBar";
 import { ChevronLeft } from "@mui/icons-material";
-import { MainListItems } from "./ListItem";
 import { Container } from "@mui/material";
+import Box from "@mui/material/Box";
+import CssBaseline from "@mui/material/CssBaseline";
+import Divider from "@mui/material/Divider";
+import MuiDrawer from "@mui/material/Drawer";
+import IconButton from "@mui/material/IconButton";
+import List from "@mui/material/List";
+import { styled } from "@mui/material/styles";
+import Toolbar from "@mui/material/Toolbar";
+
 import ThemeProviders from "../theme/themeProvider";
-import { useRouter, usePathname } from "next/navigation";
+import { MainListItems } from "./ListItem";
+
 const drawerWidth = 240;
 
 const Drawer = styled(MuiDrawer, {
@@ -54,9 +58,7 @@ export default function Dashboard({ children }) {
     path.includes("sign-up") ||
     path.includes("recovery-password")
   ) {
-    return   <ThemeProviders>
-      {children}
-    </ThemeProviders>;
+    return <ThemeProviders>{children}</ThemeProviders>;
   } else {
     return (
       <ThemeProviders>

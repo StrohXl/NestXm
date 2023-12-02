@@ -11,10 +11,10 @@ export const endPoints = {
     getOneEmail: (queryParams) => apiUrl + "user/email/" + queryParams,
     getAllEmail: apiUrl + "user/email",
   },
-  confirmUser:{
-    confirm: apiUrl + 'confirm-user',
-    sendEmail: apiUrl + 'confirm-user/send-email',
-    confirmEmail: apiUrl + 'confirm-user/recovery-password'
+  confirmUser: {
+    confirm: apiUrl + "confirm-user",
+    sendEmail: apiUrl + "confirm-user/send-email",
+    confirmEmail: apiUrl + "confirm-user/recovery-password",
   },
   ingredients: {
     create: apiUrl + "ingredients",

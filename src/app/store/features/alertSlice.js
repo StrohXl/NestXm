@@ -42,6 +42,7 @@ export const alertSlice = createSlice({
 });
 
 // Action creators are generated for each case reducer function
-export const { updateAlert, closeAlert,updateAlertLogout } = alertSlice.actions;
+export const { updateAlert, closeAlert, updateAlertLogout } =
+  alertSlice.actions;
 
 export default alertSlice.reducer;

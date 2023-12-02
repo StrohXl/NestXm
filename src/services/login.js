@@ -1,6 +1,7 @@
 import axios from "axios";
-import { endPoints } from "./routes";
 import Cookies from "js-cookie";
+
+import { endPoints } from "./routes";
 import "dotenv/config";
 const { login } = endPoints;
 

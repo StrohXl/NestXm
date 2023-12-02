@@ -1,8 +1,11 @@
-'use client'
+"use client";
+
+import { useState } from "react";
+
 import { CustomTabPanel } from "@/components/Tabs/tabs";
 import { TabsIngredients } from "@/components/Tabs/tabsIngredient";
 import { Box, Tab, Tabs, Typography } from "@mui/material";
-import { useState } from "react";
+
 const Inventory = () => {
   const [value, setValue] = useState(0);
   function a11yProps(index) {

@@ -1,22 +1,25 @@
 "use client";
 import * as React from "react";
+import { useState } from "react";
+import { useForm } from "react-hook-form";
+import { useDispatch } from "react-redux";
+
+import { useRouter } from "next/navigation";
+
+import { TextFieldControl } from "@/components/ControllerForm";
+import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
+import { LoadingButton } from "@mui/lab";
+import { Checkbox, FormControlLabel } from "@mui/material";
 import Avatar from "@mui/material/Avatar";
+import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import CssBaseline from "@mui/material/CssBaseline";
-import Paper from "@mui/material/Paper";
-import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
-import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
+import Paper from "@mui/material/Paper";
 import Typography from "@mui/material/Typography";
-import { TextFieldControl } from "@/components/ControllerForm";
-import { useForm } from "react-hook-form";
-import { updateAlert } from "../store/features/alertSlice";
+
 import { loginUser } from "../../services/login";
-import { useDispatch } from "react-redux";
-import { useRouter } from "next/navigation";
-import { LoadingButton } from "@mui/lab";
-import { useState } from "react";
-import { Checkbox, FormControlLabel } from "@mui/material";
+import { updateAlert } from "../store/features/alertSlice";
 
 // TODO remove, this demo shouldn't need to reset the theme.
 
@@ -38,7 +41,7 @@ export default function SignInSide() {
       password: data.password,
     };
     setLoading(true);
-    const res = await loginUser(user,checked);
+    const res = await loginUser(user, checked);
     setLoading(false);
     dispatch(updateAlert(res));
     if (res.type == "success") {
@@ -114,7 +117,7 @@ export default function SignInSide() {
                   required: { value: true, message: "Campo Requerido" },
                   pattern: {
                     value:
-                      /^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$/,
+                      /^([a-zA-Z0-9_\-.]+)@([a-zA-Z0-9_\-.]+)\.([a-zA-Z]{2,5})$/,
                     message: "Correo invalido",
                   },
                 }}

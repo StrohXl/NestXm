@@ -1,6 +1,6 @@
 "use client";
-import { ThemeProvider } from "@mui/material/styles";
 import { theme } from "@/../muiConfig";
+import { ThemeProvider } from "@mui/material/styles";
 
 const ThemeProviders = ({ children }) => {
   return <ThemeProvider theme={theme}>{children}</ThemeProvider>;

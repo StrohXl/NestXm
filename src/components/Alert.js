@@ -1,9 +1,11 @@
 "use client";
 import React from "react";
+import { useSelector, useDispatch } from "react-redux";
+
+import { closeAlert } from "@/app/store/features/alertSlice";
 import { Snackbar } from "@mui/material";
 import MuiAlert from "@mui/material/Alert";
-import { useSelector, useDispatch } from "react-redux";
-import { closeAlert } from "@/app/store/features/alertSlice";
+
 export const Alert = () => {
   const dispatch = useDispatch();
   const propsAlert = useSelector((state) => state.alert);

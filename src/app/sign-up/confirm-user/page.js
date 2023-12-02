@@ -1,38 +1,25 @@
 "use client";
+import { useRef } from "react";
+import { useState, useEffect } from "react";
+import { useForm } from "react-hook-form";
+import { useDispatch } from "react-redux";
 
-// Components
+import Cookies from "js-cookie";
+import { useRouter } from "next/navigation";
+
+import { updateAlert } from "@/app/store/features/alertSlice";
 import { ConfirmText } from "@/components/ControllerForm";
-
-// Mui material
+import { ConfirmToken, ResendEmail } from "@/services/confirmuser";
 import { ArrowBack } from "@mui/icons-material";
+import { LoadingButton } from "@mui/lab";
 import {
   Box,
   Button,
   Grid,
   IconButton,
   Paper,
-  ThemeProvider,
   Typography,
-  createTheme,
 } from "@mui/material";
-
-// React
-import { useRef } from "react";
-import Link from "next/link";
-import { useState, useEffect } from "react";
-import { useRouter } from "next/navigation";
-
-// React Redux
-import { useDispatch, useSelector } from "react-redux";
-import { updateAlert } from "@/app/store/features/alertSlice";
-
-// otros
-import axios from "axios";
-import { useForm, Controller } from "react-hook-form";
-import Cookies from "js-cookie";
-import ThemeProviders from "@/components/theme/themeProvider";
-import { ConfirmToken, ResendEmail } from "@/services/confirmuser";
-import { LoadingButton } from "@mui/lab";
 
 const ConfirmUser = () => {
   const input1 = useRef(null);
@@ -96,7 +83,7 @@ const ConfirmUser = () => {
 
   // Reenviar token
 
-  async function resendToken(e) {
+  async function resendToken() {
     const idEmail = Cookies.get("email");
     const res = await ResendEmail(idEmail);
     dispatch(updateAlert(res));

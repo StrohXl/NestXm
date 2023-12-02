@@ -1,6 +1,15 @@
 "use client";
 
-// Mui Material
+import { useEffect, useState } from "react";
+import { useForm } from "react-hook-form";
+import { useDispatch, useSelector } from "react-redux";
+
+import { useRouter } from "next/navigation";
+
+import { TextFieldControl } from "@/components/ControllerForm";
+import { SendEmail } from "@/services/confirmuser";
+import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
+import { LoadingButton } from "@mui/lab";
 import {
   Avatar,
   CssBaseline,
@@ -10,30 +19,10 @@ import {
   Button,
   Paper,
 } from "@mui/material";
-import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
-import { LoadingButton } from "@mui/lab";
 
-// React
-import Link from "next/link";
-import { useEffect, useState } from "react";
-import { useRouter } from "next/navigation";
-
-// React Redux
-import { useDispatch, useSelector } from "react-redux";
-import { updateAlert } from "../store/features/alertSlice";
-import {
-  updateLoading1,
-  updateDisabled1,
-} from "../store/features/propertyButtonSlice";
-
-// Services
-import { SendEmail } from "@/services/confirmuser";
 import { FindAllEmails } from "../../services/user";
-import { useForm, Controller, set } from "react-hook-form";
-
-// Components
-import { TextFieldControl } from "@/components/ControllerForm";
-import ThemeProviders from "@/components/theme/themeProvider";
+import { updateAlert } from "../store/features/alertSlice";
+import { updateLoading1 } from "../store/features/propertyButtonSlice";
 
 export default function SignUp() {
   const dispatch = useDispatch();
@@ -66,7 +55,7 @@ export default function SignUp() {
     const res = await SendEmail(data);
     dispatch(updateLoading1());
     dispatch(updateAlert(res));
-    if ((res.type = "success")) {
+    if (res.type == "success") {
       setDisabled(true);
       setTimeout(() => router.push("/sign-up/confirm-user"), 2000);
     }
@@ -100,10 +89,7 @@ export default function SignUp() {
       >
         <Grid maxWidth={550}>
           <CssBaseline />
-          <Paper
-            elevation={10}
-            sx={{ pb: 5 }}
-          >
+          <Paper elevation={10} sx={{ pb: 5 }}>
             <Box
               sx={{
                 display: "flex",
@@ -167,7 +153,7 @@ export default function SignUp() {
                     required: { value: true, message: "Campo Requerido" },
                     pattern: {
                       value:
-                        /^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$/,
+                        /^([a-zA-Z0-9_\-.]+)@([a-zA-Z0-9_\-.]+)\.([a-zA-Z]{2,5})$/,
                       message: "Correo invalido",
                     },
                     validate: (email) => {
@@ -186,7 +172,8 @@ export default function SignUp() {
                     required: { value: true, message: "Campo Requerido" },
                     minLength: {
                       value: 8,
-                      message: "La Contraseña debe de tener minimo 8 caracteres",
+                      message:
+                        "La Contraseña debe de tener minimo 8 caracteres",
                     },
                   }}
                   errors={errors?.password}

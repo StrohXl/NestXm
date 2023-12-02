@@ -1,6 +1,15 @@
 "use client";
 // Mui Material
+// React
+import { useState } from "react";
+import { useSelector } from "react-redux";
+
+import Cookies from "js-cookie";
+import { useRouter } from "next/navigation";
+
+// Paquetes
 import { Person } from "@mui/icons-material";
+import IconLogout from "@mui/icons-material/Logout";
 import {
   Avatar,
   Grid,
@@ -10,13 +19,6 @@ import {
   MenuItem,
   Typography,
 } from "@mui/material";
-import IconLogout from "@mui/icons-material/Logout";
-// React
-import { useState } from "react";
-import { useSelector } from "react-redux";
-import { useRouter } from "next/navigation";
-// Paquetes
-import Cookies from "js-cookie";
 
 function stringAvatar(name) {
   return {

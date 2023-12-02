@@ -1,6 +1,7 @@
-import { endPoints } from "@/services/routes";
 import axios from "axios";
 import Cookies from "js-cookie";
+
+import { endPoints } from "@/services/routes";
 const { confirmUser } = endPoints;
 const { confirm, sendEmail, confirmEmail } = confirmUser;
 export const SendEmail = async (user) => {
@@ -26,7 +27,7 @@ export const SendEmail = async (user) => {
 
 export const ConfirmToken = async (data) => {
   try {
-    const res = await axios.post(confirm, data);
+    await axios.post(confirm, data);
     return {
       open: true,
       type: "success",

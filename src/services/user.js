@@ -1,11 +1,13 @@
 import axios from "axios";
-import { endPoints } from "./routes";
 import Cookies from "js-cookie";
 import jwt from "jsonwebtoken";
+
 import "../services/axios";
-import { getUser } from "@/app/store/features/dataUser";
 import "dotenv/config";
 import { updateAlert } from "@/app/store/features/alertSlice";
+import { getUser } from "@/app/store/features/dataUser";
+
+import { endPoints } from "./routes";
 
 const { user } = endPoints;
 const {
@@ -47,12 +49,12 @@ export const FindOne = async (dispatch) => {
 };
 export const Update = async (dispatch, body) => {
   const confirmEmail = Cookies.get("confirmEmail");
-  Cookies.remove('confirmEmail')
-  Cookies.remove('confirm')
+  Cookies.remove("confirmEmail");
+  Cookies.remove("confirm");
   try {
     const { sub } = jwt.verify(
       confirmEmail,
-      process.env.NEXT_PUBLIC_SECRET_JWT
+      process.env.NEXT_PUBLIC_SECRET_JWT,
     );
     await axios.patch(update(sub), body);
     dispatch(
@@ -60,7 +62,7 @@ export const Update = async (dispatch, body) => {
         type: "success",
         open: true,
         children: "Se cambio su contraseña exitosamente",
-      })
+      }),
     );
 
     return true;
@@ -70,7 +72,7 @@ export const Update = async (dispatch, body) => {
         type: "error",
         open: true,
         children: "Hubo un error intentenlo mas tarde",
-      })
+      }),
     );
     return false;
   }

@@ -1,29 +1,21 @@
 "use client";
-import { TextFieldControl } from "@/components/ControllerForm";
-import ThemeProviders from "@/components/theme/themeProvider";
-import {
-  Box,
-  Grid,
-  Typography,
-  Button,
-  Icon,
-  IconButton,
-  Paper,
-} from "@mui/material";
-import { useRouter } from "next/navigation";
-import React, { useState, useEffect } from "react";
-import { ArrowBack } from "@mui/icons-material";
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
-import { ConfirEmail } from "@/services/confirmuser";
 import { useDispatch } from "react-redux";
+
+import { useRouter } from "next/navigation";
+
+import { TextFieldControl } from "@/components/ControllerForm";
+import { ConfirEmail } from "@/services/confirmuser";
+import { ArrowBack } from "@mui/icons-material";
+import { LoadingButton } from "@mui/lab";
+import { Box, Grid, Typography, IconButton, Paper } from "@mui/material";
+
 import { updateAlert } from "../store/features/alertSlice";
 
-import { LoadingButton } from "@mui/lab";
-
 const RecoveryPassword = () => {
-  const [loading,setLoading]= useState(false)
-  const [disabled,setDisabled]= useState(false)
-
+  const [loading, setLoading] = useState(false);
+  const [disabled, setDisabled] = useState(false);
 
   const {
     handleSubmit,
@@ -34,12 +26,12 @@ const RecoveryPassword = () => {
   const dispatch = useDispatch();
 
   const onSubmit = async (formData) => {
-    setLoading(true)
+    setLoading(true);
     const res = await ConfirEmail({ email: formData.email });
-    setLoading(false)
+    setLoading(false);
     dispatch(updateAlert(res));
-    if(res.type === "success"){
-      setDisabled(true)
+    if (res.type === "success") {
+      setDisabled(true);
     }
   };
 
@@ -94,7 +86,7 @@ const RecoveryPassword = () => {
                   required: { value: true, message: "Campo Requerido" },
                   pattern: {
                     value:
-                      /^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$/,
+                      /^([a-zA-Z0-9_\-.]+)@([a-zA-Z0-9_\-.]+)\.([a-zA-Z]{2,5})$/,
                     message: "Correo invalido",
                   },
                 }}

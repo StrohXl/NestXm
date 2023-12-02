@@ -1,16 +1,15 @@
 "use client";
+import { useState } from "react";
+import { useForm } from "react-hook-form";
+import { useDispatch } from "react-redux";
+
+import "@/services/axios";
+import { useRouter } from "next/navigation";
+
 import { TextFieldControl } from "@/components/ControllerForm";
-import ThemeProviders from "@/components/theme/themeProvider";
+import { Update } from "@/services/user";
 import { LoadingButton } from "@mui/lab";
 import { Box, Grid, Paper, Typography } from "@mui/material";
-import Cookies from "js-cookie";
-import { useSearchParams } from "next/navigation";
-import { useDispatch } from "react-redux";
-import { useEffect, useState } from "react";
-import { useForm } from "react-hook-form";
-import "@/services/axios";
-import { Update } from "@/services/user";
-import { useRouter } from "next/navigation";
 
 const Confirm = () => {
   const router = useRouter();
@@ -22,7 +21,6 @@ const Confirm = () => {
     formState: { errors },
     control,
   } = useForm();
-  const query = useSearchParams();
 
   const onSubmit = async (form) => {
     setloading(true);
@@ -35,12 +33,6 @@ const Confirm = () => {
       setDisabled(true);
     }
   };
-
-  useEffect(() => {
-    const params = query.get("token");
-    const token = Cookies.get("confirm");
- 
-  });
 
   return (
     <>

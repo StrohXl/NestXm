@@ -1,7 +1,8 @@
-import { configureStore } from '@reduxjs/toolkit'
-import dataUser from '@/app/store/features/dataUser'
-import alertSlice from './features/alertSlice'
-import propertyButton  from './features/propertyButtonSlice'
+import dataUser from "@/app/store/features/dataUser";
+import { configureStore } from "@reduxjs/toolkit";
+
+import alertSlice from "./features/alertSlice";
+import propertyButton from "./features/propertyButtonSlice";
 
 export default configureStore({
   reducer: {
@@ -9,4 +10,4 @@ export default configureStore({
     alert: alertSlice,
     button: propertyButton,
   },
-})
+});

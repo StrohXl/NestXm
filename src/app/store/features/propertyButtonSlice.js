@@ -10,22 +10,22 @@ export const propertyButton = createSlice({
     disabled3: false,
   },
   reducers: {
-    updateLoading1: (state, { payload }) => {
+    updateLoading1: (state) => {
       state.loading1 = !state.loading1;
     },
-    updateLoading2: (state, { payload }) => {
+    updateLoading2: (state) => {
       state.loading2 = !state.loading2;
     },
-    updateLoading3: (state, { payload }) => {
+    updateLoading3: (state) => {
       state.loading3 = !state.loading3;
     },
-    updateDisabled1: (state, { payload }) => {
+    updateDisabled1: (state) => {
       state.disabled1 = !state.disabled1;
     },
-    updateDisabled2: (state, { payload }) => {
+    updateDisabled2: (state) => {
       state.disabled2 = !state.disabled2;
     },
-    updateDisabled3: (state, { payload }) => {
+    updateDisabled3: (state) => {
       state.disabled3 = !state.disabled3;
     },
   },
