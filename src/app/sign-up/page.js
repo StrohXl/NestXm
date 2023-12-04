@@ -111,8 +111,10 @@ export default function SignUp() {
                 sx={{ mt: 5, px: 2 }}
               >
                 <TextFieldControl
+                  autoFocus
                   control={control}
                   name={"firstName"}
+                  placeholder={"Ingrese su nombre"}
                   rules={{
                     required: { value: true, message: "Campo Requerido" },
                     pattern: {
@@ -130,6 +132,7 @@ export default function SignUp() {
                 />
                 <TextFieldControl
                   control={control}
+                  placeholder={"Ingrese su apellido"}
                   name={"lastName"}
                   rules={{
                     required: { value: true, message: "Campo Requerido" },
@@ -162,12 +165,14 @@ export default function SignUp() {
                     },
                   }}
                   errors={errors?.email}
-                  label="Correo electronico"
+                  label="Correo"
+                  placeholder={"Ingrese su correo electronico"}
                 />
                 <TextFieldControl
                   control={control}
                   name={"password"}
                   type="password"
+                  placeholder={"Ingrese su contraseña"}
                   rules={{
                     required: { value: true, message: "Campo Requerido" },
                     minLength: {
@@ -189,6 +194,7 @@ export default function SignUp() {
                       control._fields.password._f.value === value ||
                       "Las contraseñas no coinciden",
                   }}
+                  placeholder={"Confirme su contraseña"}
                   errors={errors?.passwordConfirm}
                   label="Confirmar contrasena"
                 />

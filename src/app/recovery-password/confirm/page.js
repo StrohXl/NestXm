@@ -74,6 +74,8 @@ const Confirm = () => {
                 control={control}
                 name={"password"}
                 type="password"
+                autoFocus
+                placeholder={"Ingrese su nueva contraseña"}
                 rules={{
                   required: { value: true, message: "Campo Requerido" },
                   minLength: {
@@ -95,6 +97,7 @@ const Confirm = () => {
                     "Las contraseñas no coinciden",
                 }}
                 errors={errors?.passwordConfirm}
+                placeholder={"Confirme su constraseña"}
                 label="Confirmar contraseña"
               />
               <Grid display={"flex"} justifyContent={"center"}>

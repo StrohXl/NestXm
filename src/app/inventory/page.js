@@ -3,7 +3,6 @@
 import { useState } from "react";
 
 import { CustomTabPanel } from "@/components/Tabs/tabs";
-import { TabsIngredients } from "@/components/Tabs/tabsIngredient";
 import { Box, Tab, Tabs, Typography } from "@mui/material";
 
 const Inventory = () => {
@@ -31,7 +30,10 @@ const Inventory = () => {
         </Tabs>
       </Box>
       <CustomTabPanel value={value} index={0}>
-        <TabsIngredients />
+        Ingredientes
+      </CustomTabPanel>
+      <CustomTabPanel value={value} index={1}>
+        Productos
       </CustomTabPanel>
     </>
   );

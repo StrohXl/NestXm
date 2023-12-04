@@ -111,8 +111,10 @@ export default function SignInSide() {
               <TextFieldControl
                 control={control}
                 errors={errors?.email}
-                label={"Correo Electronico"}
+                label={"Correo"}
                 name={"email"}
+                placeholder={"Ingrese su correo electronico"}
+                autoFocus
                 rules={{
                   required: { value: true, message: "Campo Requerido" },
                   pattern: {
@@ -135,6 +137,7 @@ export default function SignInSide() {
                 }}
                 errors={errors?.password}
                 label="Contraseña"
+                placeholder={"Ingrese su contraseña"}
               />
 
               <FormControlLabel

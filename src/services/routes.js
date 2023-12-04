@@ -10,6 +10,10 @@ export const endPoints = {
     // Emails
     getOneEmail: (queryParams) => apiUrl + "user/email/" + queryParams,
     getAllEmail: apiUrl + "user/email",
+    // Ingredients
+    getIngredientsUser: (id) => apiUrl + "user/" + id + "/ingredients",
+    // solicitudes
+    getSolicitudesUser: (id) => apiUrl + "user/" + id + "/solicitud-de-compra",
   },
   confirmUser: {
     confirm: apiUrl + "confirm-user",

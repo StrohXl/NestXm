@@ -81,6 +81,7 @@ const RecoveryPassword = () => {
             >
               <TextFieldControl
                 control={control}
+                autoFocus
                 name={"email"}
                 rules={{
                   required: { value: true, message: "Campo Requerido" },
@@ -91,7 +92,8 @@ const RecoveryPassword = () => {
                   },
                 }}
                 errors={errors?.email}
-                label="Correo electronico"
+                label="Correo"
+                placeholder={"Ingrese su correo electronico"}
               />
               <Grid display={"flex"} justifyContent={"center"}>
                 <LoadingButton

@@ -2,10 +2,9 @@ import * as React from "react";
 
 import { useRouter } from "next/navigation";
 
-import { Inventory2 } from "@mui/icons-material";
+import { Inventory2, LocalDining } from "@mui/icons-material";
 import AssignmentIcon from "@mui/icons-material/Assignment";
 import DashboardIcon from "@mui/icons-material/Dashboard";
-import PeopleIcon from "@mui/icons-material/People";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
@@ -26,19 +25,14 @@ export const MainListItems = () => {
       icon: <ShoppingCartIcon />,
     },
     {
-      name: "Clientes",
-      icon: <PeopleIcon />,
-      link: "/customers",
-    },
-    {
       name: "Inventario",
       icon: <Inventory2 />,
       link: "/inventory",
     },
     {
       name: "Ingredientes",
-      icon: <Inventory2 />,
-      link: "/ingrediente",
+      icon: <LocalDining />,
+      link: "/ingredients",
     },
   ];
   return (

@@ -1,9 +1,12 @@
 "use client";
 import * as React from "react";
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
 
 import { usePathname } from "next/navigation";
 
 import AppBar from "@/components/Dashboard/AppBar";
+import { FindOne } from "@/services/user";
 import { ChevronLeft } from "@mui/icons-material";
 import { Container } from "@mui/material";
 import Box from "@mui/material/Box";
@@ -52,6 +55,13 @@ export default function Dashboard({ children }) {
   const toggleDrawer = () => {
     setOpen(!open);
   };
+  const dispatch = useDispatch();
+  const getUser = async () => {
+    FindOne(dispatch);
+  };
+  useEffect(() => {
+    getUser();
+  });
   if (
     path === "/sign-in" ||
     path === "/sign-up" ||
@@ -94,7 +104,7 @@ export default function Dashboard({ children }) {
             }}
           >
             <Toolbar />
-            <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
+            <Container sx={{ mx: 0, pl: 5 }}>
               <Toolbar />
               {children}
             </Container>

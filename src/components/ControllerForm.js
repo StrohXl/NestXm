@@ -1,3 +1,4 @@
+"use client";
 import { useState } from "react";
 import { Controller } from "react-hook-form";
 
@@ -10,26 +11,46 @@ export const TextFieldControl = ({
   errors,
   label,
   type,
+  variant,
+  required,
+  placeholder,
+  defaultValue,
+  ...props
 }) => {
+  const [isInputFocused, setInputFocused] = useState(false);
+  const handleInputFocus = () => {
+    setInputFocused(true);
+  };
+  const handleInputBlur = () => {
+    setInputFocused(false);
+  };
   return (
     <Controller
       control={control}
       name={name}
       rules={rules}
+      defaultValue={defaultValue}
       render={({ field: { onChange, value } }) => (
         <TextField
+          placeholder={placeholder}
           sx={{ mt: 2 }}
           name={name}
-          required
+          required={required}
           fullWidth
           value={value}
           onChange={onChange}
+          onFocus={handleInputFocus}
+          onBlur={handleInputBlur}
           error={errors}
           id={name}
           label={label}
           type={type}
+          variant={variant}
           helperText={errors && errors.message}
-          autoFocus
+          InputLabelProps={{
+            shrink: Boolean(value) || isInputFocused,
+          }}
+          {...props}
         />
       )}
     />

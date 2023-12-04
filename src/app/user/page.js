@@ -1,9 +1,11 @@
 "use client";
 import { useSelector } from "react-redux";
 
-import { ArrowForwardIos } from "@mui/icons-material";
+import Link from "next/link";
+
+import StringAvatar from "@/components/Avatar/stringAvatar";
+import { ArrowForwardIos, Edit } from "@mui/icons-material";
 import {
-  Avatar,
   Grid,
   Paper,
   Table,
@@ -11,18 +13,9 @@ import {
   TableCell,
   TableRow,
   Typography,
+  Button,
+  IconButton,
 } from "@mui/material";
-
-function stringAvatar(name) {
-  return {
-    sx: {
-      bgcolor: "#fff",
-      color: "#9c27b0",
-      fontSize: "28px",
-    },
-    children: `${name.split(" ")[0][0]}${name.split(" ")[1][0]}`,
-  };
-}
 
 const User = () => {
   const user = useSelector((state) => state.user.user);
@@ -30,17 +23,17 @@ const User = () => {
     {
       value1: "Nombre",
       value2: `${user.firstName} ${user.lastName}`,
-      accion: () => null,
+      url: "/user/edit-name",
     },
     {
       value1: "Correo electrónico",
       value2: user.email,
-      accion: () => null,
+      url: "/user/edit-email",
     },
     {
       value1: "Contraseña",
       value2: "**************",
-      accion: () => null,
+      url: "/user/edit-password",
     },
   ];
   return (
@@ -52,15 +45,7 @@ const User = () => {
           gap={2}
           alignItems={"center"}
         >
-          <Avatar
-            style={{
-              textTransform: "uppercase",
-              width: "80px",
-              height: "80px",
-              border: "3px solid #9c27b0",
-            }}
-            {...stringAvatar(!user ? "" : `${user.firstName} ${user.lastName}`)}
-          />
+          <StringAvatar />
           <Typography textAlign={"center"} variant="h5">
             Bienvenido/a, {user.firstName} {user.lastName}
           </Typography>
@@ -81,13 +66,23 @@ const User = () => {
                     </TableCell>
                     <TableCell align="left">{i.value2}</TableCell>
                     <TableCell sx={{ py: 0 }} align="right">
-                      <ArrowForwardIos color="primary" fontSize="small" />
+                      <Link href={i.url}>
+                        <IconButton>
+                          <Edit color="primary" fontSize="small" />
+                        </IconButton>
+                      </Link>
                     </TableCell>
                   </TableRow>
                 );
               })}
             </TableBody>
           </Table>
+        </Paper>
+        <Paper elevation={0} sx={{ p: 2, mt: 5 }}>
+          <Typography variant="h6">Cuenta</Typography>
+          <Button sx={{ mt: 2 }} variant="text" color="primary">
+            Eliminar Cuenta
+          </Button>
         </Paper>
       </Paper>
     </>
