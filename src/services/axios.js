@@ -20,7 +20,7 @@ api.interceptors.request.use(
     return config;
   },
   (error) => {
-    return Promise.reject(error);
+    return PromiseRejectionEvent.reject(error);
   },
 );
 export default api;
