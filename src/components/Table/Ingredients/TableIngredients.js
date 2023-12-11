@@ -29,7 +29,7 @@ const TableIngredients = () => {
     if (ingredients.length < 6) {
       setPage(0);
     }
-  }, [ingredients]);
+  }, []);
   return (
     <TableOrders
       tableHead={

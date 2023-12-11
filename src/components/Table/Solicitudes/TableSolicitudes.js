@@ -25,10 +25,13 @@ const TableSolicitudes = () => {
 
   useEffect(() => {
     getSolicitudes();
+  }, []);
+  useEffect(() => {
     if (solicitudes.length < 6) {
       setPage(0);
     }
   }, [solicitudes]);
+
   return (
     <TableOrders
       tableHead={

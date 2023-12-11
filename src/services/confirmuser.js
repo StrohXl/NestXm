@@ -16,7 +16,6 @@ export const SendEmail = async (user) => {
       children: "Se ha enviado un token de confirmacion a su correo",
     };
   } catch (error) {
-    console.log(error);
     return {
       children: error?.response.data.message,
       open: true,
@@ -75,7 +74,6 @@ export const ResendEmail = async (id) => {
       children: response.message,
     };
   } catch (error) {
-    console.log(error);
     return {
       children: error.message,
       open: true,

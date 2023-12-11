@@ -1,10 +1,18 @@
-//Material
+"use client";
+import { useDispatch, useSelector } from "react-redux";
+
+import {
+  updatedDrawer,
+  updatedDrawerMobile,
+} from "@/app/store/features/openDrawer";
+import { ChevronLeft } from "@mui/icons-material";
 import MenuIcon from "@mui/icons-material/Menu";
 import { Grid, IconButton, Toolbar } from "@mui/material";
 import MuiAppBar from "@mui/material/AppBar";
 import { styled } from "@mui/material/styles";
 
 import MenuAppBar from "./menuAppBar";
+
 // React
 
 const AppBa = styled(MuiAppBar, {
@@ -24,9 +32,19 @@ const AppBa = styled(MuiAppBar, {
     }),
   }),
 }));
-const drawerWidth = 240;
+const drawerWidth = 0;
 
-const AppBar = ({ open, toggleDrawer }) => {
+const AppBar = () => {
+  const open = useSelector((state) => state.drawer.openDrawer);
+  const mobileOpen = useSelector((state) => state.drawer.openDrawerMobile);
+  const dispatch = useDispatch();
+  const toggleDrawer = () => {
+    dispatch(updatedDrawer(!open));
+  };
+  const toggleDrawerMobile = () => {
+    dispatch(updatedDrawerMobile(!mobileOpen));
+  };
+
   return (
     <AppBa position="absolute" open={open}>
       <Toolbar
@@ -37,8 +55,22 @@ const AppBar = ({ open, toggleDrawer }) => {
         <Grid
           width={"100%"}
           display={"flex"}
-          justifyContent={open == true ? "flex-end" : "space-between"}
+          alignItems={"center"}
+          justifyContent={"space-between"}
         >
+          <IconButton
+            edge="start"
+            color="inherit"
+            aria-label="open drawer"
+            onClick={toggleDrawerMobile}
+            sx={{
+              marginRight: "36px",
+              height: "40px",
+              display: { xs: "block", sm: "none" },
+            }}
+          >
+            <MenuIcon />
+          </IconButton>
           <IconButton
             edge="start"
             color="inherit"
@@ -46,10 +78,24 @@ const AppBar = ({ open, toggleDrawer }) => {
             onClick={toggleDrawer}
             sx={{
               marginRight: "36px",
-              ...(open && { display: "none" }),
+              height: "40px",
+              display: { xs: "none", sm: open ? "none" : "block" },
             }}
           >
             <MenuIcon />
+          </IconButton>
+          <IconButton
+            color="inherit"
+            edge="start"
+            aria-label="open drawer"
+            onClick={toggleDrawer}
+            sx={{
+              marginRight: "36px",
+              height: "40px",
+              display: { xs: "none", sm: !open ? "none" : "block" },
+            }}
+          >
+            <ChevronLeft />
           </IconButton>
           <MenuAppBar />
         </Grid>

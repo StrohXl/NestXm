@@ -6,7 +6,6 @@ import "dotenv/config";
 const { login } = endPoints;
 
 export const loginUser = async (user, checked) => {
-  console.log(checked);
   try {
     const {
       data,
@@ -21,11 +20,8 @@ export const loginUser = async (user, checked) => {
     });
     return { children: data.message, type: "success", open: true };
   } catch (error) {
-    const {
-      response: { data },
-    } = error;
     return {
-      children: data.message ? data.message : "error",
+      children: error.response?.data?.message,
       type: "error",
       open: true,
     };

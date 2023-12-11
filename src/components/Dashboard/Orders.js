@@ -1,11 +1,6 @@
 import * as React from "react";
 
-import Link from "@mui/material/Link";
-import Table from "@mui/material/Table";
-import TableBody from "@mui/material/TableBody";
-import TableCell from "@mui/material/TableCell";
-import TableHead from "@mui/material/TableHead";
-import TableRow from "@mui/material/TableRow";
+import Link from "next/link";
 
 import TableSolicitudes from "../Table/Solicitudes/TableSolicitudes";
 import Title from "./Title";
@@ -67,7 +62,12 @@ export default function Orders() {
     <React.Fragment>
       <Title>Ordenes Recientes</Title>
       <TableSolicitudes />
-      <Link color="primary" href="#" onClick={preventDefault} sx={{ mt: 3 }}>
+      <Link
+        color="primary"
+        href="/orders"
+        onClick={preventDefault}
+        style={{ color: "#000", textDecoration: "none", marginTop: "10px" }}
+      >
         Ver mas
       </Link>
     </React.Fragment>

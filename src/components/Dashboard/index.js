@@ -1,67 +1,19 @@
 "use client";
 import * as React from "react";
-import { useEffect } from "react";
-import { useDispatch } from "react-redux";
 
 import { usePathname } from "next/navigation";
 
 import AppBar from "@/components/Dashboard/AppBar";
-import { FindOne } from "@/services/user";
-import { ChevronLeft } from "@mui/icons-material";
 import { Container } from "@mui/material";
 import Box from "@mui/material/Box";
 import CssBaseline from "@mui/material/CssBaseline";
-import Divider from "@mui/material/Divider";
-import MuiDrawer from "@mui/material/Drawer";
-import IconButton from "@mui/material/IconButton";
-import List from "@mui/material/List";
-import { styled } from "@mui/material/styles";
 import Toolbar from "@mui/material/Toolbar";
 
 import ThemeProviders from "../theme/themeProvider";
-import { MainListItems } from "./ListItem";
-
-const drawerWidth = 240;
-
-const Drawer = styled(MuiDrawer, {
-  shouldForwardProp: (prop) => prop !== "open",
-})(({ theme, open }) => ({
-  "& .MuiDrawer-paper": {
-    position: "relative",
-    whiteSpace: "nowrap",
-    width: drawerWidth,
-    transition: theme.transitions.create("width", {
-      easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.enteringScreen,
-    }),
-    boxSizing: "border-box",
-    ...(!open && {
-      overflowX: "hidden",
-      transition: theme.transitions.create("width", {
-        easing: theme.transitions.easing.sharp,
-        duration: theme.transitions.duration.leavingScreen,
-      }),
-      width: theme.spacing(7),
-      [theme.breakpoints.up("sm")]: {
-        width: theme.spacing(9),
-      },
-    }),
-  },
-}));
-
+import Drawers from "./Drawer";
 export default function Dashboard({ children }) {
   const path = usePathname();
-  const [open, setOpen] = React.useState(true);
-  const toggleDrawer = () => {
-    setOpen(!open);
-  };
-  const dispatch = useDispatch();
-  const getUser = async () => {
-    FindOne(dispatch);
-  };
-  useEffect(() => {
-    getUser();
-  });
+
   if (
     path === "/sign-in" ||
     path === "/sign-up" ||
@@ -74,23 +26,8 @@ export default function Dashboard({ children }) {
       <ThemeProviders>
         <Box sx={{ display: "flex" }}>
           <CssBaseline />
-          <AppBar open={open} toggleDrawer={toggleDrawer} />
-          <Drawer variant="permanent" open={open}>
-            <Toolbar
-              sx={{
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "flex-end",
-                px: [1],
-              }}
-            >
-              <IconButton onClick={toggleDrawer}>
-                <ChevronLeft />
-              </IconButton>
-            </Toolbar>
-            <Divider />
-            <List component="nav">{MainListItems()}</List>
-          </Drawer>
+          <AppBar />
+          <Drawers />
           <Box
             component="main"
             sx={{
@@ -104,7 +41,7 @@ export default function Dashboard({ children }) {
             }}
           >
             <Toolbar />
-            <Container sx={{ mx: 0, pl: 5 }}>
+            <Container sx={{ mx: 0, px: { xs: 1, sm: 3, md: 5 } }}>
               <Toolbar />
               {children}
             </Container>

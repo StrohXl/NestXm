@@ -6,13 +6,14 @@ import { isPagesAPIRouteMatch } from "next/dist/server/future/route-matches/page
 import { updateAlert } from "@/app/store/features/alertSlice";
 import { endPoints } from "@/services/routes";
 
+import api from "./axios";
 import { FindIngredientsUser } from "./user";
 
 const { ingredients } = endPoints;
 
 export const deleteIngredient = async (dispatch, id) => {
   try {
-    await axios.delete(ingredients.delete(id));
+    await api.delete(ingredients.delete(id));
     FindIngredientsUser(dispatch);
     dispatch(
       updateAlert({
@@ -34,7 +35,7 @@ export const deleteIngredient = async (dispatch, id) => {
 
 export const getOneIngredient = async (dispatch, id) => {
   try {
-    const { data } = await axios.get(ingredients.getOne(id));
+    const { data } = await api.get(ingredients.getOne(id));
     return data;
   } catch (error) {
     dispatch(
@@ -52,7 +53,7 @@ export const createIngredient = async (dispatch, data) => {
   const { sub } = jwt.verify(token, process.env.NEXT_PUBLIC_SECRET_JWT);
   const newIngredient = { ...data, idUser: sub };
   try {
-    await axios.post(ingredients.create, newIngredient);
+    await api.post(ingredients.create, newIngredient);
     FindIngredientsUser(dispatch);
     dispatch(
       updateAlert({
@@ -75,7 +76,7 @@ export const createIngredient = async (dispatch, data) => {
 
 export const updateIngredient = async (dispatch, data, id) => {
   try {
-    await axios.patch(ingredients.update(id), data);
+    await api.patch(ingredients.update(id), data);
     FindIngredientsUser(dispatch);
     dispatch(
       updateAlert({
@@ -86,7 +87,6 @@ export const updateIngredient = async (dispatch, data, id) => {
     );
     return true;
   } catch (error) {
-    console.log(error);
     dispatch(
       updateAlert({
         open: true,

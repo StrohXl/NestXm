@@ -2,7 +2,6 @@ import axios from "axios";
 import Cookies from "js-cookie";
 import jwt from "jsonwebtoken";
 
-import "../services/axios";
 import "dotenv/config";
 import { updateAlert } from "@/app/store/features/alertSlice";
 import {
@@ -11,7 +10,9 @@ import {
   getUser,
   updatedUserSolicitudes,
 } from "@/app/store/features/dataUser";
+import { updateBackdrop } from "@/app/store/features/openComponents";
 
+import api from "./axios";
 import { endPoints } from "./routes";
 
 const { user } = endPoints;
@@ -36,7 +37,6 @@ export const FindAllEmails = async () => {
     const { data } = await axios.get(getAllEmail);
     return data;
   } catch (error) {
-    console.log(error);
     return error;
   }
 };
@@ -48,12 +48,14 @@ export const Post = async (user) => {
 
 export const FindOne = async (dispatch) => {
   const token = Cookies.get("token");
-  if (token) {
+  try {
     const { sub } = jwt.verify(token, process.env.NEXT_PUBLIC_SECRET_JWT);
-    const { data } = await axios.get(getOne(sub));
-    console.log(data);
+    const { data } = await api.get(getOne(sub));
     dispatch(getUser(data));
+    setTimeout(() => dispatch(updateBackdrop(false)), 2000);
     return data;
+  } catch (error) {
+    console.log(error);
   }
 };
 
@@ -67,28 +69,26 @@ export const Update = async (dispatch, body) => {
   try {
     const { sub } = jwt.verify(
       confirmEmail ? confirmEmail : token,
-      process.env.NEXT_PUBLIC_SECRET_JWT,
+      process.env.NEXT_PUBLIC_SECRET_JWT
     );
-    const res = await axios.patch(update(sub), body);
-    console.log(res);
+    const res = await api.patch(update(sub), body);
 
     dispatch(
       updateAlert({
         type: "success",
         open: true,
         children: "Cambios realizados",
-      }),
+      })
     );
 
     return true;
   } catch (error) {
-    console.log(error);
     dispatch(
       updateAlert({
         type: "error",
         open: true,
         children: "Hubo un error intentenlo mas tarde",
-      }),
+      })
     );
     return false;
   }
@@ -99,23 +99,23 @@ export const Delete = async (dispatch) => {
   const { sub } = jwt.verify(token, process.env.NEXT_PUBLIC_SECRET_JWT);
   const id = sub;
   try {
-    const {
-      data: { response },
-    } = await axios.delete(DeleteUser(id));
+    const { data } = await api.delete(DeleteUser(id));
+    Cookies.remove("token");
     dispatch(
       updateAlert({
         type: "success",
         open: true,
-        children: response.message,
-      }),
+        children: data,
+      })
     );
-  } catch ({ error: { response } }) {
+    return true;
+  } catch (error) {
     dispatch(
       updateAlert({
         type: "success",
         open: true,
-        children: response.message,
-      }),
+        children: error?.response?.data?.message,
+      })
     );
   }
 };
@@ -126,17 +126,16 @@ export const FindIngredientsUser = async (dispatch) => {
   const token = Cookies.get("token");
   try {
     const { sub } = jwt.verify(token, process.env.NEXT_PUBLIC_SECRET_JWT);
-    const { data } = await axios.get(getIngredientsUser(sub));
+    const { data } = await api.get(getIngredientsUser(sub));
     dispatch(updatedUserIngredient(data));
     dispatch(updateTableLength(data.length));
   } catch (error) {
-    console.log(error);
     dispatch(
       updateAlert({
         type: "error",
         open: true,
         children: "Hubo un error",
-      }),
+      })
     );
   }
 };
@@ -146,16 +145,15 @@ export const FindSolicitudesUser = async (dispatch) => {
   const token = Cookies.get("token");
   try {
     const { sub } = jwt.verify(token, process.env.NEXT_PUBLIC_SECRET_JWT);
-    const { data } = await axios.get(getSolicitudesUser(sub));
+    const { data } = await api.get(getSolicitudesUser(sub));
     dispatch(updatedUserSolicitudes(data));
   } catch (error) {
-    console.log(error);
     dispatch(
       updateAlert({
         type: "error",
         open: true,
         children: "Hubo un error",
-      }),
+      })
     );
   }
 };

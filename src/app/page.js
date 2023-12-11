@@ -5,8 +5,16 @@ import Orders from "@/components/Dashboard/Orders";
 import { Grid, Paper } from "@mui/material";
 
 import "../services/axios";
+import { useEffect } from "react";
+import { FindOne } from "@/services/user";
+import { useDispatch } from "react-redux";
 
 const Page = () => {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    FindOne(dispatch);
+  }, []);
   return (
     <>
       <Grid container spacing={3}>
