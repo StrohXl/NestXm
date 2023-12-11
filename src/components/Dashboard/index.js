@@ -45,6 +45,8 @@ export default function Dashboard({ children }) {
               <Toolbar />
               {children}
             </Container>
+            <Toolbar />
+
           </Box>
         </Box>
       </ThemeProviders>

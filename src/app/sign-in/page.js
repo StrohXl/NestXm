@@ -61,7 +61,6 @@ export default function SignInSide() {
         <Grid
           item
           xs={false}
-          sm={4}
           md={7}
           xl={9}
           sx={{
@@ -77,10 +76,24 @@ export default function SignInSide() {
           }}
         />
         <Grid
-          sx={{ display: "grid", alignContent: "center", width: "100%" }}
+          sx={{
+            display: "grid",
+            alignContent: "center",
+            width: "100%",
+            backgroundRepeat: "no-repeat",
+            background: {
+              xs: "linear-gradient(#ffffffaa,#fff 95%),url(https://source.unsplash.com/featured/?technology)",
+              md: "",
+            },
+            backgroundColor: (t) =>
+              t.palette.mode === "light"
+                ? t.palette.grey[50]
+                : t.palette.grey[900],
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+          }}
           item
           xs={12}
-          sm={8}
           md={5}
           xl={3}
           component={Paper}
@@ -89,6 +102,7 @@ export default function SignInSide() {
         >
           <Box
             sx={{
+              py:{},
               mx: 4,
               display: "flex",
               flexDirection: "column",
@@ -96,17 +110,24 @@ export default function SignInSide() {
               justifyContent: "center",
             }}
           >
-            <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
-              <LockOutlinedIcon />
-            </Avatar>
-            <Typography component="h1" variant="h5">
-              Iniciar
-            </Typography>
+            <Box display={"grid"} gap={1} alignContent={"center"}>
+              <Avatar
+                sx={{
+                  mx: "auto",
+                  bgcolor: "secondary.main",
+                }}
+              >
+                <LockOutlinedIcon />
+              </Avatar>
+              <Typography component="h1" variant="h5">
+                Iniciar
+              </Typography>
+            </Box>
             <Box
               component="form"
               noValidate
               onSubmit={handleSubmit(onSubmit)}
-              sx={{ mt: 10, display: "grid", width: "100%" }}
+              sx={{ mt: 5, display: "grid", width: "100%", maxWidth: "400px" }}
             >
               <TextFieldControl
                 control={control}

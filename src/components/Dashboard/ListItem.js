@@ -33,24 +33,40 @@ export const MainListItems = ({ mobile }) => {
     {
       name: "Dashboard",
       link: "/",
-      icon: <DashboardIcon color={path == "/" ? "primary" : "default"} />,
+      icon: (
+        <DashboardIcon
+          color={path == "/" ? "primary" : "default"}
+          sx={{ fontSize: { xs: 28, md: 30, "2xl": 32 } }}
+        />
+      ),
     },
     {
       name: "Ordenes",
       link: "/orders",
       icon: (
-        <ShoppingCartIcon color={path == "/orders" ? "primary" : "default"} />
+        <ShoppingCartIcon
+          color={path == "/orders" ? "primary" : "default"}
+          sx={{ fontSize: { xs: 28, md: 30, "2xl": 32 } }}
+        />
       ),
     },
     {
       name: "Inventario",
-      icon: <Inventory2 color={path == "/inventory" ? "primary" : "default"} />,
+      icon: (
+        <Inventory2
+          color={path == "/inventory" ? "primary" : "default"}
+          sx={{ fontSize: { xs: 28, md: 30, "2xl": 32 } }}
+        />
+      ),
       link: "/inventory",
     },
     {
       name: "Ingredientes",
       icon: (
-        <LocalDining color={path == "/ingredients" ? "primary" : "default"} />
+        <LocalDining
+          color={path == "/ingredients" ? "primary" : "default"}
+          sx={{ fontSize: { xs: 28, md: 30, "2xl": 32 } }}
+        />
       ),
       link: "/ingredients",
     },
@@ -69,6 +85,7 @@ export const MainListItems = ({ mobile }) => {
               <ListItemButton
                 selected={path == i.link}
                 onClick={() => changeUrl(i.link)}
+                sx={{ pl: 2.6}}
               >
                 <ListItemIcon>{i.icon}</ListItemIcon>
                 <ListItemText primary={i.name} />
@@ -87,6 +104,8 @@ export const MainListItems = ({ mobile }) => {
             selected={path == i.link}
             key={index}
             onClick={() => changeUrl(i.link)}
+            sx={{ pl: 2.6}}
+
           >
             <ListItemIcon>{i.icon}</ListItemIcon>
             <ListItemText primary={i.name} />

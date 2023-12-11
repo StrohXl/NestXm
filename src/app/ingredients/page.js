@@ -7,7 +7,7 @@ import { Button, Typography } from "@mui/material";
 const Ingredients = () => {
   return (
     <>
-      <Typography variant="h1">Ingredientes</Typography>
+      <Typography variant="h2" >Ingredientes</Typography>
       <Link href={"/ingredients/create-ingredient"}>
         <Button sx={{ mt: 4 }} variant="contained" endIcon={<LocalDining />}>
           Crear Ingrediente

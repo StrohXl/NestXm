@@ -18,7 +18,7 @@ const Inventory = () => {
   };
   return (
     <>
-      <Typography variant="h1" textAlign={"center"}>
+      <Typography component={"h1"} variant="h2" >
         Inventario
       </Typography>
       <Box sx={{ borderBottom: 1, borderColor: "divider", mt: 3 }}>
@@ -26,7 +26,6 @@ const Inventory = () => {
           value={value}
           onChange={handleChange}
           aria-label="basic tabs example"
-          
         >
           <Tab label="Ingredientes" {...a11yProps(0)} />
           <Tab label="Productos" {...a11yProps(1)} />

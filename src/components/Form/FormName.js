@@ -57,7 +57,7 @@ const FormName = () => {
           required={true}
         />
 
-        <Grid mt={5} display={"flex"} justifyContent={"flex-end"} gap={3}>
+        <Grid mt={4} display={"flex"} justifyContent={"flex-end"} gap={3}>
           <Link href={"/user"}>
             <Button variant="text" color="primary" type="submit">
               Cancelar

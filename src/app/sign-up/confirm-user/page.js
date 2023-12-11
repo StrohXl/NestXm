@@ -8,7 +8,7 @@ import Cookies from "js-cookie";
 import { useRouter } from "next/navigation";
 
 import { updateAlert } from "@/app/store/features/alertSlice";
-import { ConfirmText } from "@/components/ControllerForm";
+import { TextFieldControl } from "@/components/ControllerForm";
 import { ConfirmToken, ResendEmail } from "@/services/confirmuser";
 import { ArrowBack } from "@mui/icons-material";
 import { LoadingButton } from "@mui/lab";
@@ -22,11 +22,6 @@ import {
 } from "@mui/material";
 
 const ConfirmUser = () => {
-  const input1 = useRef(null);
-  const input2 = useRef(null);
-  const input3 = useRef(null);
-  const input4 = useRef(null);
-  const input5 = useRef(null);
   const buttonRef = useRef(null);
 
   const [disabledButton, setDisabledButton] = useState(false);
@@ -43,20 +38,8 @@ const ConfirmUser = () => {
   } = useForm();
 
   const onSubmit = (formData) => {
-    const data = [
-      formData.number1,
-      formData.number2,
-      formData.number3,
-      formData.number4,
-      formData.number5,
-    ];
-    for (let index = 0; index < data.length; index++) {
-      let text = data[index];
-      text = text.slice(0, text.length - 1);
-      data[index] = text;
-    }
-    const token = data.join("");
-    sendData(token);
+    const data = formData.token;
+    sendData(data);
   };
 
   const sendData = async (token) => {
@@ -136,60 +119,26 @@ const ConfirmUser = () => {
             >
               <Grid container spacing={3} sx={{ mb: 4 }}>
                 <Grid item xs={12} sx={{ display: "flex", gap: 2 }}>
-                  <ConfirmText
-                    inputRef={input1}
+                  <TextFieldControl
                     control={control}
-                    name={"number1"}
+                    name={"token"}
+                    type="text"
+                    placeholder={""}
                     rules={{
-                      required: { value: true, message: "" },
+                      required: { value: true, message: "Campo Requerido" },
+                      minLength: {
+                        value: 5,
+                        message: "El codigo debe de tener 5 caracteres",
+                      },
+                      maxLength: {
+                        value: 5,
+                        message:
+                          "El codigo debe de tener un maximo 5 caracteres",
+                      },
                     }}
-                    errors={errors?.number1}
-                    label="1"
-                    onKeyDown={() => null}
-                  />
-                  <ConfirmText
-                    inputRef={input2}
-                    control={control}
-                    name={"number2"}
-                    rules={{
-                      required: { value: true, message: "" },
-                    }}
-                    errors={errors?.number2}
-                    label="2"
-                    onKeyDown={() => null}
-                  />
-                  <ConfirmText
-                    inputRef={input3}
-                    control={control}
-                    name={"number3"}
-                    rules={{
-                      required: { value: true, message: "" },
-                    }}
-                    errors={errors?.number3}
-                    label="3"
-                    onKeyDown={() => null}
-                  />
-                  <ConfirmText
-                    inputRef={input4}
-                    control={control}
-                    name={"number4"}
-                    rules={{
-                      required: { value: true, message: "" },
-                    }}
-                    errors={errors?.number4}
-                    label="4"
-                    onKeyDown={() => null}
-                  />
-                  <ConfirmText
-                    inputRef={input5}
-                    control={control}
-                    name={"number5"}
-                    rules={{
-                      required: { value: true, message: "" },
-                    }}
-                    onKeyDown={() => null}
-                    errors={errors?.number5}
-                    label="5"
+                    variant={"standard"}
+                    errors={errors?.token}
+                    label=""
                   />
                 </Grid>
               </Grid>

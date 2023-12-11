@@ -6,7 +6,7 @@ import { Typography, Button } from "@mui/material";
 const Orders = () => {
   return (
     <>
-      <Typography variant="h6" sx={{ mt: 2 }}>
+      <Typography variant="h2" >
         Ordenes
       </Typography>
       <Button

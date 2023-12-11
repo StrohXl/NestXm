@@ -16,6 +16,7 @@ import {
   Typography,
   Button,
   IconButton,
+  Box,
 } from "@mui/material";
 
 const User = () => {
@@ -39,7 +40,7 @@ const User = () => {
   ];
   return (
     <>
-      <Paper sx={{ p: 2 }}>
+      <Paper sx={{ p: 2, py: { xs: 5 } }}>
         <Grid
           display={"flex"}
           flexDirection={"column"}
@@ -50,19 +51,21 @@ const User = () => {
             props={{
               bgcolor: "#9c27b0",
               color: "#fff",
-              mt: { xs: 5, sm: 7 },
               mb: { xs: 1 },
               height: { xs: 70, sm: 80, md: 90 },
               width: { xs: 70, sm: 80, md: 90 },
+              fontSize: 25,
             }}
           />
-          <Typography variant="h1">
+          <Typography component={"h1"} variant="h4">
             Bienvenido/a, {user.firstName} {user.lastName}
           </Typography>
         </Grid>
-        <Paper elevation={0} sx={{ p: 2, mt: 5 }}>
-          <Typography variant="h6">Informacion Personal</Typography>
-          <Table sx={{ mt: 2 }}>
+        <Paper elevation={2} sx={{ mt: 5, pt: 3 }}>
+          <Typography component={"h2"} variant="h5" ml={2}>
+            Informacion Personal
+          </Typography>
+          <Table sx={{ display: { xs: "none", sm: "table" }, mt: 1 }}>
             <TableBody>
               {tableUser.map((i, index) => {
                 return (
@@ -78,7 +81,44 @@ const User = () => {
                     <TableCell sx={{ py: 0 }} align="right">
                       <Link href={i.url}>
                         <IconButton>
-                          <Edit color="primary" fontSize="small" />
+                          <Edit
+                            sx={{ fontSize: { xs: 20, md: 24, "2xl": 28 } }}
+                            color="primary"
+                            fontSize="small"
+                          />
+                        </IconButton>
+                      </Link>
+                    </TableCell>
+                  </TableRow>
+                );
+              })}
+            </TableBody>
+          </Table>
+          <Table sx={{ display: { xs: "table", sm: "none" }, mt: 1 }}>
+            <TableBody>
+              {tableUser.map((i, index) => {
+                return (
+                  <TableRow
+                    key={index}
+                    hover
+                    sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
+                  >
+                    <TableCell component="th" scope="row">
+                      <Grid display={"grid"} gap={1}>
+                        <Typography fontWeight={700} variant="h5">
+                          {i.value1}
+                        </Typography>
+                        <Typography ml={1}>{i.value2}</Typography>
+                      </Grid>
+                    </TableCell>
+                    <TableCell sx={{ py: 0 }} align="right">
+                      <Link href={i.url}>
+                        <IconButton>
+                          <Edit
+                            sx={{ fontSize: { xs: 20, md: 24, "2xl": 28 } }}
+                            color="primary"
+                            fontSize="small"
+                          />
                         </IconButton>
                       </Link>
                     </TableCell>
@@ -88,8 +128,10 @@ const User = () => {
             </TableBody>
           </Table>
         </Paper>
-        <Paper elevation={0} sx={{ p: 2, mt: 5 }}>
-          <Typography variant="h6">Cuenta</Typography>
+        <Paper elevation={2} sx={{ p: 2, mt: 5 }}>
+          <Typography component={"h2"} variant="h5">
+            Cuenta
+          </Typography>
           <DeleteUser />
         </Paper>
       </Paper>

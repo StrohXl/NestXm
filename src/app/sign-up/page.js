@@ -76,7 +76,6 @@ export default function SignUp() {
         container
         component="main"
         alignContent={"center"}
-        display={"flex"}
         justifyContent={"center"}
         style={{
           height: "100%",
@@ -86,10 +85,29 @@ export default function SignUp() {
           backgroundSize: "cover",
           backgroundPosition: "center",
         }}
+        sx={{ display: { xs: "block", md: "flex" } }}
       >
-        <Grid maxWidth={550}>
+        <Grid sx={{ width: "100%", maxWidth: { md: "550px" } }} mx={"auto"}>
           <CssBaseline />
-          <Paper elevation={10} sx={{ pb: 5 }}>
+          <Paper
+            elevation={10}
+            sx={{
+              py: 8,
+              minHeight: { xs: "100vh", md: "auto" },
+              display: { xs: "grid" },
+              alignItems: "center",
+              background: {
+                xs: "linear-gradient(#ffffffaa,#fff 95%),url(https://images.unsplash.com/photo-1581089781785-603411fa81e5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxfDB8MXxyYW5kb218MHx8dGVjaG5vbG9neXx8fHx8fDE3MDEyNzQ5MTM&ixlib=rb-4.0.3&q=80&utm_campaign=api-credit&utm_medium=referral&utm_source=unsplash_source&w=1080)",
+                md: "#fff",
+              },
+              backgroundColor: (t) =>
+                t.palette.mode === "light"
+                  ? t.palette.grey[50]
+                  : t.palette.grey[900],
+              backgroundSize: "cover",
+              backgroundPosition: "center",
+            }}
+          >
             <Box
               sx={{
                 display: "flex",
@@ -98,7 +116,7 @@ export default function SignUp() {
               }}
               onSubmit={handleSubmit(onSubmit)}
             >
-              <Avatar sx={{ mt: 8, bgcolor: "secondary.main" }}>
+              <Avatar sx={{ bgcolor: "secondary.main" }}>
                 <LockOutlinedIcon />
               </Avatar>
               <Typography component="h1" variant="h5">
@@ -108,7 +126,7 @@ export default function SignUp() {
                 component="form"
                 noValidate
                 onSubmit={handleSubmit}
-                sx={{ mt: 5, px: 2 }}
+                sx={{ mt: 5, px: 2, maxWidth: { xs: "400px", md: "100%" } }}
               >
                 <TextFieldControl
                   autoFocus

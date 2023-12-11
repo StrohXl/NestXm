@@ -29,7 +29,7 @@ const FormPassword = () => {
 
   return (
     <Paper sx={{ mx: 3, mt: 4, p: 3, maxWidth: 500 }}>
-      <Typography my={2} variant="h6" textAlign={"center"}>
+      <Typography my={2} variant="h4" textAlign={"center"}>
         Ingrese su nueva contrasena
       </Typography>
       <Box component={"form"} noValidate onSubmit={handleSubmit(onSubmit)}>
@@ -65,7 +65,7 @@ const FormPassword = () => {
           }}
         />
 
-        <Grid mt={5} display={"flex"} justifyContent={"flex-end"} gap={3}>
+        <Grid mt={4} display={"flex"} justifyContent={"flex-end"} gap={3}>
           <Link href={"/user"}>
             <Button variant="text" color="primary" type="submit">
               Cancelar

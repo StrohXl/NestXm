@@ -11,7 +11,6 @@ import { useRouter } from "next/navigation";
 import { Person } from "@mui/icons-material";
 import IconLogout from "@mui/icons-material/Logout";
 import {
-  Avatar,
   Grid,
   IconButton,
   ListItemIcon,
@@ -19,16 +18,7 @@ import {
   MenuItem,
   Typography,
 } from "@mui/material";
-
-function stringAvatar(name) {
-  return {
-    sx: {
-      bgcolor: "#fff",
-      color: "#9c27b0",
-    },
-    children: `${name.split(" ")[0][0]}${name.split(" ")[1][0]}`,
-  };
-}
+import StringAvatar from "../Avatar/stringAvatar";
 
 const MenuAppBar = () => {
   const user = useSelector((state) => state.user.user);
@@ -49,9 +39,14 @@ const MenuAppBar = () => {
   return (
     <>
       <IconButton color="inherit" onClick={handleClick} id="basic-button">
-        <Avatar
-          style={{ textTransform: "uppercase", fontSize: "13px" }}
-          {...stringAvatar(!user ? "" : `${user.firstName} ${user.lastName}`)}
+        <StringAvatar
+          props={{
+            bgcolor: "#fff",
+            color: "#9c27b0",
+            fontSize: { xs: 15, md: 17, "2xl": 20 },
+            height: { xs: 40, md: 45, "2xl": 50 },
+            width: { xs: 40, md: 45, "2xl": 50 },
+          }}
         />
       </IconButton>
       <Menu
@@ -70,39 +65,52 @@ const MenuAppBar = () => {
           px={5}
           mt={2}
         >
-          <Avatar
-            style={{
-              textTransform: "uppercase",
-              width: "60px",
-              height: "60px",
-              border: "3px solid #9c27b0",
+          <StringAvatar
+            props={{
+              bgcolor: "#9c27b0",
+              color: "#fff",
+              fontSize: { xs: 20, md: 22, "2xl": 24 },
+              height: { xs: 60, md: 65, "2xl": 70 },
+              width: { xs: 60, md: 65, "2xl": 70 },
             }}
-            {...stringAvatar(!user ? "" : `${user.firstName} ${user.lastName}`)}
           />
           <Grid width={"100%"} my={1} textAlign={"center"}>
-            <Typography variant="body1">
+            <Typography variant="h6">
               {user.firstName} {user.lastName}
             </Typography>
-            <Typography color={"darkgrey"} variant="caption">
+            <Typography color={"darkgrey"} variant="body2">
               {user.email}
             </Typography>
           </Grid>
         </Grid>
         <MenuItem
+          sx={{ mt: { xs: 1, md: 1.5, "2xl": 2 } }}
           onClick={() => {
-            handleClose, router.push("/user");
+            handleClose(), router.push("/user");
           }}
         >
           <ListItemIcon>
-            <Person fontSize="small" />
+            <Person
+              sx={{
+                fontSize: { xs: 20, md: 25, "2xl": 30 },
+                mr: { md: 1, "2xl": 2 },
+              }}
+              fontSize="small"
+            />
           </ListItemIcon>
           Mi cuenta
         </MenuItem>
         <MenuItem onClick={Logout}>
           <ListItemIcon>
-            <IconLogout fontSize="small" />
+            <IconLogout
+              sx={{
+                fontSize: { xs: 20, md: 25, "2xl": 30 },
+                mr: { md: 1, "2xl": 2 },
+              }}
+              fontSize="small"
+            />
           </ListItemIcon>
-          Salir
+          Cerrar sesión
         </MenuItem>
       </Menu>
     </>

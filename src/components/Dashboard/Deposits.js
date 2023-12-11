@@ -9,8 +9,10 @@ export default function Deposits() {
   const user = useSelector((state) => state.user.user);
   return (
     <>
-      <Title>Saldo</Title>
-      <Typography mb={8} component="p" variant="h4">
+      <Typography component={"h2"} variant="h4" color={"primary"} mb={2}>
+        Saldo
+      </Typography>
+      <Typography ml={2} component="p" variant="h5">
         {user.money ? user.money : 0}
       </Typography>
     </>

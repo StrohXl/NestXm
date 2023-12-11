@@ -65,7 +65,7 @@ const RecoveryPassword = () => {
         <Grid maxWidth={400} width={"100%"}>
           <Paper sx={{ px: "5%", py: 5 }} elevation={10}>
             <Typography
-              variant="h1"
+              variant="h4"
               sx={{ fontSize: "20px" }}
               textAlign={"center"}
               color="initial"

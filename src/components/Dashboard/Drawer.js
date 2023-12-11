@@ -49,7 +49,7 @@ const Drawers = () => {
         sx={{
           display: {
             xs: "none",
-            sm: "block",
+            md: "block",
           },
         }}
         variant="permanent"
@@ -70,7 +70,7 @@ const Drawers = () => {
       </Drawer>
       <MuiDrawer
         sx={{
-          display: { xs: "block", sm: "none" },
+          display: { xs: "block", md: "none" },
           "& .MuiDrawer-paper": {
             boxSizing: "border-box",
             width: 200,

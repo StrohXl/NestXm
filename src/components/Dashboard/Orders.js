@@ -4,6 +4,7 @@ import Link from "next/link";
 
 import TableSolicitudes from "../Table/Solicitudes/TableSolicitudes";
 import Title from "./Title";
+import { Typography } from "@mui/material";
 
 // Generate Order Data
 function createData(id, date, name, shipTo, paymentMethod, amount) {
@@ -17,7 +18,7 @@ const rows = [
     "Elvis Presley",
     "Tupelo, MS",
     "VISA ⠀•••• 3719",
-    312.44,
+    312.44
   ),
   createData(
     1,
@@ -25,7 +26,7 @@ const rows = [
     "Paul McCartney",
     "London, UK",
     "VISA ⠀•••• 2574",
-    866.99,
+    866.99
   ),
   createData(
     2,
@@ -33,7 +34,7 @@ const rows = [
     "Tom Scholz",
     "Boston, MA",
     "MC ⠀•••• 1253",
-    100.81,
+    100.81
   ),
   createData(
     3,
@@ -41,7 +42,7 @@ const rows = [
     "Michael Jackson",
     "Gary, IN",
     "AMEX ⠀•••• 2000",
-    654.39,
+    654.39
   ),
   createData(
     4,
@@ -49,7 +50,7 @@ const rows = [
     "Bruce Springsteen",
     "Long Branch, NJ",
     "VISA ⠀•••• 5919",
-    212.79,
+    212.79
   ),
 ];
 
@@ -60,13 +61,14 @@ function preventDefault(event) {
 export default function Orders() {
   return (
     <React.Fragment>
-      <Title>Ordenes Recientes</Title>
+      <Typography component={"h2"} variant="h4" color={"primary"}>
+        Ordenes Recientes
+      </Typography>
       <TableSolicitudes />
       <Link
-        color="primary"
         href="/orders"
         onClick={preventDefault}
-        style={{ color: "#000", textDecoration: "none", marginTop: "10px" }}
+        style={{ color: "#000", textDecoration: "none", marginTop: "20px" }}
       >
         Ver mas
       </Link>

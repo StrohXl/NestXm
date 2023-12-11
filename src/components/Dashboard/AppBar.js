@@ -40,8 +40,6 @@ const AppBar = () => {
   const dispatch = useDispatch();
   const toggleDrawer = () => {
     dispatch(updatedDrawer(!open));
-  };
-  const toggleDrawerMobile = () => {
     dispatch(updatedDrawerMobile(!mobileOpen));
   };
 
@@ -62,27 +60,13 @@ const AppBar = () => {
             edge="start"
             color="inherit"
             aria-label="open drawer"
-            onClick={toggleDrawerMobile}
-            sx={{
-              marginRight: "36px",
-              height: "40px",
-              display: { xs: "block", sm: "none" },
-            }}
-          >
-            <MenuIcon />
-          </IconButton>
-          <IconButton
-            edge="start"
-            color="inherit"
-            aria-label="open drawer"
             onClick={toggleDrawer}
             sx={{
               marginRight: "36px",
-              height: "40px",
-              display: { xs: "none", sm: open ? "none" : "block" },
+              display: { md: open ? "none" : "inline-flex" },
             }}
           >
-            <MenuIcon />
+            <MenuIcon sx={{ fontSize: { xs: 28, md: 30, "2xl": 32 } }} />
           </IconButton>
           <IconButton
             color="inherit"
@@ -91,11 +75,10 @@ const AppBar = () => {
             onClick={toggleDrawer}
             sx={{
               marginRight: "36px",
-              height: "40px",
-              display: { xs: "none", sm: !open ? "none" : "block" },
+              display: { xs: "none", md: !open ? "none" : "inline-flex" },
             }}
           >
-            <ChevronLeft />
+            <ChevronLeft sx={{ fontSize: { xs: 28, md: 30, "2xl": 32 } }} />
           </IconButton>
           <MenuAppBar />
         </Grid>

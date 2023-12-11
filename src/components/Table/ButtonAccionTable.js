@@ -9,14 +9,17 @@ const ButtonAccionTable = ({ id }) => {
   const dispatch = useDispatch();
   return (
     <ButtonGroup
-      sx={{ gap: 2 }}
+      sx={{
+        gap: { xs: 1 },
+        display: { xs: "grid", sm: "inline-flex" },
+        justifyContent: { xs: "flex-end" },
+      }}
       size="small"
       variant="text"
-      aria-label="text button group"
     >
       <Link href={`/ingredients/edit-ingredient?id=${id}`}>
         <IconButton size="small">
-          <Edit />
+          <Edit sx={{ fontSize: { xs: 20, md: 25, "2xl": 30 }}} />
         </IconButton>
       </Link>
       <IconButton
@@ -24,7 +27,7 @@ const ButtonAccionTable = ({ id }) => {
         color="error"
         size="small"
       >
-        <Delete />
+        <Delete  sx={{ fontSize: { xs: 20, md: 25, "2xl": 30 }}}  />
       </IconButton>
     </ButtonGroup>
   );
