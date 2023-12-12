@@ -2,12 +2,13 @@
 // Mui Material
 // React
 import { useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 import Cookies from "js-cookie";
 import { useRouter } from "next/navigation";
 
 // Paquetes
+import { updatedDrawerMobile } from "@/app/store/features/openDrawer";
 import { Person } from "@mui/icons-material";
 import IconLogout from "@mui/icons-material/Logout";
 import {
@@ -18,6 +19,7 @@ import {
   MenuItem,
   Typography,
 } from "@mui/material";
+
 import StringAvatar from "../Avatar/stringAvatar";
 
 const MenuAppBar = () => {
@@ -25,8 +27,10 @@ const MenuAppBar = () => {
   const [anchorEl, setAnchorEl] = useState(null);
   const openMenu = Boolean(anchorEl);
   const router = useRouter();
+  const dispatch = useDispatch();
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
+    dispatch(updatedDrawerMobile(false));
   };
   const handleClose = () => {
     setAnchorEl(null);

@@ -102,7 +102,7 @@ export default function SignInSide() {
         >
           <Box
             sx={{
-              py:{},
+              py: {},
               mx: 4,
               display: "flex",
               flexDirection: "column",

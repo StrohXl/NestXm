@@ -69,7 +69,7 @@ export const Update = async (dispatch, body) => {
   try {
     const { sub } = jwt.verify(
       confirmEmail ? confirmEmail : token,
-      process.env.NEXT_PUBLIC_SECRET_JWT
+      process.env.NEXT_PUBLIC_SECRET_JWT,
     );
     const res = await api.patch(update(sub), body);
 
@@ -78,7 +78,7 @@ export const Update = async (dispatch, body) => {
         type: "success",
         open: true,
         children: "Cambios realizados",
-      })
+      }),
     );
 
     return true;
@@ -88,7 +88,7 @@ export const Update = async (dispatch, body) => {
         type: "error",
         open: true,
         children: "Hubo un error intentenlo mas tarde",
-      })
+      }),
     );
     return false;
   }
@@ -106,7 +106,7 @@ export const Delete = async (dispatch) => {
         type: "success",
         open: true,
         children: data,
-      })
+      }),
     );
     return true;
   } catch (error) {
@@ -115,7 +115,7 @@ export const Delete = async (dispatch) => {
         type: "success",
         open: true,
         children: error?.response?.data?.message,
-      })
+      }),
     );
   }
 };
@@ -135,7 +135,7 @@ export const FindIngredientsUser = async (dispatch) => {
         type: "error",
         open: true,
         children: "Hubo un error",
-      })
+      }),
     );
   }
 };
@@ -153,7 +153,7 @@ export const FindSolicitudesUser = async (dispatch) => {
         type: "error",
         open: true,
         children: "Hubo un error",
-      })
+      }),
     );
   }
 };

@@ -1,9 +1,11 @@
 "use client";
 import * as React from "react";
+import { useDispatch } from "react-redux";
 
 import { usePathname } from "next/navigation";
 
 import AppBar from "@/components/Dashboard/AppBar";
+import { FindOne } from "@/services/user";
 import { Container } from "@mui/material";
 import Box from "@mui/material/Box";
 import CssBaseline from "@mui/material/CssBaseline";
@@ -13,7 +15,15 @@ import ThemeProviders from "../theme/themeProvider";
 import Drawers from "./Drawer";
 export default function Dashboard({ children }) {
   const path = usePathname();
-
+  const dispatch = useDispatch();
+  React.useEffect(() => {
+    if (
+      path.includes("/sign-") == false &&
+      path.includes("/recovery-passwo") == false
+    ) {
+      FindOne(dispatch);
+    }
+  }, [path]);
   if (
     path === "/sign-in" ||
     path === "/sign-up" ||
@@ -46,7 +56,6 @@ export default function Dashboard({ children }) {
               {children}
             </Container>
             <Toolbar />
-
           </Box>
         </Box>
       </ThemeProviders>

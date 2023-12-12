@@ -122,9 +122,9 @@ export const theme = createTheme({
       },
     },
     body1: {
-      fontSize: ".8em",
+      fontSize: ".9em",
       "@media (min-width: 480px)": {
-        fontSize: ".85em",
+        fontSize: ".95em",
       },
       "@media (min-width: 768px)": {
         fontSize: ".9em",
@@ -140,18 +140,18 @@ export const theme = createTheme({
       },
     },
     body2: {
-      fontSize: ".8em",
+      fontSize: ".9em",
       "@media (min-width: 480px)": {
-        fontSize: ".85em",
+        fontSize: ".92em",
       },
       "@media (min-width: 768px)": {
-        fontSize: ".9em",
+        fontSize: ".94em",
       },
       "@media (min-width: 992px)": {
-        fontSize: ".95m",
+        fontSize: ".96m",
       },
       "@media (min-width: 1200px)": {
-        fontSize: "1.05em",
+        fontSize: ".98em",
       },
       "@media (min-width: 1900px)": {
         fontSize: "1em",

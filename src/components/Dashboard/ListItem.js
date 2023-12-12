@@ -85,7 +85,7 @@ export const MainListItems = ({ mobile }) => {
               <ListItemButton
                 selected={path == i.link}
                 onClick={() => changeUrl(i.link)}
-                sx={{ pl: 2.6}}
+                sx={{ pl: 2.6 }}
               >
                 <ListItemIcon>{i.icon}</ListItemIcon>
                 <ListItemText primary={i.name} />
@@ -104,8 +104,7 @@ export const MainListItems = ({ mobile }) => {
             selected={path == i.link}
             key={index}
             onClick={() => changeUrl(i.link)}
-            sx={{ pl: 2.6}}
-
+            sx={{ pl: 2.6 }}
           >
             <ListItemIcon>{i.icon}</ListItemIcon>
             <ListItemText primary={i.name} />

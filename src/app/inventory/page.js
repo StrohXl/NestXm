@@ -18,7 +18,7 @@ const Inventory = () => {
   };
   return (
     <>
-      <Typography component={"h1"} variant="h2" >
+      <Typography component={"h1"} variant="h2">
         Inventario
       </Typography>
       <Box sx={{ borderBottom: 1, borderColor: "divider", mt: 3 }}>

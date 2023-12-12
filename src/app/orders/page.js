@@ -6,9 +6,7 @@ import { Typography, Button } from "@mui/material";
 const Orders = () => {
   return (
     <>
-      <Typography variant="h2" >
-        Ordenes
-      </Typography>
+      <Typography variant="h2">Ordenes</Typography>
       <Button
         endIcon={<ShoppingCart />}
         variant="contained"

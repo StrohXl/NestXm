@@ -19,7 +19,7 @@ const ButtonAccionTable = ({ id }) => {
     >
       <Link href={`/ingredients/edit-ingredient?id=${id}`}>
         <IconButton size="small">
-          <Edit sx={{ fontSize: { xs: 20, md: 25, "2xl": 30 }}} />
+          <Edit sx={{ fontSize: { xs: 20, md: 25, "2xl": 30 } }} />
         </IconButton>
       </Link>
       <IconButton
@@ -27,7 +27,7 @@ const ButtonAccionTable = ({ id }) => {
         color="error"
         size="small"
       >
-        <Delete  sx={{ fontSize: { xs: 20, md: 25, "2xl": 30 }}}  />
+        <Delete sx={{ fontSize: { xs: 20, md: 25, "2xl": 30 } }} />
       </IconButton>
     </ButtonGroup>
   );

@@ -2,7 +2,10 @@
 
 import { useDispatch, useSelector } from "react-redux";
 
-import { updatedDrawerMobile } from "@/app/store/features/openDrawer";
+import {
+  updatedDrawer,
+  updatedDrawerMobile,
+} from "@/app/store/features/openDrawer";
 import { Divider, List, Toolbar } from "@mui/material";
 import MuiDrawer from "@mui/material/Drawer";
 import { styled } from "@mui/material/styles";
@@ -41,6 +44,7 @@ const Drawers = () => {
   const dispatch = useDispatch();
   const handleDrawerToggle = () => {
     dispatch(updatedDrawerMobile(!mobileOpen));
+    dispatch(updatedDrawer(!open));
   };
   return (
     <>
