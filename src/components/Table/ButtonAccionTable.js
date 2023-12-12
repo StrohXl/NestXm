@@ -11,8 +11,6 @@ const ButtonAccionTable = ({ id }) => {
     <ButtonGroup
       sx={{
         gap: { xs: 1 },
-        display: { xs: "grid", sm: "inline-flex" },
-        justifyContent: { xs: "flex-end" },
       }}
       size="small"
       variant="text"
