@@ -49,7 +49,6 @@ const Drawers = () => {
   return (
     <>
       <Drawer
-        className={!open && "MuiDrawer-closed"}
         sx={{
           display: {
             xs: "none",
@@ -57,7 +56,7 @@ const Drawers = () => {
           },
         }}
         variant="permanent"
-        open={open}
+        open={true}
       >
         <Toolbar
           sx={{

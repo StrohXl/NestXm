@@ -1,11 +1,9 @@
 import React from "react";
 
-import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
-import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import {
+  Avatar,
   Box,
   Collapse,
-  IconButton,
   TableCell,
   TableRow,
   Typography,
@@ -21,17 +19,10 @@ const TableRowIngredient = ({ row, key }) => {
         key={key}
         hover
         sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
+        onClick={() => setOpen(!open)}
       >
-        <TableCell>
-          {row.description != "" && (
-            <IconButton
-              aria-label="expand row"
-              size="small"
-              onClick={() => setOpen(!open)}
-            >
-              {open ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
-            </IconButton>
-          )}
+        <TableCell component="th" scope="row">
+          <Avatar src={row.imageUrl} />
         </TableCell>
         <TableCell component="th" scope="row">
           {row.name}
@@ -48,7 +39,9 @@ const TableRowIngredient = ({ row, key }) => {
               <Typography variant="h6" gutterBottom component="div">
                 Descripción:
               </Typography>
-              {row.description}
+              {row.description == "undefined" || !row.description
+                ? "Este ingrediente no tiene descripción"
+                : row.description}
             </Box>
           </Collapse>
         </TableCell>

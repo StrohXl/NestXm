@@ -15,13 +15,18 @@ const ButtonAccionTable = ({ id }) => {
       size="small"
       variant="text"
     >
-      <Link href={`/ingredients/edit-ingredient?id=${id}`}>
+      <Link
+        href={`/ingredients/edit-ingredient?id=${id}`}
+        onClick={(event) => event.stopPropagation()}
+      >
         <IconButton size="small">
           <Edit sx={{ fontSize: { xs: 20, md: 25, "2xl": 30 } }} />
         </IconButton>
       </Link>
       <IconButton
-        onClick={() => deleteIngredient(dispatch, id)}
+        onClick={(event) => {
+          event.stopPropagation(), deleteIngredient(dispatch, id);
+        }}
         color="error"
         size="small"
       >

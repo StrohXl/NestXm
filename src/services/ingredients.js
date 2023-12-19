@@ -51,7 +51,8 @@ export const getOneIngredient = async (dispatch, id) => {
 export const createIngredient = async (dispatch, data) => {
   const token = Cookies.get("token");
   const { sub } = jwt.verify(token, process.env.NEXT_PUBLIC_SECRET_JWT);
-  const newIngredient = { ...data, idUser: sub };
+  data.append("idUser", sub);
+  const newIngredient = data;
   try {
     await api.post(ingredients.create, newIngredient);
     FindIngredientsUser(dispatch);

@@ -17,7 +17,6 @@ const TableIngredients = () => {
   const [page, setPage] = useState(0);
   const dispatch = useDispatch();
   const ingredients = useSelector((state) => state.user.userIngredient);
-
   const getIngredients = async () => {
     await FindIngredientsUser(dispatch);
 
@@ -34,7 +33,7 @@ const TableIngredients = () => {
     <TableOrders
       tableHead={
         <>
-          <TableCell width={30} />
+          <TableCell width={30}>Imagen</TableCell>
           <TableCell>Nombre</TableCell>
           <TableCell align="right">Precio</TableCell>
         </>

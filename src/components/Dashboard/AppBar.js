@@ -54,7 +54,7 @@ const AppBar = () => {
           width={"100%"}
           display={"flex"}
           alignItems={"center"}
-          justifyContent={"space-between"}
+          sx={{ justifyContent: { xs: "space-between", md: "flex-end" } }}
         >
           <IconButton
             edge="start"
@@ -63,23 +63,12 @@ const AppBar = () => {
             onClick={toggleDrawer}
             sx={{
               marginRight: "36px",
-              display: { md: open ? "none" : "inline-flex" },
+              display: { md: "none" },
             }}
           >
             <MenuIcon sx={{ fontSize: { xs: 28, md: 30, "2xl": 32 } }} />
           </IconButton>
-          <IconButton
-            color="inherit"
-            edge="start"
-            aria-label="open drawer"
-            onClick={toggleDrawer}
-            sx={{
-              marginRight: "36px",
-              display: { xs: "none", md: !open ? "none" : "inline-flex" },
-            }}
-          >
-            <ChevronLeft sx={{ fontSize: { xs: 28, md: 30, "2xl": 32 } }} />
-          </IconButton>
+
           <MenuAppBar />
         </Grid>
       </Toolbar>
