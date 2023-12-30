@@ -5,9 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 
-import { updateErrorImage } from "@/app/store/features/formIngredient";
 import { TextFieldControl } from "@/components/ControllerForm";
-import { createIngredient, updateIngredient } from "@/services/ingredients";
 import { ArrowBack } from "@mui/icons-material";
 import { LoadingButton } from "@mui/lab";
 import {
@@ -19,15 +17,19 @@ import {
   Typography,
 } from "@mui/material";
 
-import UploadImage from "../uploadImage";
 import FormIngredientUseEffect from "./useEffect";
+import UploadImageIngredient from "./uploadImageIngredient";
+import onSubmitIngredient from "./onSubmitFormData";
 
 const FormIngredient = ({ type }) => {
   const router = useRouter();
+  const loading = useSelector((state) => state.button.loading1);
+  console.log(loading);
+  const disabled = useSelector((state) => state.button.disabled1);
   const image = useSelector((state) => state.ingredient.image);
   const idIngredient = useSelector((state) => state.ingredient.idIngredient);
   const onChangeInImage = useSelector(
-    (state) => state.ingredient.onChangeInImage,
+    (state) => state.ingredient.onChangeInImage
   );
   const {
     handleSubmit,
@@ -38,38 +40,15 @@ const FormIngredient = ({ type }) => {
   const dispatch = useDispatch();
   FormIngredientUseEffect(type, dispatch, setValue);
   const onSubmit = async (form) => {
-    dispatch(updateErrorImage(false));
-    const formData = new FormData();
-    formData.append("name", form.name);
-    if (form.description) {
-      formData.append("description", form.description);
-    }
-    formData.append("price", form.price);
-    if (!image) {
-      dispatch(updateErrorImage(true));
-    } else {
-      if (type == "create") {
-        formData.append("image", image);
-        const data = formData;
-        const res = await createIngredient(dispatch, data);
-        if (res === true) {
-          setTimeout(() => {
-            router.push("/ingredients");
-          }, 1000);
-        }
-      } else {
-        if (onChangeInImage == true) {
-          formData.append("image", image);
-        }
-        const data = formData;
-        const res = await updateIngredient(dispatch, data, idIngredient);
-        if (res === true) {
-          setTimeout(() => {
-            router.push("/ingredients");
-          }, 1000);
-        }
-      }
-    }
+    onSubmitIngredient(
+      form,
+      dispatch,
+      image,
+      type,
+      router,
+      onChangeInImage,
+      idIngredient
+    );
   };
 
   return (
@@ -92,7 +71,7 @@ const FormIngredient = ({ type }) => {
           onSubmit={handleSubmit(onSubmit)}
           noValidate
         >
-          <UploadImage />
+          <UploadImageIngredient />
           <TextFieldControl
             autoFocus
             control={control}
@@ -131,9 +110,14 @@ const FormIngredient = ({ type }) => {
           />
           <Grid mt={5} gap={3} display={"flex"} justifyContent={"flex-end"}>
             <Link href={"/ingredients"}>
-              <Button variant="text">Cancelar</Button>
+              <Button variant="outlined">Cancelar</Button>
             </Link>
-            <LoadingButton type="submit" variant="contained">
+            <LoadingButton
+              disabled={disabled}
+              loading={loading}
+              type="submit"
+              variant="contained"
+            >
               {type == "create" ? "Guardar" : "Editar"}
             </LoadingButton>
           </Grid>

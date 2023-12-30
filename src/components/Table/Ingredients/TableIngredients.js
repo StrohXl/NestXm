@@ -19,16 +19,18 @@ const TableIngredients = () => {
   const ingredients = useSelector((state) => state.user.userIngredient);
   const getIngredients = async () => {
     await FindIngredientsUser(dispatch);
-
     setLoading(false);
   };
 
   useEffect(() => {
     getIngredients();
+  }, []);
+
+  useEffect(() => {
     if (ingredients.length < 6) {
       setPage(0);
     }
-  }, []);
+  }, [ingredients.length]);
   return (
     <TableOrders
       tableHead={

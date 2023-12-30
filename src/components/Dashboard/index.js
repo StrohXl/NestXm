@@ -4,7 +4,7 @@ import { useDispatch } from "react-redux";
 
 import { usePathname } from "next/navigation";
 
-import AppBar from "@/components/Dashboard/AppBar";
+import AppBar from "@/components/Dashboard/AppBar/AppBar";
 import { FindOne } from "@/services/user";
 import { Container } from "@mui/material";
 import Box from "@mui/material/Box";
@@ -12,7 +12,8 @@ import CssBaseline from "@mui/material/CssBaseline";
 import Toolbar from "@mui/material/Toolbar";
 
 import ThemeProviders from "../theme/themeProvider";
-import Drawers from "./Drawer";
+import DrawerDesktop from "./Drawers/DrawerDesktop";
+import DrawerMobile from "./Drawers/DrawerMobile";
 export default function Dashboard({ children }) {
   const path = usePathname();
   const dispatch = useDispatch();
@@ -37,7 +38,8 @@ export default function Dashboard({ children }) {
         <Box sx={{ display: "flex" }}>
           <CssBaseline />
           <AppBar />
-          <Drawers />
+          <DrawerDesktop />
+          <DrawerMobile />
           <Box
             component="main"
             sx={{

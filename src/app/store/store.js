@@ -6,6 +6,7 @@ import formIngredient from "./features/formIngredient";
 import openComponents from "./features/openComponents";
 import openDrawer from "./features/openDrawer";
 import propertyButton from "./features/propertyButtonSlice";
+import shoppingCart from "./features/shoppingCart";
 
 export default configureStore({
   reducer: {
@@ -15,5 +16,6 @@ export default configureStore({
     drawer: openDrawer,
     components: openComponents,
     ingredient: formIngredient,
+    shoppingCart: shoppingCart,
   },
 });

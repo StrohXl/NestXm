@@ -67,7 +67,7 @@ const FormPassword = () => {
 
         <Grid mt={4} display={"flex"} justifyContent={"flex-end"} gap={3}>
           <Link href={"/user"}>
-            <Button variant="text" color="primary">
+            <Button variant="outlined" color="primary">
               Cancelar
             </Button>
           </Link>

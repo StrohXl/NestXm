@@ -10,8 +10,8 @@ export const propertyButton = createSlice({
     disabled3: false,
   },
   reducers: {
-    updateLoading1: (state) => {
-      state.loading1 = !state.loading1;
+    updateLoading1: (state, { payload }) => {
+      state.loading1 = payload;
     },
     updateLoading2: (state) => {
       state.loading2 = !state.loading2;
@@ -19,8 +19,8 @@ export const propertyButton = createSlice({
     updateLoading3: (state) => {
       state.loading3 = !state.loading3;
     },
-    updateDisabled1: (state) => {
-      state.disabled1 = !state.disabled1;
+    updateDisabled1: (state, { payload }) => {
+      state.disabled1 = payload;
     },
     updateDisabled2: (state) => {
       state.disabled2 = !state.disabled2;

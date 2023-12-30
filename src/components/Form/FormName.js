@@ -59,7 +59,7 @@ const FormName = () => {
 
         <Grid mt={4} display={"flex"} justifyContent={"flex-end"} gap={3}>
           <Link href={"/user"}>
-            <Button variant="text" color="primary" type="submit">
+            <Button variant="outlined" color="primary" type="submit">
               Cancelar
             </Button>
           </Link>

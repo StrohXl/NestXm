@@ -1,5 +1,5 @@
 "use client";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 import Link from "next/link";
 
@@ -18,6 +18,9 @@ import {
   IconButton,
   Box,
 } from "@mui/material";
+import ModalOpen from "@/components/Modal/modal";
+import openModal from "@/components/Modal/openModal";
+import ContentUser from "@/components/Modal/contentUser";
 
 const User = () => {
   const user = useSelector((state) => state.user.user);
@@ -38,8 +41,12 @@ const User = () => {
       url: "/user/edit-password",
     },
   ];
+  const dispatch = useDispatch();
   return (
     <>
+      <ModalOpen>
+        <ContentUser />
+      </ModalOpen>
       <Paper sx={{ p: 2, py: { xs: 5 } }}>
         <Grid
           display={"flex"}
@@ -47,16 +54,19 @@ const User = () => {
           gap={2}
           alignItems={"center"}
         >
-          <StringAvatar
-            props={{
-              bgcolor: "#9c27b0",
-              color: "#fff",
-              mb: { xs: 1 },
-              height: { xs: 70, sm: 80, md: 90 },
-              width: { xs: 70, sm: 80, md: 90 },
-              fontSize: 25,
-            }}
-          />
+          <div onClick={() => openModal(dispatch)}>
+            <StringAvatar
+              props={{
+                bgcolor: "#9c27b0",
+                cursor: "pointer",
+                color: "#fff",
+                mb: { xs: 1 },
+                height: { xs: 90, sm: 100, md: 110, xl: 120, "2xl": 150 },
+                width: { xs: 90, sm: 100, md: 110, xl: 120, "2xl": 150 },
+                fontSize: 25,
+              }}
+            />
+          </div>
           <Typography component={"h1"} variant="h4">
             Bienvenido/a, {user.firstName} {user.lastName}
           </Typography>

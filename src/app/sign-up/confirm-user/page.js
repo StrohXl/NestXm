@@ -146,7 +146,7 @@ const ConfirmUser = () => {
                 style={{ fontSize: "14px", textTransform: "none" }}
                 small
                 onClick={(e) => resendToken(e)}
-                variant="text"
+                variant="outlined"
               >
                 Reenviar token
               </Button>
