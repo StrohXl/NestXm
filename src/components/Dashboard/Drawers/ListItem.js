@@ -2,12 +2,13 @@ import * as React from "react";
 import { useDispatch } from "react-redux";
 
 import { useRouter, usePathname } from "next/navigation";
-import { Divider, styled } from "@mui/material";
+
 import {
   updatedDrawer,
   updatedDrawerMobile,
 } from "@/app/store/features/openDrawer";
 import { items } from "@/helpers/ListItems";
+import { Divider, styled } from "@mui/material";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";

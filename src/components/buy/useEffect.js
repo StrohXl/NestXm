@@ -1,8 +1,10 @@
 "use client";
-import { getOneIngredient } from "@/services/ingredients";
-import { useParams } from "next/navigation";
 import { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
+
+import { useParams } from "next/navigation";
+
+import { getOneIngredient } from "@/services/ingredients";
 
 const useEffectBuy = () => {
   const params = useParams();

@@ -1,11 +1,13 @@
-import { Box, Button, Divider, Grid, Typography } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
 
-import closeModal from "./closeModal";
+import { LoadingButton } from "@mui/lab";
+import { Box, Button, Divider, Grid, Typography } from "@mui/material";
+
 import StringAvatar from "../Avatar/stringAvatar";
 import UploadImage from "../Form/uploadImage";
 import UploadImageUser from "../Form/user/uploadImageUser";
-import { LoadingButton } from "@mui/lab";
+import closeModal from "./closeModal";
+
 const ContentUser = () => {
   const dispatch = useDispatch();
   const image = useSelector((state) => state.ingredient.image);

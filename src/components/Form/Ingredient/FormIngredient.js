@@ -17,9 +17,9 @@ import {
   Typography,
 } from "@mui/material";
 
-import FormIngredientUseEffect from "./useEffect";
-import UploadImageIngredient from "./uploadImageIngredient";
 import onSubmitIngredient from "./onSubmitFormData";
+import UploadImageIngredient from "./uploadImageIngredient";
+import FormIngredientUseEffect from "./useEffect";
 
 const FormIngredient = ({ type }) => {
   const router = useRouter();
@@ -29,7 +29,7 @@ const FormIngredient = ({ type }) => {
   const image = useSelector((state) => state.ingredient.image);
   const idIngredient = useSelector((state) => state.ingredient.idIngredient);
   const onChangeInImage = useSelector(
-    (state) => state.ingredient.onChangeInImage
+    (state) => state.ingredient.onChangeInImage,
   );
   const {
     handleSubmit,
@@ -47,7 +47,7 @@ const FormIngredient = ({ type }) => {
       type,
       router,
       onChangeInImage,
-      idIngredient
+      idIngredient,
     );
   };
 

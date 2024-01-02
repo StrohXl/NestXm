@@ -5,6 +5,9 @@ import Link from "next/link";
 
 import StringAvatar from "@/components/Avatar/stringAvatar";
 import DeleteUser from "@/components/ConfirmPopover/deleteUser";
+import ContentUser from "@/components/Modal/contentUser";
+import ModalOpen from "@/components/Modal/modal";
+import openModal from "@/components/Modal/openModal";
 import { ArrowForwardIos, Edit } from "@mui/icons-material";
 import {
   Grid,
@@ -18,9 +21,6 @@ import {
   IconButton,
   Box,
 } from "@mui/material";
-import ModalOpen from "@/components/Modal/modal";
-import openModal from "@/components/Modal/openModal";
-import ContentUser from "@/components/Modal/contentUser";
 
 const User = () => {
   const user = useSelector((state) => state.user.user);

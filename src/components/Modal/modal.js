@@ -1,7 +1,9 @@
-import { Box, IconButton, Modal, Typography } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
-import closeModal from "./closeModal";
+
 import { Close } from "@mui/icons-material";
+import { Box, IconButton, Modal, Typography } from "@mui/material";
+
+import closeModal from "./closeModal";
 
 const style = {
   position: "absolute",

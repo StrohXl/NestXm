@@ -1,4 +1,9 @@
 "use client";
+import { useState } from "react";
+import { useDispatch } from "react-redux";
+
+import Image from "next/image";
+
 import addIngredient from "@/components/buy/addIngredient";
 import useEffectBuy from "@/components/buy/useEffect";
 import { AddShoppingCart, ShoppingCartCheckout } from "@mui/icons-material";
@@ -11,9 +16,6 @@ import {
   Divider,
   TextField,
 } from "@mui/material";
-import Image from "next/image";
-import { useState } from "react";
-import { useDispatch } from "react-redux";
 
 const Orders = () => {
   const { data, params } = useEffectBuy();
@@ -60,7 +62,7 @@ const Orders = () => {
           <Grid
             gap={2}
             display={"flex"}
-            flexDirection={{ md: "column-reverse" }}
+            flexDirection={'column'}
             mt={3}
             mx={"auto"}
             width={"100%"}
@@ -69,6 +71,26 @@ const Orders = () => {
             gridRow={{ md: "2/3" }}
             px={{ md: 3 }}
           >
+             <Grid display={"flex"} gap={1}>
+              <TextField
+                size="small"
+                type="number"
+                sx={{ width: 100 }}
+                placeholder="1"
+                label="Cantidad"
+                defaultValue={1}
+                onChange={(e) => console.log(e.target.value)}
+              />
+              <Button
+                variant="contained"
+                endIcon={<ShoppingCartCheckout />}
+                color="primary"
+                sx={{ textTransform: "none" }}
+                fullWidth
+              >
+                Comprar
+              </Button>
+            </Grid>
             <Grid display={"flex"} gap={1}>
               <TextField
                 size="small"
@@ -90,26 +112,7 @@ const Orders = () => {
                 Anadir
               </Button>
             </Grid>
-            <Grid display={"flex"} gap={1}>
-              <TextField
-                size="small"
-                type="number"
-                sx={{ width: 100 }}
-                placeholder="1"
-                label="Cantidad"
-                defaultValue={1}
-                onChange={(e) => console.log(e.target.value)}
-              />
-              <Button
-                variant="contained"
-                endIcon={<ShoppingCartCheckout />}
-                color="primary"
-                sx={{ textTransform: "none" }}
-                fullWidth
-              >
-                Comprar
-              </Button>
-            </Grid>
+           
           </Grid>
           <Grid mt={{ xs: 2 }} px={{ md: 3 }} gridColumn={{ md: "1 / 3" }}>
             <Typography variant="h4" pt={{ xs: 1 }}>

@@ -1,3 +1,8 @@
+import React from "react";
+import { useDispatch, useSelector } from "react-redux";
+
+import Link from "next/link";
+
 import {
   updatedDrawer,
   updatedDrawerMobile,
@@ -11,9 +16,7 @@ import {
   Toolbar,
   Typography,
 } from "@mui/material";
-import Link from "next/link";
-import React from "react";
-import { useDispatch, useSelector } from "react-redux";
+
 import { MainListItems, SecondaryMainListItems } from "./ListItem";
 
 function DrawerMobile() {
@@ -28,7 +31,6 @@ function DrawerMobile() {
   return (
     <Drawer
       sx={{
-       
         display: { xs: "block", md: "none" },
         "& .MuiDrawer-paper": {
           pb: 2,

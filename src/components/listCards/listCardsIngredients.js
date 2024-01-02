@@ -1,8 +1,10 @@
 "use client";
-import { FindIngredientsUser } from "@/services/user";
-import { Grid } from "@mui/material";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+
+import { FindIngredientsUser } from "@/services/user";
+import { Grid } from "@mui/material";
+
 import CardIngredient from "../Cards/CardIngredient";
 
 const ListCardIngredient = () => {
@@ -29,7 +31,7 @@ const ListCardIngredient = () => {
         xl: "220px 220px 220px 220px",
       }}
       justifyContent={{ xs: "center", md: "flex-start" }}
-      gap={{ xs: 1, sm: '5%', md: 2 }}
+      gap={{ xs: 1, sm: "5%", md: 2 }}
     >
       {ingredients.map((i, index) => (
         <CardIngredient

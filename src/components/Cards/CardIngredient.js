@@ -1,5 +1,9 @@
 "use client";
 import { useState } from "react";
+
+import Image from "next/image";
+import Link from "next/link";
+
 import {
   Box,
   Card,
@@ -9,8 +13,6 @@ import {
   Paper,
   Typography,
 } from "@mui/material";
-import Link from "next/link";
-import Image from "next/image";
 
 const CardIngredient = ({ name, imageUrl, price, id }) => {
   const [elevation, setElevation] = useState(0);

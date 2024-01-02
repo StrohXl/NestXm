@@ -1,11 +1,12 @@
 "use client";
+import { useDispatch } from "react-redux";
+
 import {
   updateAnchorEl,
   updateMenuUser,
 } from "@/app/store/features/openComponents";
 import StringAvatar from "@/components/Avatar/stringAvatar";
 import { IconButton } from "@mui/material";
-import { useDispatch } from "react-redux";
 
 const IconMenuUser = () => {
   const dispatch = useDispatch();

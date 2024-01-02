@@ -1,13 +1,13 @@
 "use client";
-import { updateMenuShopping } from "@/app/store/features/openComponents";
+import { useDispatch, useSelector } from "react-redux";
 
+import Cookies from "js-cookie";
+import { useRouter } from "next/navigation";
+
+import { updateMenuShopping } from "@/app/store/features/openComponents";
 import StringAvatar from "@/components/Avatar/stringAvatar";
 import { Logout, Person } from "@mui/icons-material";
-import Cookies from "js-cookie";
-
 import { Grid, ListItemIcon, MenuItem, Typography } from "@mui/material";
-import { useRouter } from "next/navigation";
-import { useDispatch, useSelector } from "react-redux";
 
 const MenuContentUser = () => {
   const router = useRouter();

@@ -1,4 +1,7 @@
 "use client";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+
 import {
   updateAnchorEl,
   updateMenuShopping,
@@ -6,8 +9,6 @@ import {
 } from "@/app/store/features/openComponents";
 import { FindIngredientsUser } from "@/services/user";
 import { Menu } from "@mui/material";
-import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
 
 const MenuGlobal = ({ children, openMenu, type }) => {
   const dispatch = useDispatch();

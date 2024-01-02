@@ -11,7 +11,7 @@ export const items = [
   {
     name: "Dashboard",
     link: "/",
-    icon: <Dashboard/>,
+    icon: <Dashboard />,
   },
   {
     name: "Ordenes",
@@ -39,4 +39,3 @@ export const items = [
     link: "/shoppingCart",
   },
 ];
-

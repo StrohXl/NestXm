@@ -1,4 +1,9 @@
 "use client";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+
+import { useRouter } from "next/navigation";
+
 import {
   deleteAllProducts,
   deleteProduct,
@@ -8,6 +13,7 @@ import { Delete, ShoppingCart } from "@mui/icons-material";
 import {
   Avatar,
   Box,
+  Button,
   Divider,
   Grid,
   Icon,
@@ -19,9 +25,6 @@ import {
   MenuList,
   Typography,
 } from "@mui/material";
-import { useRouter } from "next/navigation";
-import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
 
 const MenuContentShopping = () => {
   const router = useRouter();
@@ -36,7 +39,7 @@ const MenuContentShopping = () => {
     FindIngredientsUser(dispatch);
   }, []);
   return (
-    <Box sx={{ width: { xs: 200, md: 250, "2xl": 300 } }}>
+    <Box sx={{ width: { md: 300, "2xl": 350 } }}>
       {shoppingCart.length == 0 ? (
         <Grid p={2} display={"grid"} justifyContent={"center"} px={{ md: 3 }}>
           <Icon sx={{ height: "auto", width: "auto" }}>
@@ -59,14 +62,14 @@ const MenuContentShopping = () => {
             alignItems={"center"}
           >
             <Typography variant="h6">Productos</Typography>
-            <Typography
+            <Button
               onClick={() => dispatch(deleteAllProducts())}
-              sx={{ cursor: "pointer" }}
-              textAlign={"end"}
+              endIcon={<Delete />}
+              sx={{ cursor: "pointer", textTransform: "none" }}
               color={"primary"}
             >
               Eliminar Todos
-            </Typography>
+            </Button>
           </Grid>
           <MenuList sx={{ py: 0, px: 1 }}>
             {shoppingCart.map((i, index) => {
@@ -76,7 +79,9 @@ const MenuContentShopping = () => {
                   <>
                     <MenuItem
                       key={i.id}
-                      onClick={() => router.push(`/buy/${i.id}`)}
+                      onClick={() =>
+                        router.push(`/shoppingCart?selected=${i.id}`)
+                      }
                       sx={{ borderRadius: 1 }}
                     >
                       <ListItemIcon>
@@ -85,7 +90,7 @@ const MenuContentShopping = () => {
                       <ListItemText sx={{ pr: 2 }}>
                         <Typography noWrap>{ingredient.name}</Typography>
                       </ListItemText>
-                      {i.cant}
+                 
                       <IconButton
                         size="small"
                         sx={{ ml: 1 }}

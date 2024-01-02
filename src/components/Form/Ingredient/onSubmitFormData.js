@@ -12,7 +12,7 @@ const onSubmitIngredient = async (
   type,
   router,
   onChangeInImage,
-  idIngredient
+  idIngredient,
 ) => {
   dispatch(updateErrorImage(false));
   const formData = new FormData();

@@ -1,11 +1,12 @@
 "use client";
+import { useDispatch, useSelector } from "react-redux";
+
 import {
   updateAnchorEl,
   updateMenuShopping,
 } from "@/app/store/features/openComponents";
 import { ShoppingCart } from "@mui/icons-material";
 import { Avatar, Badge, styled } from "@mui/material";
-import { useDispatch, useSelector } from "react-redux";
 
 const StyledBadge = styled(Badge)(({ theme }) => ({
   "& .MuiBadge-badge": {
