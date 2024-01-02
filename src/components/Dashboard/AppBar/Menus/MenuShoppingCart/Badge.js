@@ -8,7 +8,7 @@ import {
 import { ShoppingCart } from "@mui/icons-material";
 import { Avatar, Badge, styled } from "@mui/material";
 
-const StyledBadge = styled(Badge)(({ theme }) => ({
+const StyledBadge = styled(Badge)(() => ({
   "& .MuiBadge-badge": {
     right: 2,
     top: 4,

@@ -17,7 +17,7 @@ import {
   Typography,
 } from "@mui/material";
 
-import { MainListItems, SecondaryMainListItems } from "./ListItem";
+import { MainListItems } from "./ListItem";
 
 function DrawerMobile() {
   const user = useSelector((state) => state.user.user);

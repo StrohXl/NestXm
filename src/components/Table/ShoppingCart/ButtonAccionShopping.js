@@ -1,10 +1,12 @@
 "use client";
+import React from "react";
+import { useDispatch } from "react-redux";
+
+import { useRouter } from "next/navigation";
+
 import { deleteProduct } from "@/app/store/features/shoppingCart";
 import ListiconButtonShoppingCart from "@/helpers/ListIconButtonShoppingCart";
 import { Grid, IconButton, Tooltip, Typography } from "@mui/material";
-import { useRouter } from "next/navigation";
-import React from "react";
-import { useDispatch } from "react-redux";
 
 function ButtonAccionShopping({ id }) {
   const dispatch = useDispatch();
@@ -20,7 +22,7 @@ function ButtonAccionShopping({ id }) {
     }
   };
 
-  const BuyP = (id) => {};
+  const BuyP = () => {};
   const DeleteP = (id) => {
     dispatch(deleteProduct(id));
   };

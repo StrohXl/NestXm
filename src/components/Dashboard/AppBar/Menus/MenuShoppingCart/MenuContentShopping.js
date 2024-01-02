@@ -14,13 +14,11 @@ import {
   Avatar,
   Box,
   Button,
-  Divider,
   Grid,
   Icon,
   IconButton,
   ListItemIcon,
   ListItemText,
-  Menu,
   MenuItem,
   MenuList,
   Typography,
@@ -90,7 +88,7 @@ const MenuContentShopping = () => {
                       <ListItemText sx={{ pr: 2 }}>
                         <Typography noWrap>{ingredient.name}</Typography>
                       </ListItemText>
-                 
+
                       <IconButton
                         size="small"
                         sx={{ ml: 1 }}

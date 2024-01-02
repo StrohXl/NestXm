@@ -1,10 +1,10 @@
 "use client";
 
-import { Divider, Grid, List, Toolbar, Typography } from "@mui/material";
+import { List, Toolbar } from "@mui/material";
 import MuiDrawer from "@mui/material/Drawer";
 import { styled } from "@mui/material/styles";
 
-import { MainListItems, SecondaryMainListItems } from "./ListItem";
+import { MainListItems } from "./ListItem";
 
 const Drawer = styled(MuiDrawer, {
   shouldForwardProp: (prop) => prop !== "open",

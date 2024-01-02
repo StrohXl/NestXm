@@ -1,11 +1,10 @@
 "use client";
 import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-
-import { FindIngredientsUser } from "@/services/user";
-import { Typography } from "@mui/material";
+import { useDispatch } from "react-redux";
 
 import TableShoppingCart from "@/components/Table/ShoppingCart/TableShoppingCart";
+import { FindIngredientsUser } from "@/services/user";
+import { Typography } from "@mui/material";
 
 function ShoppingCartPage() {
   const dispatch = useDispatch();

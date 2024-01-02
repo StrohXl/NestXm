@@ -4,7 +4,7 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import { Close, AddPhotoAlternateOutlined } from "@mui/icons-material";
-import { Box, Grid, IconButton, Paper, Typography } from "@mui/material";
+import { Grid, IconButton, Paper, Typography } from "@mui/material";
 
 import cancelImage from "../cancelImage";
 import UploadImage from "../uploadImage";

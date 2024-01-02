@@ -1,6 +1,6 @@
 import { TableCell, TableRow, CircularProgress } from "@mui/material";
 
-const TableLoading = ({ icon, title }) => {
+const TableLoading = () => {
   return (
     <TableRow sx={{ position: "relative", height: 230 }}>
       <TableCell

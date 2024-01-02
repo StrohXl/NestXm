@@ -1,4 +1,3 @@
-import axios from "axios";
 import Cookies from "js-cookie";
 import jwt from "jsonwebtoken";
 import { isPagesAPIRouteMatch } from "next/dist/server/future/route-matches/pages-api-route-match";

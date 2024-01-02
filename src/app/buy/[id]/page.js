@@ -20,7 +20,6 @@ import {
 const Orders = () => {
   const { data, params } = useEffectBuy();
   const [add, setAdd] = useState(1);
-  const [buy, setBuy] = useState(1);
   const dispatch = useDispatch();
   return (
     <>
@@ -62,7 +61,7 @@ const Orders = () => {
           <Grid
             gap={2}
             display={"flex"}
-            flexDirection={'column'}
+            flexDirection={"column"}
             mt={3}
             mx={"auto"}
             width={"100%"}
@@ -71,7 +70,7 @@ const Orders = () => {
             gridRow={{ md: "2/3" }}
             px={{ md: 3 }}
           >
-             <Grid display={"flex"} gap={1}>
+            <Grid display={"flex"} gap={1}>
               <TextField
                 size="small"
                 type="number"
@@ -112,7 +111,6 @@ const Orders = () => {
                 Anadir
               </Button>
             </Grid>
-           
           </Grid>
           <Grid mt={{ xs: 2 }} px={{ md: 3 }} gridColumn={{ md: "1 / 3" }}>
             <Typography variant="h4" pt={{ xs: 1 }}>

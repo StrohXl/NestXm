@@ -1,6 +1,3 @@
-import { useSelector } from "react-redux";
-
-import { getUser } from "@/app/store/features/dataUser";
 import { updateLoading1 } from "@/app/store/features/propertyButtonSlice";
 import closeModal from "@/components/Modal/closeModal";
 import { FindOne, Update } from "@/services/user";

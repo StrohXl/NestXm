@@ -8,7 +8,7 @@ import DeleteUser from "@/components/ConfirmPopover/deleteUser";
 import ContentUser from "@/components/Modal/contentUser";
 import ModalOpen from "@/components/Modal/modal";
 import openModal from "@/components/Modal/openModal";
-import { ArrowForwardIos, Edit } from "@mui/icons-material";
+import { Edit } from "@mui/icons-material";
 import {
   Grid,
   Paper,
@@ -17,9 +17,7 @@ import {
   TableCell,
   TableRow,
   Typography,
-  Button,
   IconButton,
-  Box,
 } from "@mui/material";
 
 const User = () => {

@@ -1,6 +1,8 @@
 import React from "react";
-import Pagination from "../TableFooter";
-import TableRowShoppingCart from "./TableRowShoppingCart";
+import { useDispatch, useSelector } from "react-redux";
+
+import { deleteAllProducts } from "@/app/store/features/shoppingCart";
+import { Delete, ShoppingCart } from "@mui/icons-material";
 import {
   Table,
   Paper,
@@ -14,11 +16,10 @@ import {
   Typography,
   IconButton,
 } from "@mui/material";
-import { useDispatch, useSelector } from "react-redux";
-import TableNotHave from "../TableNotHave";
 
-import { Delete, ShoppingCart } from "@mui/icons-material";
-import { deleteAllProducts } from "@/app/store/features/shoppingCart";
+import Pagination from "../TableFooter";
+import TableNotHave from "../TableNotHave";
+import TableRowShoppingCart from "./TableRowShoppingCart";
 
 function TableShoppingCart() {
   const shoppingCart = useSelector((state) => state.shoppingCart);
@@ -37,7 +38,7 @@ function TableShoppingCart() {
             <TableCell align="center">Precio del Producto</TableCell>
             <TableCell align="center">Precio Total</TableCell>
             <TableCell align="center">
-              <Grid >
+              <Grid>
                 <Tooltip
                   placement="top"
                   title={<Typography variant="h6">Eliminar</Typography>}

@@ -1,8 +1,11 @@
-import { Avatar, TableCell, TableRow } from "@mui/material";
 import React from "react";
-import ButtonAccionShopping from "./ButtonAccionShopping";
 import { useSelector } from "react-redux";
+
 import { useSearchParams } from "next/navigation";
+
+import { Avatar, TableCell, TableRow } from "@mui/material";
+
+import ButtonAccionShopping from "./ButtonAccionShopping";
 
 function TableRowShoppingCart() {
   const params = useSearchParams();

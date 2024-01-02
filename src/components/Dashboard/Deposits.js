@@ -3,8 +3,6 @@ import { useSelector } from "react-redux/";
 
 import Typography from "@mui/material/Typography";
 
-import Title from "./Title";
-
 export default function Deposits() {
   const user = useSelector((state) => state.user.user);
   return (
