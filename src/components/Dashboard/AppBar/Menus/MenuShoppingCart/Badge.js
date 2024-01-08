@@ -26,7 +26,7 @@ const BadgeShoppingCart = () => {
     <StyledBadge
       onClick={handleClick}
       badgeContent={shoppingCart.length}
-      color="info"
+      sx={{ ".MuiBadge-badge": { background: "#7b1fa2" } }}
       id="basic-button"
     >
       <Avatar

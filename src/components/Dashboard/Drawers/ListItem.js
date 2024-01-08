@@ -1,5 +1,5 @@
 import * as React from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 import { useRouter, usePathname } from "next/navigation";
 
@@ -8,7 +8,7 @@ import {
   updatedDrawerMobile,
 } from "@/app/store/features/openDrawer";
 import { items } from "@/helpers/ListItems";
-import { Divider, styled } from "@mui/material";
+import { Badge, Divider, styled } from "@mui/material";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
@@ -33,7 +33,7 @@ export const MainListItems = () => {
   const dispatch = useDispatch();
   const router = useRouter();
   const path = usePathname();
-
+  const shoppingCart = useSelector((state) => state.shoppingCart);
   const changeUrl = (link) => {
     router.push(link);
     dispatch(updatedDrawer(false));
@@ -56,7 +56,16 @@ export const MainListItems = () => {
               sx={{ pl: 2.6 }}
             >
               <ListItemIconStyled path={path} link={i.link} index={index}>
-                {i.icon}
+                {1 + index == items.length ? (
+                  <Badge
+                    color={shoppingCart.length > 0 ? "primary" : "default"}
+                    variant="dot"
+                  >
+                    {i.icon}
+                  </Badge>
+                ) : (
+                  i.icon
+                )}
               </ListItemIconStyled>
               <ListItemText primary={i.name} />
             </ListItemButton>

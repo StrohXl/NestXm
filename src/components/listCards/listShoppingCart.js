@@ -33,20 +33,12 @@ const ListShoppingCart = () => {
           <Grid
             py={1}
             display={"flex"}
-            justifyContent={"space-between"}
             alignItems={"center"}
           >
             <Typography variant="h5" color={"#555"}>
               Lista de Productos
             </Typography>
-            <Button
-              sx={{ textTransform: "none" }}
-              endIcon={<ShoppingCart />}
-              variant="contained"
-              color="primary"
-            >
-              Comprar Todo
-            </Button>
+        
           </Grid>
           <MenuList
             sx={{

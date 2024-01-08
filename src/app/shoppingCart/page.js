@@ -33,6 +33,7 @@ function ShoppingCartPage() {
         borderRadius: 1.5,
         background: "#fff",
         p: 3,
+        maxWidth:800
       }}
     >
       <Typography variant="h4">Carrito de compras</Typography>

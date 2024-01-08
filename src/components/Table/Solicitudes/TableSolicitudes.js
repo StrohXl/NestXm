@@ -46,8 +46,18 @@ const TableSolicitudes = () => {
       tableHead={
         <>
           <TableCell align="left">Fecha</TableCell>
-          <TableCell align="right">Monto</TableCell>
-          <TableCell align="right">Saldo</TableCell>
+          <TableCell
+            sx={{ display: { xs: "none", sm: "table-cell" } }}
+            align="right"
+          >
+            Monto
+          </TableCell>
+          <TableCell
+            sx={{ display: { xs: "none", sm: "table-cell" } }}
+            align="right"
+          >
+            Saldo
+          </TableCell>
         </>
       }
       tableBody={

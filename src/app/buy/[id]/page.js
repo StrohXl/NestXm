@@ -35,7 +35,7 @@ const Orders = () => {
   const [open, setOpen] = useState(false);
   return (
     <>
-      <Paper sx={{ border: "1px solid #ddd" }} elevation={0}>
+      <Paper sx={{ border: "1px solid #ddd", maxWidth: 800 }} elevation={0}>
         <Grid
           my={{ xs: 2, md: 2.5, lg: 3 }}
           display={"grid"}
@@ -57,7 +57,13 @@ const Orders = () => {
           >
             <Image src={data.imageUrl} fill title={data.name} alt={data.name} />
           </Box>
-          <Divider sx={{ mt: 4, gridColumn: { md: "1 / 3" } }} />
+          <Divider
+            sx={{
+              display: data.description == "" ? "none" : "block",
+              mt: 4,
+              gridColumn: { md: "1 / 3" },
+            }}
+          />
           <Grid
             gridColumn={{ md: "2/3" }}
             gridRow={{ md: "1/2" }}
@@ -146,6 +152,7 @@ const Orders = () => {
             )}
           </Grid>
           <Grid
+            display={data.description == "" ? "none" : "block"}
             mt={{ xs: 2 }}
             px={{ xs: 2, md: 3 }}
             gridColumn={{ md: "1 / 3" }}

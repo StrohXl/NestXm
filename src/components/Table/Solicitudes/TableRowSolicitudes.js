@@ -28,20 +28,31 @@ const TableRowSolicitudes = ({ row, key }) => {
         key={key}
         hover
         sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
+        onClick={() => setOpen(!open)}
       >
         <TableCell align="left">
           <LocalizationProvider dateAdapter={AdapterDayjs}>
             <DemoContainer
               sx={{
                 ".MuiFormControl-root": {
-                  minWidth: "220px !important",
+                  minWidth: {
+                    xs: "180px !important",
+                    sm: "190px !important",
+                    md: "220px !important",
+                  },
                 },
               }}
               components={["DateTimePicker"]}
             >
               <DateTimePicker
                 sx={{
-                  ".MuiInputBase-root": { maxWidth: "220px !important" },
+                  ".MuiInputBase-root": {
+                    maxWidth: {
+                      xs: "180px !important",
+                      sm: "190px !important",
+                      md: "220px !important",
+                    },
+                  },
                 }}
                 format="DD/MM/YYYY HH:mm A"
                 label="Fecha"
@@ -51,13 +62,22 @@ const TableRowSolicitudes = ({ row, key }) => {
             </DemoContainer>
           </LocalizationProvider>
         </TableCell>
-        <TableCell align="right">
+        <TableCell
+          sx={{ display: { xs: "none", sm: "table-cell" } }}
+          align="right"
+        >
           <Typography color={"red"}>-{row.price}</Typography>
         </TableCell>
-        <TableCell align="right">{row.remaining}</TableCell>
+        <TableCell
+          sx={{ display: { xs: "none", sm: "table-cell" } }}
+          align="right"
+        >
+          {row.remaining}
+        </TableCell>
         <TableCell align="center">
           <IconButton
             onClick={(event) => {
+              event.stopPropagation();
               deleteSolicitud(row.id, dispatch);
             }}
             size="small"
@@ -66,12 +86,21 @@ const TableRowSolicitudes = ({ row, key }) => {
           </IconButton>
         </TableCell>
       </TableRow>
-      <TableRow>
+      <TableRow sx={{ display: { xs: "table-row", sm: "none" } }}>
         <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={6}>
           <Collapse in={open} timeout="auto" unmountOnExit>
             <Box sx={{ margin: 1 }}>
               <Typography variant="h6" gutterBottom component="div">
-                Descripción:
+                Saldo: {row.remaining} Bs
+              </Typography>
+              {row.description}
+            </Box>
+            <Box sx={{ margin: 1 }}>
+              <Typography variant="h6" gutterBottom component="div">
+                Monto:{" "}
+                <Typography ml={1} component={"span"} color={"red"}>
+                  -{row.price} Bs
+                </Typography>
               </Typography>
               {row.description}
             </Box>

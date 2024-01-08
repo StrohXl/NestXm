@@ -22,14 +22,15 @@ const ListCardIngredient = () => {
       mt={{ xs: 5 }}
       display={"grid"}
       gridTemplateColumns={{
-        xs: "160px 160px",
-        sm: "200px 200px",
-        md: "220px 220px",
+        xs: "45% 45%",
+        sm: "50% 50%",
+        md: "45% 45%",
         lg: "220px 220px 220px",
-        xl: "220px 220px 220px 220px",
+        xl: "240px 240px 240px",
+        "2xl": "220px 220px 220px 220px",
       }}
       justifyContent={{ xs: "center", md: "flex-start" }}
-      gap={{ xs: 1, sm: 2}}
+      gap={{ xs: 1, sm: 2 }}
     >
       {ingredients.map((i, index) => (
         <CardIngredient

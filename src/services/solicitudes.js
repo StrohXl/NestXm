@@ -4,6 +4,8 @@ import { updateAlert } from "@/app/store/features/alertSlice";
 import Cookies from "js-cookie";
 import jwt from "jsonwebtoken";
 import { FindSolicitudesUser } from "./user";
+import { deleteProduct } from "@/app/store/features/shoppingCart";
+import { elementType } from "prop-types";
 
 const { solicitudDeCompra } = endPoints;
 
@@ -22,6 +24,11 @@ export async function buyProduct(products, dispatch) {
         type: "success",
       })
     );
+    setTimeout(() => {
+      products.forEach((element, index) => {
+        dispatch(deleteProduct(element.idIngredient));
+      });
+    }, 2000);
     return true;
   } catch (error) {
     console.log(error);

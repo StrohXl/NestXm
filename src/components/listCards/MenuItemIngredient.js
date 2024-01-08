@@ -29,8 +29,6 @@ function MenuItemIngredient({ id, ingredient, item }) {
   const [cantidad, setCantidad] = useState(item.cant);
   const [openModal, setOpenModal] = useState(false);
   const router = useRouter();
-  const params = useSearchParams();
-  const selected = params.get("selected");
   const dispatch = useDispatch();
   const DeleteP = (value) => {
     console.log(value);
@@ -45,18 +43,17 @@ function MenuItemIngredient({ id, ingredient, item }) {
   return (
     <>
       <ListItem
-        id={id} 
+        id={id}
         className={id}
         sx={{
           borderRadius: 1,
           border: "1px solid #ddd",
           py: 3,
           display: "grid",
-          gridTemplateColumns: "40% 60%",
+          gridTemplateColumns: { xs: "50% 50%", sm: "50% 50%", md: "45% 55%" },
           gridTemplateRows: "auto auto",
           position: "relative",
           rowGap: 1,
-          background: selected == id && "#eee8",
         }}
       >
         <ListItemIcon
@@ -64,6 +61,7 @@ function MenuItemIngredient({ id, ingredient, item }) {
             position: "relative",
             width: "100%",
             aspectRatio: 1,
+            gridColumn: { xs: "1/3", sm: "1/2" },
           }}
         >
           <Image
@@ -73,40 +71,58 @@ function MenuItemIngredient({ id, ingredient, item }) {
             src={ingredient.imageUrl}
           />
         </ListItemIcon>
-        <Grid>
+        <Grid sx={{ gridColumn: { xs: "1/3", sm: "2/3" } }}>
           <Box
             display={"grid"}
-            gridTemplateColumns={"80px auto auto"}
+            gridTemplateColumns={{ xs: "auto", sm: "80px auto auto" }}
             textAlign={"center"}
             border={"1px solid #ddd"}
             borderRadius={1}
           >
             <Grid
-              display={"grid"}
+              display={{ xs: "flex", sm: "grid" }}
               textAlign={"center"}
-              borderRight={"1px solid #ddd"}
+              alignItems={"center"}
+              borderRight={{ xs: "none", sm: "1px solid #ddd" }}
+              borderBottom={{ xs: "1px solid #ddd", sm: "none" }}
               gap={1}
+              px={{ xs: 1, sm: 0 }}
+              py={{ xs: 0.5, sm: 0 }}
+              justifyContent={"space-between"}
             >
               Cantidad
               <TextField
-                sx={{ border: "none" }}
+                sx={{ border: "none", maxWidth: { xs: 100, sm: "auto" } }}
                 size="small"
                 onChange={(value) => setCantidad(value.target.value)}
                 type="number"
                 defaultValue={cantidad}
               />
             </Grid>
-            <Grid display={"grid"} borderRight={"1px solid #ddd"}>
+            <Grid
+              display={{ xs: "flex", sm: "grid" }}
+              borderRight={{ xs: "none", sm: "1px solid #ddd" }}
+              borderBottom={{ xs: "1px solid #ddd", sm: "none" }}
+              py={{ xs: 1, sm: 0 }}
+              px={{ xs: 1, sm: 0 }}
+              justifyContent={{ xs: "space-between", sm: "center" }}
+            >
               Precio <b>Bs. {ingredient.price}</b>
             </Grid>
-            <Grid display={"grid"} textAlign={"center"}>
+            <Grid
+              py={{ xs: 1, sm: 0 }}
+              px={{ xs: 1, sm: 0 }}
+              display={{ xs: "flex", sm: "grid" }}
+              textAlign={"center"}
+              justifyContent={{ xs: "space-between", sm: "center" }}
+            >
               Total
               <b>Bs. {cantidad * ingredient.price}</b>
             </Grid>
           </Box>
           <Grid
             display={"grid"}
-            gridTemplateColumns={{ sm: "auto auto" }}
+            gridTemplateColumns={{ lg: "auto auto" }}
             gap={1}
             mt={2}
           >
@@ -132,7 +148,9 @@ function MenuItemIngredient({ id, ingredient, item }) {
           </Grid>
         </Grid>
 
-        <ListItemText sx={{ gridRow: "2/3", gridColumn: "1/2" }}>
+        <ListItemText
+          sx={{ gridRow: "2/3", gridColumn: { xs: "1/3", sm: "1/2" } }}
+        >
           <Typography textAlign={"center"} variant="h6">
             {ingredient.name}
           </Typography>
