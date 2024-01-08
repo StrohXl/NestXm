@@ -4,7 +4,9 @@ export const openComponents = createSlice({
   initialState: {
     openBackdrop: true,
     openModal: false,
+    openModalBuyProduct: false,
     menuShopping: null,
+    menuMoreShopping: null,
     menuUser: null,
     anchorEl: null,
   },
@@ -15,11 +17,17 @@ export const openComponents = createSlice({
     updateModal(state, { payload }) {
       state.openModal = payload;
     },
+    updateModalBuy(state, { payload }) {
+      state.openModalBuyProduct = payload;
+    },
     updateMenuShopping(state, { payload }) {
       state.menuShopping = payload;
     },
     updateMenuUser(state, { payload }) {
       state.menuUser = payload;
+    },
+    updateMoreShopping(state, { payload }) {
+      state.menuMoreShopping = payload;
     },
     updateAnchorEl(state, { payload }) {
       state.anchorEl = payload;
@@ -29,8 +37,10 @@ export const openComponents = createSlice({
 export const {
   updateBackdrop,
   updateModal,
+  updateModalBuy,
   updateMenuUser,
   updateMenuShopping,
+  updateMoreShopping,
   updateAnchorEl,
 } = openComponents.actions;
 

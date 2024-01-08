@@ -164,6 +164,7 @@ export const theme = createTheme({
     MuiButton: {
       styleOverrides: {
         root: {
+          textTransform: "none",
           fontSize: ".8em",
           "& .MuiSvgIcon-root": {
             fontSize: "8.em",

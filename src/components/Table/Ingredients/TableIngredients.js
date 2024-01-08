@@ -57,7 +57,7 @@ const TableIngredients = () => {
       tableFooter={
         loading == false &&
         ingredients.length > 5 && (
-          <Pagination changePage={(value) => setPage(value)} />
+          <Pagination changePage={(value) => setPage(value)} page={page} />
         )
       }
     />

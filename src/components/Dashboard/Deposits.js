@@ -11,7 +11,7 @@ export default function Deposits() {
         Saldo
       </Typography>
       <Typography ml={2} component="p" variant="h5">
-        {user.money ? user.money : 0}
+        Bs. {user.money ? user.money : 0}
       </Typography>
     </>
   );

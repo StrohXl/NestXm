@@ -10,7 +10,7 @@ const ButtonAccionTable = ({ id }) => {
   return (
     <ButtonGroup
       sx={{
-        gap: { xs: 1 },
+        gap: { xs: .5 },
       }}
       size="small"
       variant="text"
@@ -27,7 +27,6 @@ const ButtonAccionTable = ({ id }) => {
         onClick={(event) => {
           event.stopPropagation(), deleteIngredient(dispatch, id);
         }}
-        color="error"
         size="small"
       >
         <Delete sx={{ fontSize: { xs: 20, md: 25, "2xl": 30 } }} />

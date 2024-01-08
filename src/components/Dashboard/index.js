@@ -43,18 +43,21 @@ export default function Dashboard({ children }) {
           <Box
             component="main"
             sx={{
-              backgroundColor: (theme) =>
-                theme.palette.mode === "light"
-                  ? theme.palette.grey[100]
-                  : theme.palette.grey[900],
+              background: "#fafafa",
               flexGrow: 1,
               height: "100vh",
               overflow: "auto",
             }}
           >
             <Toolbar />
-            <Container sx={{ mx: 0, px: { xs: 1, sm: 3, md: 5 } }}>
-              <Toolbar />
+            <Container
+              sx={{
+                mx: 0,
+                px: { xs: 1, sm: 3, md: 5 },
+                maxWidth: { lg: "1060px" },
+              }}
+            >
+              <Toolbar sx={{ minHeight: { xs: 40, md: 50 } }} />
               {children}
             </Container>
             <Toolbar />

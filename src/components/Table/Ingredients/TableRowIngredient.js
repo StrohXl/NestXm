@@ -18,7 +18,10 @@ const TableRowIngredient = ({ row, key }) => {
       <TableRow
         key={key}
         hover
-        sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
+        sx={{
+          "&:last-child td, &:last-child th": { border: 0 },
+          cursor: "pointer",
+        }}
         onClick={() => setOpen(!open)}
       >
         <TableCell component="th" scope="row">

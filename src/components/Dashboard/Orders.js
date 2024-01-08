@@ -2,7 +2,7 @@ import * as React from "react";
 
 import Link from "next/link";
 
-import { Typography } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 
 import TableSolicitudes from "../Table/Solicitudes/TableSolicitudes";
 
@@ -18,17 +18,23 @@ function preventDefault(event) {
 export default function Orders() {
   return (
     <React.Fragment>
-      <Typography component={"h2"} variant="h4" color={"primary"}>
+      <Typography
+        px={{ xs: 2, md: 3 }}
+        component={"h2"}
+        variant="h4"
+        color={"primary"}
+      >
         Ordenes Recientes
       </Typography>
       <TableSolicitudes />
-      <Link
-        href="/orders"
-        onClick={preventDefault}
-        style={{ color: "#000", textDecoration: "none", marginTop: "20px" }}
-      >
-        Ver mas
-      </Link>
+      <Box px={{ xs: 2, md: 3 }} mt={2}>
+        <Link
+          href="/orders"
+          style={{ color: "#000", textDecoration: "none"}}
+        >
+          Ver mas
+        </Link>
+      </Box>
     </React.Fragment>
   );
 }

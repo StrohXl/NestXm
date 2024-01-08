@@ -1,7 +1,5 @@
 import React from "react";
 
-import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
-import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import {
   Box,
   Collapse,
@@ -10,10 +8,19 @@ import {
   TableRow,
   Typography,
 } from "@mui/material";
-
-import ButtonAccionTable from "../ButtonAccionTable";
+import { deleteSolicitud } from "@/services/solicitudes";
+import { useDispatch } from "react-redux";
+import { Delete } from "@mui/icons-material";
+import { DemoContainer } from "@mui/x-date-pickers/internals/demo";
+import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
+import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
+import { DateField } from "@mui/x-date-pickers/DateField";
+import { DatePicker, DateTimePicker } from "@mui/x-date-pickers";
+import { parseISO } from "date-fns";
+import dayjs from "dayjs";
 
 const TableRowSolicitudes = ({ row, key }) => {
+  const dispatch = useDispatch();
   const [open, setOpen] = React.useState(false);
   return (
     <>
@@ -22,23 +29,41 @@ const TableRowSolicitudes = ({ row, key }) => {
         hover
         sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
       >
-        <TableCell>
-          {row.description != "" && (
-            <IconButton
-              aria-label="expand row"
-              size="small"
-              onClick={() => setOpen(!open)}
+        <TableCell align="left">
+          <LocalizationProvider dateAdapter={AdapterDayjs}>
+            <DemoContainer
+              sx={{
+                ".MuiFormControl-root": {
+                  minWidth: "220px !important",
+                },
+              }}
+              components={["DateTimePicker"]}
             >
-              {open ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
-            </IconButton>
-          )}
+              <DateTimePicker
+                sx={{
+                  ".MuiInputBase-root": { maxWidth: "220px !important" },
+                }}
+                format="DD/MM/YYYY HH:mm A"
+                label="Fecha"
+                value={dayjs(row.createAt)}
+                readOnly
+              />
+            </DemoContainer>
+          </LocalizationProvider>
         </TableCell>
-        <TableCell component="th" scope="row">
-          {row.name}
-        </TableCell>
-        <TableCell align="right">{row.price}</TableCell>
         <TableCell align="right">
-          <ButtonAccionTable id={row.id} />
+          <Typography color={"red"}>-{row.price}</Typography>
+        </TableCell>
+        <TableCell align="right">{row.remaining}</TableCell>
+        <TableCell align="center">
+          <IconButton
+            onClick={(event) => {
+              deleteSolicitud(row.id, dispatch);
+            }}
+            size="small"
+          >
+            <Delete sx={{ fontSize: { xs: 20, md: 25, "2xl": 30 } }} />
+          </IconButton>
         </TableCell>
       </TableRow>
       <TableRow>

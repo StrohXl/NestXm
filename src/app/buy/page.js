@@ -1,12 +1,12 @@
 import ListCardIngredient from "@/components/listCards/listCardsIngredients";
-import { Typography } from "@mui/material";
+import { Paper, Typography } from "@mui/material";
 
 const Orders = () => {
   return (
-    <>
-      <Typography variant="h2">Comprar</Typography>
+    <Paper elevation={0} sx={{ border: "1px solid #ddd", p: { xs: 2, sm: 3 } }}>
+      <Typography variant="h3">Comprar</Typography>
       <ListCardIngredient />
-    </>
+    </Paper>
   );
 };
 export default Orders;

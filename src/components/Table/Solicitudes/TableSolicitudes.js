@@ -17,6 +17,7 @@ const TableSolicitudes = () => {
   const [page, setPage] = useState(0);
   const dispatch = useDispatch();
   const solicitudes = useSelector((state) => state.user.userSolicitudes);
+  const tableLength = useSelector((state) => state.user.table.length);
 
   const getSolicitudes = async () => {
     await FindSolicitudesUser(dispatch);
@@ -26,19 +27,27 @@ const TableSolicitudes = () => {
   useEffect(() => {
     getSolicitudes();
   }, []);
+
   useEffect(() => {
-    if (solicitudes.length < 6) {
+    if (
+      tableLength == 5 ||
+      tableLength == 10 ||
+      tableLength == 15 ||
+      tableLength == 20 ||
+      tableLength == 25 ||
+      tableLength == 30
+    ) {
       setPage(0);
     }
-  }, [solicitudes]);
+  }, [tableLength]);
 
   return (
     <TableOrders
       tableHead={
         <>
-          <TableCell width={30} />
-          <TableCell align="center">Fecha</TableCell>
-          <TableCell align="right">Precio total</TableCell>
+          <TableCell align="left">Fecha</TableCell>
+          <TableCell align="right">Monto</TableCell>
+          <TableCell align="right">Saldo</TableCell>
         </>
       }
       tableBody={
@@ -58,7 +67,7 @@ const TableSolicitudes = () => {
       tableFooter={
         loading == false &&
         solicitudes.length > 5 && (
-          <Pagination changePage={(value) => setPage(value)} />
+          <Pagination changePage={(value) => setPage(value)} page={page} />
         )
       }
     />

@@ -1,10 +1,7 @@
-import { useDispatch, useSelector } from "react-redux";
-
 import { Close } from "@mui/icons-material";
 import { Box, IconButton, Modal } from "@mui/material";
-
-import closeModal from "./closeModal";
-
+import React from "react";
+import ContentBuyProduct from "../contentBuyProduct";
 const style = {
   position: "absolute",
   top: "50%",
@@ -19,22 +16,27 @@ const style = {
   p: 4,
   pt: 2,
 };
-const ModalGlobal = ({ children, open }) => {
-  const dispatch = useDispatch();
 
+function ModalBuyProduct({ openModal, setOpenModal, product, quantity }) {
   return (
-    <Modal open={open} onClose={() => closeModal(dispatch)}>
+    <Modal open={openModal} onClose={() => setOpenModal(false)}>
       <Box sx={style}>
         <IconButton
           color="#000"
-          onClick={() => closeModal(dispatch)}
+          onClick={() => setOpenModal(false)}
           sx={{ position: "absolute", left: 10, top: 10 }}
         >
           <Close />
         </IconButton>
-        {children}
+        <ContentBuyProduct
+          ingredient={product}
+          total={quantity * product.price}
+          cantidad={quantity}
+          setOpenModal={(value) => setOpenModal(value)}
+        />
       </Box>
     </Modal>
   );
-};
-export default ModalGlobal;
+}
+
+export default ModalBuyProduct;

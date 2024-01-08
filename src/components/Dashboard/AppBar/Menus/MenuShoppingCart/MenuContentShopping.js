@@ -42,7 +42,7 @@ const MenuContentShopping = () => {
         <Grid p={2} display={"grid"} justifyContent={"center"} px={{ md: 3 }}>
           <Icon sx={{ height: "auto", width: "auto" }}>
             <ShoppingCart
-              color="primary"
+              color="disabled"
               sx={{ fontSize: { md: 50, xl: 55, "2xl": 60 } }}
             />
           </Icon>

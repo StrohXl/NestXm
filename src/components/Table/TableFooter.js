@@ -15,17 +15,16 @@ import {
   TableRow,
 } from "@mui/material";
 
-const Pagination = ({ changePage }) => {
-  const [page, setPage] = useState(0);
+const Pagination = ({ changePage, page }) => {
   const tableLength = useSelector((state) => state.user.table.length);
   const handleChangePage = (event, newPage) => {
-    setPage(newPage);
     changePage(newPage);
   };
   return (
     <TableFooter>
       <TableRow>
         <TablePagination
+          sx={{ m: "auto" }}
           rowsPerPageOptions={[]}
           colSpan={3}
           count={tableLength}

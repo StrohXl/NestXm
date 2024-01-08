@@ -21,16 +21,26 @@ export const deleteIngredient = async (dispatch, id) => {
         open: true,
         children: "Ingrediente Eliminado",
         type: "success",
-      }),
+      })
     );
   } catch (error) {
-    dispatch(
-      updateAlert({
-        open: true,
-        children: "hubo un error",
-        type: "error",
-      }),
-    );
+    if (error.response.data.message) {
+      dispatch(
+        updateAlert({
+          open: true,
+          children: error.response.data.message,
+          type: "error",
+        })
+      );
+    } else {
+      dispatch(
+        updateAlert({
+          open: true,
+          children: "hubo un error",
+          type: "error",
+        })
+      );
+    }
   }
 };
 
@@ -44,7 +54,7 @@ export const getOneIngredient = async (dispatch, id) => {
         open: true,
         children: "hubo un error",
         type: "error",
-      }),
+      })
     );
   }
 };
@@ -62,7 +72,7 @@ export const createIngredient = async (dispatch, data) => {
         open: true,
         type: "success",
         children: "Ingrediente Creado",
-      }),
+      })
     );
     return true;
   } catch (error) {
@@ -71,7 +81,7 @@ export const createIngredient = async (dispatch, data) => {
         open: true,
         type: "error",
         children: "Hubo un error",
-      }),
+      })
     );
   }
 };
@@ -85,7 +95,7 @@ export const updateIngredient = async (dispatch, data, id) => {
         open: true,
         type: "success",
         children: "Ingrediente Editado",
-      }),
+      })
     );
     return true;
   } catch (error) {
@@ -94,7 +104,7 @@ export const updateIngredient = async (dispatch, data, id) => {
         open: true,
         type: "error",
         children: "Hubo un error",
-      }),
+      })
     );
   }
 };

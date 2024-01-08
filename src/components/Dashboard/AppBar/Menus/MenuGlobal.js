@@ -6,9 +6,11 @@ import {
   updateAnchorEl,
   updateMenuShopping,
   updateMenuUser,
+  updateMoreShopping,
 } from "@/app/store/features/openComponents";
 import { FindIngredientsUser } from "@/services/user";
 import { Menu } from "@mui/material";
+import { usePathname } from "next/navigation";
 
 const MenuGlobal = ({ children, openMenu, type }) => {
   const dispatch = useDispatch();
@@ -16,6 +18,7 @@ const MenuGlobal = ({ children, openMenu, type }) => {
   const handleClose = () => {
     dispatch(updateAnchorEl(null));
     dispatch(updateMenuShopping(null));
+    dispatch(updateMoreShopping(null));
     dispatch(updateMenuUser(null));
   };
   useEffect(() => {

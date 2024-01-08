@@ -22,6 +22,7 @@ import {
 
 const User = () => {
   const user = useSelector((state) => state.user.user);
+  const open = useSelector((state) => state.components.openModal);
   const tableUser = [
     {
       value1: "Nombre",
@@ -31,7 +32,7 @@ const User = () => {
     {
       value1: "Correo electrónico",
       value2: user.email,
-      url: "/user/edit-email",
+      url: "/user",
     },
     {
       value1: "Contraseña",
@@ -42,7 +43,7 @@ const User = () => {
   const dispatch = useDispatch();
   return (
     <>
-      <ModalOpen>
+      <ModalOpen open={open}>
         <ContentUser />
       </ModalOpen>
       <Paper sx={{ p: 2, py: { xs: 5 } }}>

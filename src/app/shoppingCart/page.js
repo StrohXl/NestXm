@@ -4,19 +4,47 @@ import { useDispatch } from "react-redux";
 
 import TableShoppingCart from "@/components/Table/ShoppingCart/TableShoppingCart";
 import { FindIngredientsUser } from "@/services/user";
-import { Typography } from "@mui/material";
+import { Box, Paper, Typography } from "@mui/material";
+import ListShoppingCart from "@/components/listCards/listShoppingCart";
+import { useParams, useSearchParams } from "next/navigation";
 
 function ShoppingCartPage() {
   const dispatch = useDispatch();
+  const params = useSearchParams();
+  const select = params.get("selected");
+
   useEffect(() => {
     FindIngredientsUser(dispatch);
   }, []);
+  useEffect(() => {
+    if (select) {
+      const menuItem = document.getElementById(select);
+      const menuclass = document.getElementsByClassName(select);
+      if (menuItem) {
+        menuclass[0].scrollIntoView()
+      }
+    }
+  }, [select]);
 
   return (
-    <>
-      <Typography variant="h2">Carrito</Typography>
-      <TableShoppingCart />
-    </>
+    <Box
+      sx={{
+        border: "1px solid #ddd",
+        borderRadius: 1.5,
+        background: "#fff",
+        p: 3,
+      }}
+    >
+      <Typography variant="h4">Carrito de compras</Typography>
+      <Typography ml={1} mt={1} component={"p"} variant="body1">
+        Por favor resive su lista de productos,{" "}
+        <b>
+          podra seleccionar de forma individual la cantidad del producto que
+          desea comprar
+        </b>
+      </Typography>
+      <ListShoppingCart />
+    </Box>
   );
 }
 

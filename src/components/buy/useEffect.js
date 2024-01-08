@@ -1,6 +1,6 @@
 "use client";
 import { useState, useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 import { useParams } from "next/navigation";
 
@@ -18,6 +18,6 @@ const useEffectBuy = () => {
     GetIngredient();
   }, []);
 
-  return { data, params };
+  return { data, params, };
 };
 export default useEffectBuy;

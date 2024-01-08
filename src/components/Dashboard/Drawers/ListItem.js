@@ -12,6 +12,8 @@ import { Divider, styled } from "@mui/material";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
+import Cookies from "js-cookie";
+import { Logout } from "@mui/icons-material";
 
 const ListItemIconStyled = styled(ListItemIcon)(({ path, index, link }) => ({
   "& .MuiSvgIcon-root": {
@@ -37,6 +39,11 @@ export const MainListItems = () => {
     dispatch(updatedDrawer(false));
     dispatch(updatedDrawerMobile(false));
   };
+  const LogoutFuntion = () => {
+    dispatch(updatedDrawerMobile(false));
+    Cookies.remove("token");
+    router.push("/sign-in");
+  };
   return (
     <>
       {items.map((i, index) => {
@@ -58,6 +65,13 @@ export const MainListItems = () => {
           </>
         );
       })}
+      <Divider sx={{ my: 2 }} />
+      <ListItemButton sx={{ pl: 2.6 }} onClick={LogoutFuntion}>
+        <ListItemIcon>
+          <Logout sx={{ fontSize: { xs: 28, md: 30, "2xl": 32 } }} />
+        </ListItemIcon>
+        <ListItemText primary={"Cerrar sesion"} />
+      </ListItemButton>
     </>
   );
 };
