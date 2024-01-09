@@ -17,7 +17,7 @@ const MenuContentUser = () => {
     dispatch(updateMenuUser(null));
   };
   const LogoutFuntion = () => {
-    handleClose()
+    handleClose();
     Cookies.remove("token");
     router.push("/sign-in");
   };
