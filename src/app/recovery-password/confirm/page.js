@@ -74,7 +74,6 @@ const Confirm = () => {
                 control={control}
                 name={"password"}
                 type="password"
-                autoFocus
                 placeholder={"Ingrese su nueva contraseña"}
                 rules={{
                   required: { value: true, message: "Campo Requerido" },

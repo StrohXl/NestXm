@@ -46,7 +46,6 @@ const FormName = () => {
           placeholder={"Ingrese su nombre"}
           name={"firstName"}
           required={true}
-          autoFocus
         />
         <TextFieldControl
           control={control}

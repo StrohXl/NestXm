@@ -9,7 +9,12 @@ import { useRouter } from "next/navigation";
 import { TextFieldControl } from "@/components/ControllerForm";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import { LoadingButton } from "@mui/lab";
-import { Checkbox, FormControlLabel } from "@mui/material";
+import {
+  Checkbox,
+  FormControlLabel,
+  IconButton,
+  InputAdornment,
+} from "@mui/material";
 import Avatar from "@mui/material/Avatar";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
@@ -20,6 +25,7 @@ import Typography from "@mui/material/Typography";
 
 import { loginUser } from "../../services/login";
 import { updateAlert } from "../store/features/alertSlice";
+import { AccountCircle, Visibility, VisibilityOff } from "@mui/icons-material";
 
 // TODO remove, this demo shouldn't need to reset the theme.
 
@@ -27,6 +33,7 @@ export default function SignInSide() {
   const [loading, setLoading] = useState(false);
   const [disabled, setDisabled] = useState(false);
   const [checked, setChecked] = useState(true);
+  const [visibility, setVisibility] = useState(false);
   const {
     handleSubmit,
     formState: { errors },
@@ -148,13 +155,22 @@ export default function SignInSide() {
               <TextFieldControl
                 control={control}
                 name={"password"}
-                type="password"
+                type={visibility ? "text" : "password"}
                 rules={{
                   required: { value: true, message: "Campo Requerido" },
                   minLength: {
                     value: 8,
                     message: "La Contraseña debe de tener minimo 8 caracteres",
                   },
+                }}
+                InputProps={{
+                  endAdornment: (
+                    <InputAdornment position="end">
+                      <IconButton onClick={() => setVisibility(!visibility)}>
+                        {visibility ? <VisibilityOff /> : <Visibility />}
+                      </IconButton>
+                    </InputAdornment>
+                  ),
                 }}
                 errors={errors?.password}
                 label="Contraseña"

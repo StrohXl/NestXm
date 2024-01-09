@@ -47,7 +47,6 @@ const FormPassword = () => {
           placeholder={"Ingrese su contraseña"}
           name={"password"}
           required={true}
-          autoFocus
         />
         <TextFieldControl
           control={control}

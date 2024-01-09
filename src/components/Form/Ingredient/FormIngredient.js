@@ -73,7 +73,6 @@ const FormIngredient = ({ type }) => {
         >
           <UploadImageIngredient />
           <TextFieldControl
-            autoFocus
             control={control}
             label={"Nombre"}
             placeholder={"Ingrese el nombre del ingrediente"}

@@ -129,7 +129,6 @@ export default function SignUp() {
                 sx={{ mt: 5, px: 2, maxWidth: { xs: "400px", md: "100%" } }}
               >
                 <TextFieldControl
-                  autoFocus
                   control={control}
                   name={"firstName"}
                   placeholder={"Ingrese su nombre"}

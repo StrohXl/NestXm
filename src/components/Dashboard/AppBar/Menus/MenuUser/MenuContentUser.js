@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import Cookies from "js-cookie";
 import { useRouter } from "next/navigation";
 
-import { updateMenuShopping } from "@/app/store/features/openComponents";
+import { updateMenuUser } from "@/app/store/features/openComponents";
 import StringAvatar from "@/components/Avatar/stringAvatar";
 import { Logout, Person } from "@mui/icons-material";
 import { Grid, ListItemIcon, MenuItem, Typography } from "@mui/material";
@@ -14,10 +14,10 @@ const MenuContentUser = () => {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.user.user);
   const handleClose = () => {
-    dispatch(updateMenuShopping(null));
+    dispatch(updateMenuUser(null));
   };
   const LogoutFuntion = () => {
-    dispatch(updateMenuShopping(null));
+    handleClose()
     Cookies.remove("token");
     router.push("/sign-in");
   };

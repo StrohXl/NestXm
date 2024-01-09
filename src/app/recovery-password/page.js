@@ -81,7 +81,6 @@ const RecoveryPassword = () => {
             >
               <TextFieldControl
                 control={control}
-                autoFocus
                 name={"email"}
                 rules={{
                   required: { value: true, message: "Campo Requerido" },
