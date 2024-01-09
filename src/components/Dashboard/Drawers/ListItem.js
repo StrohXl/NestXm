@@ -1,6 +1,7 @@
 import * as React from "react";
 import { useDispatch, useSelector } from "react-redux";
 
+import Cookies from "js-cookie";
 import { useRouter, usePathname } from "next/navigation";
 
 import {
@@ -8,12 +9,11 @@ import {
   updatedDrawerMobile,
 } from "@/app/store/features/openDrawer";
 import { items } from "@/helpers/ListItems";
+import { Logout } from "@mui/icons-material";
 import { Badge, Divider, styled } from "@mui/material";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
-import Cookies from "js-cookie";
-import { Logout } from "@mui/icons-material";
 
 const ListItemIconStyled = styled(ListItemIcon)(({ path, index, link }) => ({
   "& .MuiSvgIcon-root": {

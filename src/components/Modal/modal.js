@@ -1,4 +1,4 @@
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 
 import { Close } from "@mui/icons-material";
 import { Box, IconButton, Modal } from "@mui/material";

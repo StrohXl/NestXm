@@ -8,7 +8,6 @@ import {
   TableCell,
   TableContainer,
   Table,
-  Paper,
   TableBody,
 } from "@mui/material";
 

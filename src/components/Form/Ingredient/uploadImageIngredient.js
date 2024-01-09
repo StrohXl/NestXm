@@ -3,6 +3,8 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
+import Image from "next/image";
+
 import { Close, AddPhotoAlternateOutlined } from "@mui/icons-material";
 import { Grid, IconButton, Paper, Typography } from "@mui/material";
 
@@ -51,8 +53,10 @@ const UploadImageIngredient = () => {
             </IconButton>
           )}
           {image ? (
-            <img
-              style={{ width: "90%", height: "90%" }}
+            <Image
+              alt="uploadImage"
+              fill
+              style={{ objectFit: "cover", width: "90%" }}
               src={
                 typeof image == "object" ? URL.createObjectURL(image) : image
               }

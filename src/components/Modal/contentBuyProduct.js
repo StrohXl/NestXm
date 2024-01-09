@@ -1,3 +1,7 @@
+import React from "react";
+import { useDispatch, useSelector } from "react-redux";
+
+import { buyProduct } from "@/services/solicitudes";
 import {
   Avatar,
   Box,
@@ -7,14 +11,9 @@ import {
   ListItemIcon,
   ListItemText,
   MenuList,
-  TextField,
   Typography,
   Button,
 } from "@mui/material";
-import React from "react";
-import { useDispatch, useSelector } from "react-redux";
-import closeModal from "./closeModal";
-import { buyProduct } from "@/services/solicitudes";
 
 function ContentBuyProduct({ ingredient, total, setOpenModal, cantidad }) {
   const user = useSelector((state) => state.user.user);
@@ -22,7 +21,7 @@ function ContentBuyProduct({ ingredient, total, setOpenModal, cantidad }) {
   const comprarProducto = async () => {
     const res = await buyProduct(
       [{ idIngredient: ingredient.id, quantity: cantidad }],
-      dispatch
+      dispatch,
     );
     if (res) {
       setOpenModal(false);

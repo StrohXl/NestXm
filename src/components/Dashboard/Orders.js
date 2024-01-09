@@ -1,18 +1,17 @@
 "use client ";
 import * as React from "react";
+import { useDispatch, useSelector } from "react-redux";
 
 import Link from "next/link";
 
+import { FindSolicitudesUser } from "@/services/user";
+import { ShoppingCart } from "@mui/icons-material";
 import { Box, TableCell, Typography } from "@mui/material";
 
-import TableSolicitudes from "../Table/Solicitudes/TableSolicitudes";
+import TableRowSolicitudes from "../Table/Solicitudes/TableRowSolicitudes";
 import TableOrders from "../Table/Table";
-import { FindSolicitudesUser } from "@/services/user";
-import { useDispatch, useSelector } from "react-redux";
 import TableLoading from "../Table/TableLoading";
 import TableNotHave from "../Table/TableNotHave";
-import { ShoppingCart } from "@mui/icons-material";
-import TableRowSolicitudes from "../Table/Solicitudes/TableRowSolicitudes";
 
 export default function Orders() {
   const [loading, setLoading] = React.useState(true);

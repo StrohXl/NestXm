@@ -4,14 +4,7 @@ import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 
-import {
-  Box,
-  Card,
-  CardActionArea,
-  CardContent,
-  Paper,
-  Typography,
-} from "@mui/material";
+import { Box, Card, CardContent, Paper, Typography } from "@mui/material";
 
 const CardIngredient = ({ name, imageUrl, price, id }) => {
   const [elevation, setElevation] = useState(0);

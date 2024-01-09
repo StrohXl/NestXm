@@ -6,7 +6,6 @@ import {
   ShoppingCart,
   Storefront,
 } from "@mui/icons-material";
-import { Badge } from "@mui/material";
 
 export const items = [
   {

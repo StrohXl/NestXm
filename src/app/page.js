@@ -2,7 +2,7 @@
 
 import Deposits from "@/components/Dashboard/Deposits";
 import Orders from "@/components/Dashboard/Orders";
-import { Box, Grid, Paper } from "@mui/material";
+import { Grid, Paper } from "@mui/material";
 
 import "../services/axios";
 

@@ -3,9 +3,11 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 import addIngredient from "@/components/buy/addIngredient";
 import useEffectBuy from "@/components/buy/useEffect";
+import ModalBuyProduct from "@/components/Modal/BuyProduct";
 import {
   AddShoppingCart,
   ShoppingCart,
@@ -19,11 +21,7 @@ import {
   Button,
   Divider,
   TextField,
-  Hidden,
 } from "@mui/material";
-import { useRouter } from "next/navigation";
-import { buyProduct } from "@/services/solicitudes";
-import ModalBuyProduct from "@/components/Modal/BuyProduct";
 
 const Orders = () => {
   const router = useRouter();

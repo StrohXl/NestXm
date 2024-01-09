@@ -1,11 +1,12 @@
-import { endPoints } from "@/services/routes";
-import api from "./axios";
-import { updateAlert } from "@/app/store/features/alertSlice";
 import Cookies from "js-cookie";
 import jwt from "jsonwebtoken";
-import { FindSolicitudesUser } from "./user";
+
+import { updateAlert } from "@/app/store/features/alertSlice";
 import { deleteProduct } from "@/app/store/features/shoppingCart";
-import { elementType } from "prop-types";
+import { endPoints } from "@/services/routes";
+
+import api from "./axios";
+import { FindSolicitudesUser } from "./user";
 
 const { solicitudDeCompra } = endPoints;
 
@@ -22,10 +23,10 @@ export async function buyProduct(products, dispatch) {
         open: true,
         children: "Producto Comprado",
         type: "success",
-      })
+      }),
     );
     setTimeout(() => {
-      products.forEach((element, index) => {
+      products.forEach((element) => {
         dispatch(deleteProduct(element.idIngredient));
       });
     }, 2000);
@@ -33,7 +34,7 @@ export async function buyProduct(products, dispatch) {
   } catch (error) {
     console.log(error);
     dispatch(
-      updateAlert({ open: true, children: "Hubo un error", type: "error" })
+      updateAlert({ open: true, children: "Hubo un error", type: "error" }),
     );
     return false;
   }
@@ -46,14 +47,14 @@ export async function deleteSolicitud(id, dispatch) {
         open: true,
         children: "Solicitud de compra Eliminada",
         type: "success",
-      })
+      }),
     );
     await FindSolicitudesUser(dispatch);
     return true;
   } catch (error) {
     console.log(error);
     dispatch(
-      updateAlert({ open: true, children: "Hubo un error", type: "error" })
+      updateAlert({ open: true, children: "Hubo un error", type: "error" }),
     );
     return false;
   }

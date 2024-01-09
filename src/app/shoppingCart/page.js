@@ -2,11 +2,11 @@
 import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
 
-import TableShoppingCart from "@/components/Table/ShoppingCart/TableShoppingCart";
-import { FindIngredientsUser } from "@/services/user";
-import { Box, Paper, Typography } from "@mui/material";
+import { useSearchParams } from "next/navigation";
+
 import ListShoppingCart from "@/components/listCards/listShoppingCart";
-import { useParams, useSearchParams } from "next/navigation";
+import { FindIngredientsUser } from "@/services/user";
+import { Box, Typography } from "@mui/material";
 
 function ShoppingCartPage() {
   const dispatch = useDispatch();
@@ -21,7 +21,7 @@ function ShoppingCartPage() {
       const menuItem = document.getElementById(select);
       const menuclass = document.getElementsByClassName(select);
       if (menuItem) {
-        menuclass[0].scrollIntoView()
+        menuclass[0].scrollIntoView();
       }
     }
   }, [select]);
@@ -33,7 +33,7 @@ function ShoppingCartPage() {
         borderRadius: 1.5,
         background: "#fff",
         p: 3,
-        maxWidth:800
+        maxWidth: 800,
       }}
     >
       <Typography variant="h4">Carrito de compras</Typography>

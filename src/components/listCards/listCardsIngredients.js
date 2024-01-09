@@ -32,7 +32,7 @@ const ListCardIngredient = () => {
       justifyContent={{ xs: "center", md: "flex-start" }}
       gap={{ xs: 1, sm: 2 }}
     >
-      {ingredients.map((i, index) => (
+      {ingredients.map((i) => (
         <CardIngredient
           key={i.id}
           name={i.name}

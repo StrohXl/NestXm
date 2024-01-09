@@ -1,6 +1,8 @@
+import React from "react";
+
 import { Close } from "@mui/icons-material";
 import { Box, IconButton, Modal } from "@mui/material";
-import React from "react";
+
 import ContentBuyProduct from "../contentBuyProduct";
 const style = {
   position: "absolute",

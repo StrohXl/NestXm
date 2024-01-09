@@ -1,6 +1,5 @@
 import Cookies from "js-cookie";
 import jwt from "jsonwebtoken";
-import { isPagesAPIRouteMatch } from "next/dist/server/future/route-matches/pages-api-route-match";
 
 import { updateAlert } from "@/app/store/features/alertSlice";
 import { deleteProduct } from "@/app/store/features/shoppingCart";
@@ -21,7 +20,7 @@ export const deleteIngredient = async (dispatch, id) => {
         open: true,
         children: "Ingrediente Eliminado",
         type: "success",
-      })
+      }),
     );
   } catch (error) {
     if (error.response.data.message) {
@@ -30,7 +29,7 @@ export const deleteIngredient = async (dispatch, id) => {
           open: true,
           children: error.response.data.message,
           type: "error",
-        })
+        }),
       );
     } else {
       dispatch(
@@ -38,7 +37,7 @@ export const deleteIngredient = async (dispatch, id) => {
           open: true,
           children: "hubo un error",
           type: "error",
-        })
+        }),
       );
     }
   }
@@ -54,7 +53,7 @@ export const getOneIngredient = async (dispatch, id) => {
         open: true,
         children: "hubo un error",
         type: "error",
-      })
+      }),
     );
   }
 };
@@ -72,7 +71,7 @@ export const createIngredient = async (dispatch, data) => {
         open: true,
         type: "success",
         children: "Ingrediente Creado",
-      })
+      }),
     );
     return true;
   } catch (error) {
@@ -81,7 +80,7 @@ export const createIngredient = async (dispatch, data) => {
         open: true,
         type: "error",
         children: "Hubo un error",
-      })
+      }),
     );
   }
 };
@@ -95,7 +94,7 @@ export const updateIngredient = async (dispatch, data, id) => {
         open: true,
         type: "success",
         children: "Ingrediente Editado",
-      })
+      }),
     );
     return true;
   } catch (error) {
@@ -104,7 +103,7 @@ export const updateIngredient = async (dispatch, data, id) => {
         open: true,
         type: "error",
         children: "Hubo un error",
-      })
+      }),
     );
   }
 };

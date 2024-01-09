@@ -10,7 +10,6 @@ import {
 } from "@/app/store/features/openComponents";
 import { FindIngredientsUser } from "@/services/user";
 import { Menu } from "@mui/material";
-import { usePathname } from "next/navigation";
 
 const MenuGlobal = ({ children, openMenu, type }) => {
   const dispatch = useDispatch();

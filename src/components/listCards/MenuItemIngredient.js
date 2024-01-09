@@ -1,8 +1,12 @@
-import {
-  updateModalBuy,
-  updateMoreShopping,
-} from "@/app/store/features/openComponents";
-import { Clear, Close, ShoppingCart, Visibility } from "@mui/icons-material";
+import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+
+import Image from "next/image";
+import { useRouter } from "next/navigation";
+
+import { updateMoreShopping } from "@/app/store/features/openComponents";
+import { deleteProduct } from "@/app/store/features/shoppingCart";
+import { Clear, ShoppingCart, Visibility } from "@mui/icons-material";
 import {
   Box,
   Grid,
@@ -13,16 +17,8 @@ import {
   TextField,
   Typography,
   Button,
-  Modal,
-  MenuItem,
 } from "@mui/material";
-import Image from "next/image";
-import { useRouter, useSearchParams } from "next/navigation";
-import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { addProduct, deleteProduct } from "@/app/store/features/shoppingCart";
-import ModalGlobal from "../Modal/modal";
-import ContentBuyProduct from "../Modal/contentBuyProduct";
+
 import ModalBuyProduct from "../Modal/BuyProduct";
 
 function MenuItemIngredient({ id, ingredient, item }) {

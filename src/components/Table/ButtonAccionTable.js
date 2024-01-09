@@ -10,7 +10,7 @@ const ButtonAccionTable = ({ id }) => {
   return (
     <ButtonGroup
       sx={{
-        gap: { xs: .5 },
+        gap: { xs: 0.5 },
       }}
       size="small"
       variant="text"
